@@ -8,6 +8,5 @@ public interface GymManager {
     public void updateSlots();
     public List<Gym> viewOwnedGyms();
     public void enrollGym(Gym gym);
-    public void updateSlot();
     public void updatedGymDetails(Gym updatedGymDetails);
 }

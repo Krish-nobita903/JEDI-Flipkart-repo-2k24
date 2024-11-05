@@ -1,8 +1,11 @@
 package com.flipfit.business;
 
+import com.flipfit.bean.Slot;
+
+import java.util.List;
+
 public interface CustomerInterface {
-    public Boolean isSlotAvailable();
     public void updateUserInfo();
-    public void cancelBookedSlot();
-    public void bookSlot();
+    public void viewUserPlan();
+    public List<Slot> viewBookedSlots();
 }
