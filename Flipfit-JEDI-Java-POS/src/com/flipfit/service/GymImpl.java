@@ -15,4 +15,10 @@ public class GymImpl implements GymInterface {
     public void updateTrainingsAvailable(String gymId, List<String> updatedTrainings) {
         System.out.println("Updating trainings available for gym " + gymId);
     }
+
+    @Override
+    public Boolean isAvailableSlots() {
+        System.out.println("Shows available slots");
+        return null;
+    }
 }
