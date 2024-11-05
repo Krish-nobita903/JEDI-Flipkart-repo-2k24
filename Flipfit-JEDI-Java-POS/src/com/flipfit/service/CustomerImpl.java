@@ -1,26 +1,25 @@
 package com.flipfit.service;
 
+import com.flipfit.bean.Slot;
 import com.flipfit.business.CustomerInterface;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerImpl implements CustomerInterface {
     @Override
-    public Boolean isSlotAvailable() {
-        System.out.println("Checking if Slot Available");
-        return null;
+    public void viewUserPlan(){
+        System.out.println("View User Plan");
     }
+    @Override
+    public List<Slot> viewBookedSlots(){
+        System.out.println("View Booked slots");
+        return new ArrayList<>();
+    }
+
 
     @Override
     public void updateUserInfo() {
         System.out.println("Updating user info");
-    }
-
-    @Override
-    public void cancelBookedSlot() {
-        System.out.println("Cancelling booked slot");
-    }
-
-    @Override
-    public void bookSlot() {
-        System.out.println("Booking slot");
     }
 }
