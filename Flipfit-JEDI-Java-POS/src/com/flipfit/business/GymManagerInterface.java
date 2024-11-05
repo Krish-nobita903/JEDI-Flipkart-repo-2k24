@@ -4,7 +4,7 @@ import com.flipfit.bean.Gym;
 
 import java.util.List;
 
-public interface GymManager {
+public interface GymManagerInterface {
     public void updateSlots();
     public List<Gym> viewOwnedGyms();
     public void enrollGym(Gym gym);
