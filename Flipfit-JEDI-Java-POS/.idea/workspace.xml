@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/flipfit/bean/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipfit/bean/GymOwner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipfit/bean/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipfit/business/AdminInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/bean/User.java" afterDir="false" />
-    </list>
+    <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,8 +10,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
