@@ -3,28 +3,28 @@ package com.flipfit.bean;
 import java.util.Date;
 
 public class Slot {
-    private int id;
-    private Gym gym;
+    private int slotId;
+    private Gym gymId;
     private String startTimeInUTC;
     private Date date;
     private int availableSeats;
-    private String trainings;
+    private List<String> trainings;
 
     public int id() {
-        return id;
+        return slotId;
     }
 
-    public Slot setId(int id) {
-        this.id = id;
+    public Slot setSlotId(int slotId) {
+        this.slotId = slotId;
         return this;
     }
 
     public Gym gym() {
-        return gym;
+        return gymId;
     }
 
-    public Slot setGym(Gym gym) {
-        this.gym = gym;
+    public Slot setGymId(Gym gymId) {
+        this.gymId = gymId;
         return this;
     }
 
@@ -55,13 +55,13 @@ public class Slot {
         return this;
     }
 
-    public String trainings() {
+    public List<String> trainings() {
         return trainings;
     }
 
-    public Slot setTrainings(String trainings) {
+    public List<String> setTrainings(List<String> trainings) {
         this.trainings = trainings;
-        return this;
+        return this.trainings();
     }
 
 }

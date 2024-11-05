@@ -1,16 +1,16 @@
 package com.flipfit.bean;
 
 public class User {
-    private int userId;
+    private String userId;
     private String userPhone;
     private double userWeight;
     private int[] userSlots;
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

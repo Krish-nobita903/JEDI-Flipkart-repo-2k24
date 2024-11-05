@@ -2,10 +2,9 @@ package com.flipfit.bean;
 
 public class Gym {
     private int gymId;
-    private Region region;
+    private Region regionId;
     private int pinCode;
-    private Slot[] slot;
-    private String country;
+    private Slot[] slotsAvailable;
 
     public int gymId() {
         return gymId;
@@ -17,11 +16,11 @@ public class Gym {
     }
 
     public Region region() {
-        return region;
+        return regionId;
     }
 
-    public Gym setRegion(Region region) {
-        this.region = region;
+    public Gym setRegionId(Region regionId) {
+        this.regionId = regionId;
         return this;
     }
 
@@ -35,20 +34,11 @@ public class Gym {
     }
 
     public Slot[] slot() {
-        return slot;
+        return slotsAvailable;
     }
 
-    public Gym setSlot(Slot[] slot) {
-        this.slot = slot;
-        return this;
-    }
-
-    public String country() {
-        return country;
-    }
-
-    public Gym setCountry(String country) {
-        this.country = country;
+    public Gym setSlotsAvailable(Slot[] slotsAvailable) {
+        this.slotsAvailable = slotsAvailable;
         return this;
     }
 }

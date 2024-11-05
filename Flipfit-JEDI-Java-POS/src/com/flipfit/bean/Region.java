@@ -3,9 +3,18 @@ package com.flipfit.bean;
 import java.util.List;
 
 public class Region {
-    private String regionName;
-    private List<String> Gym;
 
+    private String regionId;
+    private String regionName;
+    private List<Gym> Gym;
+
+    public String getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(String regionId) {
+        this.regionId = regionId;
+    }
     public String regionName() {
         return regionName;
     }
