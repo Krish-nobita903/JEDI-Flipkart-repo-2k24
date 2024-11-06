@@ -4,6 +4,7 @@ import com.flipfit.bean.Gym;
 import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
+import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
 
@@ -16,10 +17,10 @@ public class FlipFitApp {
     {
         GymManagerInterface manager = new GymManagerImpl();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the FLIPFIT APP");
+        System.out.println("Welcome to the FLIP FIT APP");
         System.out.println("1.Login");
-        System.out.println("2.Rgeisteration for GYMCustomer");
-        System.out.println("3.Rgeisteration for GYMOwner");
+        System.out.println("2.Registration for GYMCustomer");
+        System.out.println("3.Registration for GYMOwner");
         System.out.println("4.Update Password");
         System.out.println("5.Exit");
 
@@ -42,15 +43,16 @@ public class FlipFitApp {
                 scanner.nextLine();// store newline
                 CustomerInterface customer = new CustomerImpl();
                 GymManagerInterface gymManager = new GymManagerImpl();
+                AdminInterface admin = new AdminImpl();
                 switch (roleChosen) {
-                    case 1 -> handleAdminActions(scanner);
+                    case 1 -> handleAdminActions(scanner,admin);
                     case 2 -> handleGymOwnerActions(scanner, gymManager);
                     case 3 -> handleCustomerActions(scanner, customer);
                     default -> System.out.println("Invalid choice. Exiting application.");
                 }
                 break;
             case 2:
-                System.out.println("You have entered Gym Customer Registeration");
+                System.out.println("You have entered Gym Customer Registration");
                 break;
 
             case 3:
@@ -83,9 +85,8 @@ public class FlipFitApp {
         System.out.println("Choose your option");
         System.out.println("1.View Booked Slot");
         System.out.println("2.View Available Slot");
-        System.out.println("3.Book Slot");
-        System.out.println("4.Cancel Booked Slots");
-        System.out.println("5.Update User Info");
+        System.out.println("3.Cancel Booked Slots");
+        System.out.println("4.Update User Info");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
