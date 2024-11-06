@@ -22,9 +22,12 @@ public class FlipfitApp {
         scanner.nextLine();// store newline
 
         switch (roleChosen) {
-            case 1 -> handleGymOwnerActions(scanner,manager);
-            case 2 -> handleCustomerActions(scanner);
-            default -> System.out.println("Invalid choice. Exiting application.");
+            case 1:
+                handleGymOwnerActions(scanner,manager);
+            case 2:
+                handleCustomerActions(scanner);
+            default:
+                System.out.println("Invalid choice. Exiting application.");
         }
 
         scanner.close();
@@ -42,13 +45,13 @@ public class FlipfitApp {
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
 
-        switch (optionSelected){
-            case 1 -> ViewSlots();
-            case 2 -> BookSlots();
-            case 3 -> CancelBookedSlot();
-            case 4 -> UpdateUserInfo();
-            default -> System.out.println("Invalid choice. Exiting application.");
-        }
+//        switch (optionSelected){
+//            case 1 -> ViewSlots();
+//            case 2 -> BookSlots();
+//            case 3 -> CancelBookedSlot();
+//            case 4 -> UpdateUserInfo();
+//            default -> System.out.println("Invalid choice. Exiting application.");
+//        }
 
     }
 
@@ -64,11 +67,16 @@ public class FlipfitApp {
         scanner.nextLine();
         Gym managerOwnedGyms = new Gym();
         switch (optionSelected){
-            case 1 -> manager.updateSlots();
-            case 2 -> manager.viewOwnedGyms();
-            case 3 -> manager.enrollGym(managerOwnedGyms);
-            case 4 -> manager.updatedGymDetails(managerOwnedGyms);
-            default -> System.out.println("Invalid choice. Exiting application.");
+            case 1:
+                manager.updateSlots();
+            case 2:
+                manager.viewOwnedGyms();
+            case 3:
+                manager.enrollGym(managerOwnedGyms);
+            case 4:
+                manager.updatedGymDetails(managerOwnedGyms);
+            default:
+                System.out.println("Invalid choice. Exiting application.");
         }
     }
 }
