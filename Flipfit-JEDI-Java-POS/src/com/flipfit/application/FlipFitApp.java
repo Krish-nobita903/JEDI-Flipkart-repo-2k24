@@ -19,8 +19,8 @@ public class FlipfitApp {
         scanner.nextLine();// store newline
 
         switch (roleChosen) {
-            case 1 -> handleGymOwnerActions(scanner);
-            case 2 -> handleCustomerActions(scanner,manager);
+            case 1 -> handleGymOwnerActions(scanner,manager);
+            case 2 -> handleCustomerActions(scanner);
             default -> System.out.println("Invalid choice. Exiting application.");
         }
 
@@ -56,20 +56,15 @@ public class FlipfitApp {
         System.out.println("1.Update Slots");
         System.out.println("2.View Owned Gyms");
         System.out.println("3.Enroll your gym");
-        System.out.println("4.Update Slot");
-        System.out.println("5.Update GYM details");
-        System.out.println("6.Add Gym")
-
+        System.out.println("4.Update GYM details");
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
 
         switch (optionSelected){
-            case 1 -> UpdateGymSlots();
-            case 2 -> ViewOwnedSlots();
-            case 3 -> EnrollGym();
-            case 4 -> UpdateAvailableSlots();
-            case 5 -> UpdateGymDetails();
-            case 6 -> AddGym();
+            case 1 -> manager.updateSlots();
+            case 2 -> manager.viewOwnedGyms();
+            case 3 -> manager.enrollGym();
+            case 4 -> manager.updatedGymDetails();
             default -> System.out.println("Invalid choice. Exiting application.");
         }
     }
