@@ -1,6 +1,7 @@
 package com.flipfit.application;
 
 import com.flipfit.bean.Gym;
+import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
 import com.flipfit.service.CustomerImpl;
@@ -67,7 +68,7 @@ public class FlipFitApp {
                 System.out.println("Please enter your New Password:");
                 String newPassword = scanner.nextLine();
                 scanner.nextLine();
-                updatePassword(scanner,userNameForUpdatePassword,oldPassword,newPassword);
+                //updatePassword(scanner,userNameForUpdatePassword,oldPassword,newPassword);
                 break;
 
             default:
@@ -119,7 +120,7 @@ public class FlipFitApp {
         }
     }
 
-    private static void handleAdminActions(Scanner scanner)
+    private static void handleAdminActions(Scanner scanner, AdminInterface admin)
     {
         System.out.println("Welcome Customer!");
         System.out.println("Choose your option");
@@ -130,8 +131,8 @@ public class FlipFitApp {
         scanner.nextLine();
 
         switch (optionSelected){
-            case 1 -> AddUser();
-            case 2 -> AddGymOwner();
+            case 1 -> admin.addUser();
+            case 2 -> admin.addGymOwner();
             default -> System.out.println("Invalid choice. Exiting application.");
         }
 
