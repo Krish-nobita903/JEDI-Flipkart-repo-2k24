@@ -6,7 +6,7 @@ public class Region {
 
     private String regionId;
     private String regionName;
-    private List<Gym> Gym;
+    private List<String> Gym;
 
     public String getRegionId() {
         return regionId;
