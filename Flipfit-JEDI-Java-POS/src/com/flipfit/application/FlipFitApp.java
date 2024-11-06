@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class FlipfitApp {
     public static void main(String args[])
     {
+        Gym
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Flipfit");
         System.out.println("Kindly select your role:");
