@@ -1,6 +1,7 @@
 package com.flipfit.application;
 
 import com.flipfit.bean.Gym;
+import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
 import com.flipfit.service.GymManagerImpl;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FlipfitApp {
+public class FlipFitApp {
     public static void main(String args[])
     {
         GymManagerInterface manager = new GymManagerImpl();
@@ -73,7 +74,7 @@ public class FlipfitApp {
         scanner.close();
     }
 
-    private static void handleCustomerActions(Scanner scanner)
+    private static void handleCustomerActions(Scanner scanner, CustomerInterface customer)
     {
         System.out.println("Welcome Customer!");
         System.out.println("Choose your option");
@@ -87,11 +88,10 @@ public class FlipfitApp {
         scanner.nextLine();
 
         switch (optionSelected){
-            case 1 -> ViewBookedSlots();
-            case 2 -> ViewAvailableSlots();
-            case 2 -> BookSlots();
-            case 3 -> CancelBookedSlot();
-            case 4 -> UpdateUserInfo();
+            case 1 -> customer.viewBookedSlots();
+            case 2 -> customer.viewUserPlan();
+            case 3 -> customer.cancelSlot();
+            case 4 -> customer.updateUserInfo();
             default -> System.out.println("Invalid choice. Exiting application.");
         }
 

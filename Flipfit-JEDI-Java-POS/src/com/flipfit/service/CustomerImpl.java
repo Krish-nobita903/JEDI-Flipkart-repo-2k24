@@ -17,6 +17,10 @@ public class CustomerImpl implements CustomerInterface {
         return new ArrayList<>();
     }
 
+    @Override
+    public void cancelSlot(){
+        System.out.println("Slot deleted successfully");
+    }
 
     @Override
     public void updateUserInfo() {
