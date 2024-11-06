@@ -1,8 +1,11 @@
 package com.flipfit.application;
 
+import com.flipfit.bean.Gym;
 import com.flipfit.business.GymManagerInterface;
 import com.flipfit.service.GymManagerImpl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FlipfitApp {
@@ -59,12 +62,12 @@ public class FlipfitApp {
         System.out.println("4.Update GYM details");
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
-
+        Gym managerOwnedGyms = new Gym();
         switch (optionSelected){
             case 1 -> manager.updateSlots();
             case 2 -> manager.viewOwnedGyms();
-            case 3 -> manager.enrollGym();
-            case 4 -> manager.updatedGymDetails();
+            case 3 -> manager.enrollGym(managerOwnedGyms);
+            case 4 -> manager.updatedGymDetails(managerOwnedGyms);
             default -> System.out.println("Invalid choice. Exiting application.");
         }
     }

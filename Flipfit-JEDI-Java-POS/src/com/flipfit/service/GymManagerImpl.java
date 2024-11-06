@@ -3,6 +3,7 @@ package com.flipfit.service;
 import com.flipfit.bean.Gym;
 import com.flipfit.business.GymManagerInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GymManagerImpl implements GymManagerInterface {
@@ -14,17 +15,13 @@ public class GymManagerImpl implements GymManagerInterface {
     @Override
     public List<Gym> viewOwnedGyms() {
         System.out.println("Viewing Owned Gyms");
-        return List.of();
+        List<Gym> managedGyms = new ArrayList<Gym>();
+        return managedGyms;
     }
 
     @Override
     public void enrollGym(Gym gym) {
         System.out.println("enrolling gym");
-    }
-
-    @Override
-    public void updateSlot() {
-        System.out.println("Updating Slot");
     }
 
     @Override
