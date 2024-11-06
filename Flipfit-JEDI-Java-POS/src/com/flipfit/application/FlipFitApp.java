@@ -1,11 +1,14 @@
 package com.flipfit.application;
 
+import com.flipfit.business.GymManagerInterface;
+import com.flipfit.service.GymManagerImpl;
+
 import java.util.Scanner;
 
 public class FlipfitApp {
     public static void main(String args[])
     {
-        Gym
+        GymManagerInterface manager = new GymManagerImpl();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Flipfit");
         System.out.println("Kindly select your role:");
@@ -17,7 +20,7 @@ public class FlipfitApp {
 
         switch (roleChosen) {
             case 1 -> handleGymOwnerActions(scanner);
-            case 2 -> handleCustomerActions(scanner);
+            case 2 -> handleCustomerActions(scanner,manager);
             default -> System.out.println("Invalid choice. Exiting application.");
         }
 
@@ -46,7 +49,7 @@ public class FlipfitApp {
 
     }
 
-    private static void handleGymOwnerActions(Scanner scanner)
+    private static void handleGymOwnerActions(Scanner scanner,GymManagerInterface manager)
     {
         System.out.println("Welcome Gym Owner");
         System.out.println("Choose your option:");
