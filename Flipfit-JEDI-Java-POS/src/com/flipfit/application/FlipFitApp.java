@@ -64,7 +64,7 @@ public class FlipfitApp {
         scanner.nextLine();
         Gym managerOwnedGyms = new Gym();
         switch (optionSelected){
-            case 1 -> manager.updateSlots();
+            case 1 -> manager.updateSlot();
             case 2 -> manager.viewOwnedGyms();
             case 3 -> manager.enrollGym(managerOwnedGyms);
             case 4 -> manager.updatedGymDetails(managerOwnedGyms);
