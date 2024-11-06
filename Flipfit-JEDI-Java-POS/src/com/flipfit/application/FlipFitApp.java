@@ -3,6 +3,7 @@ package com.flipfit.application;
 import com.flipfit.bean.Gym;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
+import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
 
 import java.util.ArrayList;
@@ -38,11 +39,12 @@ public class FlipFitApp {
                 System.out.println("3.Choose 3 for GymCustomer:");
                 int roleChosen = scanner.nextInt();
                 scanner.nextLine();// store newline
-
+                CustomerInterface customer = new CustomerImpl();
+                GymManagerInterface gymManager = new GymManagerImpl();
                 switch (roleChosen) {
                     case 1 -> handleAdminActions(scanner);
-                    case 2 -> handleGymOwnerActions(scanner);
-                    case 3 -> handleCustomerActions(scanner);
+                    case 2 -> handleGymOwnerActions(scanner, gymManager);
+                    case 3 -> handleCustomerActions(scanner, customer);
                     default -> System.out.println("Invalid choice. Exiting application.");
                 }
                 break;
