@@ -12,22 +12,16 @@ public class SlotImpl implements SlotInterface {
     }
 
     @Override
-    public boolean removeSlot(Slot slot) {
-        return false;
-    }
-
-    @Override
     public boolean updateSlot(Slot slot) {
+        System.out.println("Slot has been updated!");
         return false;
     }
 
     @Override
-    public Slot getSlotByName(String slotName) {
-        return null;
-    }
+    public boolean deleteSlot(Slot slot) { return false; }
 
     @Override
-    public List<Slot> getSlots() {
-        return List.of();
+    public Slot viewSlotById(int id) {
+        return null;
     }
 }
