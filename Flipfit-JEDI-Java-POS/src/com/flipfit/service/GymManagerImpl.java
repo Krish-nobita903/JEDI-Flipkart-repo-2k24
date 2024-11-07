@@ -4,6 +4,8 @@ import com.flipfit.bean.Gym;
 import com.flipfit.bean.Slot;
 import com.flipfit.business.GymManagerInterface;
 import com.flipfit.business.SlotInterface;
+import com.flipfit.dao.FlipFitGymManagerDAOInterface;
+import com.flipfit.dao.FlipFitGymManagerDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +13,8 @@ import java.util.List;
 public class GymManagerImpl implements GymManagerInterface {
     @Override
     public List<Gym> viewOwnedGyms() {
-        System.out.println("Viewing Owned Gyms");
-        List<Gym> managedGyms = new ArrayList<Gym>();
+        FlipFitGymManagerDAOInterface gymManagerDAO = new FlipFitGymManagerDAO();
+        List<Gym> managedGyms = FlipFitGymManagerDAOInterface.
         return managedGyms;
     }
 
