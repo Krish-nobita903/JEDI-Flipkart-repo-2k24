@@ -8,6 +8,6 @@ public interface GymDAOInterface {
     public boolean createGym(String regionId, int pincode, Slot[] slotsAvailable);
     public boolean updateGym(Gym gym);
     public Gym viewGym(String gymId);
-    public boolean deleteGym(Gym gym);
+    public boolean deleteGym(String gymId);
     public List<Slot> showAvailableSlots(String gymId);
 }
