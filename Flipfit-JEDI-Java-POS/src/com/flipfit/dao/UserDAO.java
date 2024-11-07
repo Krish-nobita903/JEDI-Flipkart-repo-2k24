@@ -1,6 +1,7 @@
 package com.flipfit.dao;
 
 import com.flipfit.bean.User;
+import com.flipfit.helper.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +11,7 @@ public class UserDAO implements UserDAOInterface{
     @Override
     public boolean createUser(String userName, String email, String password, String firstName, String lastName) {
         try{
-            Connection connection = DemoJDBC.connect();
+            Connection connection = DatabaseConnection.connect();
             String userId = UUID.randomUUID().toString();
 
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO FlipfitSchema.user (id,userName,email,password,firstName,lastName) values(?,?,?,?,?,?)");
@@ -36,7 +37,7 @@ public class UserDAO implements UserDAOInterface{
     @Override
     public boolean updateUser(User user) {
         try{
-            Connection connection = DemoJDBC.connect();
+            Connection connection = DatabaseConnection.connect();
 
             PreparedStatement stmt = connection.prepareStatement(
                     "UPDATE user SET userName = ?, email = ?, password = ?, firstName = ?, lastName = ? WHERE id = ?"
@@ -62,7 +63,7 @@ public class UserDAO implements UserDAOInterface{
     @Override
     public boolean deleteUser(String id) {
         try{
-            Connection connection = DemoJDBC.connect();
+            Connection connection = DatabaseConnection.connect();
             PreparedStatement stmt = connection.prepareStatement(
                     "DELETE FROM user WHERE id = ?"
             );

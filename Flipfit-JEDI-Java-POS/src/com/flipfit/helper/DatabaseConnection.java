@@ -1,10 +1,10 @@
-package com.flipfit.dao;
+package com.flipfit.helper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DemoJDBC {
+public class DatabaseConnection {
     private static Connection connection = null;
 
     public static Connection connect() throws SQLException {
