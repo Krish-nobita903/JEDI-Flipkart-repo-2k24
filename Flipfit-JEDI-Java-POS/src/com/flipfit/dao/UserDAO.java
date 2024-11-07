@@ -40,7 +40,7 @@ public class UserDAO implements UserDAOInterface{
             Connection connection = DatabaseConnection.connect();
 
             PreparedStatement stmt = connection.prepareStatement(
-                    "UPDATE user SET userName = ?, email = ?, password = ?, firstName = ?, lastName = ? WHERE id = ?"
+                    "UPDATE FlipfitSchema.user SET userName = ?, email = ?, password = ?, firstName = ?, lastName = ? WHERE id = ?"
             );
             stmt.setString(1, user.userName());
             stmt.setString(2, user.email());
@@ -65,7 +65,7 @@ public class UserDAO implements UserDAOInterface{
         try{
             Connection connection = DatabaseConnection.connect();
             PreparedStatement stmt = connection.prepareStatement(
-                    "DELETE FROM user WHERE id = ?"
+                    "DELETE FROM FlipfitSchema.user WHERE id = ?"
             );
             stmt.setString(1, id);
             stmt.executeUpdate();
