@@ -46,6 +46,14 @@ public class Person {
         return this;
     }
 
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
+    }
+
+    public Person updatePassword(String password) {
+        return setPassword(password);
+    }
+
     public String email() {
         return email;
     }

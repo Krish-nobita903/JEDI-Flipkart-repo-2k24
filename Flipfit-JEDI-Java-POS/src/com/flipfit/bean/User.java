@@ -1,21 +1,12 @@
 package com.flipfit.bean;
 
 public class User extends Person {
-    private String userId;
     private String userPhone;
     private double userWeight;
     private int[] userSlots;
 
     public User(String id, String name, String email, String password, String firstName, String lastName) {
         super(id, name, email, password, "USER", firstName, lastName);
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUserPhone() {
