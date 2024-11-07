@@ -49,7 +49,6 @@ public class GymDAO implements GymDAOInterface{
             stmtForGym.setString(2, gym.getRegionId());
             stmtForGym.setString(3, gym.getPincode());
             stmtForGym.executeUpdate();
-            System.out.println("New gym created with gym id: " + userId);
 
             PreparedStatement stmtForSlot = connection.prepareStatement("INSERT INTO FlipfitSchema.slot (slotId,gymId,startTime,date,availableSeats) " +
                     "values(?,?,?)");
@@ -65,6 +64,7 @@ public class GymDAO implements GymDAOInterface{
             }
             stmtForSlot.executeBatch();
             connection.commit();
+            System.out.println("New gym created with gym id: " + userId);
             stmt.close();
             connection.close();
         }
@@ -77,11 +77,44 @@ public class GymDAO implements GymDAOInterface{
 
     @Override
     public Gym viewGym(String gymId) {
-        return null;
+        Gym gym = null;
+        try{
+            Connection connection = DatabaseConnection.connect();
+            connection.setAutoCommit(false);
+
+            PreparedStatement stmtForGym = connection.prepareStatement("SELECT * FROM FlipfitSchema.gym WHERE gym.gymId = ?");
+            stmtForGym.setString(1, gymId);
+            Resultset resultset = stmtForGym.executeQuery();
+            connection.commit();
+            gym.setGymId(resultset.getString("gymId"));
+            gym.setRegionId(resultset.getString("regionId"));
+            gym.setPincode(resultset.getString("pincode"));
+            System.out.println("Successfully fetched gym with gym id: " + userId);
+            stmt.close();
+            connection.close();
+        }
+        catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        return gym;
     }
 
     @Override
     public boolean deleteGym(Gym gym) {
+        try{
+            Connection connection = DatabaseConnection.connect();
+            connection.setAutoCommit(false);
+            PreparedStatement stmtForGym = connection.prepareStatement("DELETE FROM FlipfitSchema.gym WHERE gym.gymId = ?");
+            stmtForGym.setString(1, gymId);
+            stmtForGym.executeUpdate();
+            connection.commit();
+            System.out.println("Successfully deleted gym with gym id: " + userId);
+            stmt.close();
+            connection.close();
+        }
+        catch(Exception e){
+            System.err.println(e.getMessage());
+        }
         return false;
     }
 
