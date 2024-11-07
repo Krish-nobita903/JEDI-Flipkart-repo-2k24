@@ -3,6 +3,7 @@ package com.flipfit.bean;
 public class Plan {
     private int planId;
     private String planBenefits;
+    // Needs to be changes to double from double[]
     private double[] planPrices;
 
     public int getPlanId() {
