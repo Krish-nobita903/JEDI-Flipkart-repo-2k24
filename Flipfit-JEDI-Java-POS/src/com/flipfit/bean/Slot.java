@@ -32,11 +32,11 @@ public class Slot {
         return this;
     }
 
-    public Gym gym() {
+    public int gym() {
         return gymId;
     }
 
-    public Slot setGymId(Gym gymId) {
+    public Slot setGymId(int gymId) {
         this.gymId = gymId;
         return this;
     }
@@ -81,7 +81,7 @@ public class Slot {
         return slotId;
     }
 
-    public Gym getGymId() {
+    public int getGymId() {
         return gymId;
     }
 
