@@ -21,7 +21,7 @@ public class UserDAO implements UserDAOInterface{
             stmt.setString(4, password);
             stmt.setString(5, firstName);
             stmt.setString(6, lastName);
-            stmt.executeQuery();
+            stmt.executeUpdate();
             System.out.println("New user created with user id: " + userId);
             connection.commit();
             stmt.close();
@@ -48,7 +48,7 @@ public class UserDAO implements UserDAOInterface{
             stmt.setString(4, user.firstName());
             stmt.setString(5, user.lastName());
             stmt.setString(6, user.id());
-            stmt.executeQuery();
+            stmt.executeUpdate();
             System.out.println("Record updated for user id: "+ user.id());
             connection.commit();
             connection.close();
@@ -68,7 +68,7 @@ public class UserDAO implements UserDAOInterface{
                     "DELETE FROM user WHERE id = ?"
             );
             stmt.setString(1, id);
-            stmt.executeQuery();
+            stmt.executeUpdate();
             System.out.println("Record deleted for user id: "+ id);
             connection.commit();
             connection.close();
