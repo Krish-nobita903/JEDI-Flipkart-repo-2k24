@@ -8,6 +8,9 @@ public class User extends Person {
     public User(String id, String name, String email, String password, String firstName, String lastName) {
         super(id, name, email, password, "USER", firstName, lastName);
     }
+    public User(){
+        super("", "", "", "", "", "", "");
+    }
 
     public String getUserPhone() {
         return userPhone;

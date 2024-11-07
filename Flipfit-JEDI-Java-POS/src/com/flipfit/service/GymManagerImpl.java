@@ -13,6 +13,7 @@ public class GymManagerImpl implements GymManagerInterface {
     public List<Gym> viewOwnedGyms(String managerId) {
         List<Gym> managedGyms = gymManagerDAO.getOwnedGyms(managerId);
         return managedGyms;
+
     }
 
     @Override
