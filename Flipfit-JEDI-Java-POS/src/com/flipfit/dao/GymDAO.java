@@ -60,7 +60,7 @@ public class GymDAO implements GymDAOInterface{
             connection.setAutoCommit(false);
 
             PreparedStatement stmtForGym = connection.prepareStatement("INSERT INTO FlipfitSchema.gym (id,regionId,pincode) values(?,?,?)");
-            stmtForGym.setInt(1, gym.gymId());
+            stmtForGym.setString(1, gym.gymId());
             stmtForGym.setString(2, gym.region().getRegionId());
             stmtForGym.setInt(3, gym.pinCode());
             stmtForGym.executeUpdate();
@@ -82,18 +82,18 @@ public class GymDAO implements GymDAOInterface{
         try{
             Connection connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);
-
+            gym = new Gym();
             PreparedStatement stmtForGym = connection.prepareStatement("SELECT * FROM FlipfitSchema.gym WHERE gymId = ?");
             stmtForGym.setString(1, gymId);
             connection.commit();
             ResultSet resultset = stmtForGym.executeQuery();
 
-            gym.setGymId(resultset.getInt("gymId"));
+            gym.setGymId(resultset.getString("gymId"));
             gym.setPinCode(resultset.getInt("postalCode"));
 
-            int regionId = resultset.getInt("regionId");
+            String regionId = resultset.getString("regionId");
             PreparedStatement stmtForRegion = connection.prepareStatement("SELECT * FROM FlipfitSchema.region WHERE regionId = ?");
-            stmtForRegion.setInt(1, regionId);
+            stmtForRegion.setString(1, regionId);
             connection.commit();
             resultset = stmtForRegion.executeQuery();
             resultset.next();
@@ -102,7 +102,7 @@ public class GymDAO implements GymDAOInterface{
             region.setRegionId(resultset.getString("regionId"));
             region.setRegionName(resultset.getString("regionName"));
 
-            gym.setRegionId(region);
+            gym.setRegionId(regionId);
             System.out.println("Successfully fetched gym with gym id: " + gymId);
 
             stmtForGym.close();

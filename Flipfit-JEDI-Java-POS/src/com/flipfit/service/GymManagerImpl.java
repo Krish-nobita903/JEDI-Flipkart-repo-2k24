@@ -8,7 +8,7 @@ import com.flipfit.dao.FlipFitGymManagerDAOInterface;
 import java.util.List;
 
 public class GymManagerImpl implements GymManagerInterface {
-    FlipFitGymManagerDAOInterface gymManagerDAO = new FlipFitGymManagerDAO();
+    FlipFitGymManagerDAO gymManagerDAO = new FlipFitGymManagerDAO();
     @Override
     public List<Gym> viewOwnedGyms(String managerId) {
         List<Gym> managedGyms = gymManagerDAO.getOwnedGyms(managerId);
@@ -28,8 +28,8 @@ public class GymManagerImpl implements GymManagerInterface {
         slot.updateSlot(null);
     }
 
-    @Override
-    public void updatedGymDetails(Gym updatedGymDetails) {
-        gymManagerDAO.updatedGymDetails(updatedGymDetails);
-    }
+//    @Override
+//    //public void updatedGymDetails(Gym updatedGymDetails) {
+//        gymManagerDAO.updatedGymDetails(updatedGymDetails);
+//    }
 }
