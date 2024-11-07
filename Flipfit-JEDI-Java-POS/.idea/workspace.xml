@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="merge" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -42,7 +45,7 @@
   "keyToString": {
     "Application.FlipFitApp.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "DAoGymManagerInterface",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/rituraj.seal/IdeaProjects/krish/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS",
     "node.js.detected.package.eslint": "true",
@@ -72,7 +75,7 @@
       <updated>1730793163304</updated>
       <workItem from="1730793164334" duration="95000" />
       <workItem from="1730793268547" duration="197000" />
-      <workItem from="1730956550532" duration="307000" />
+      <workItem from="1730956550532" duration="697000" />
     </task>
     <servers />
   </component>
