@@ -7,8 +7,7 @@ import com.flipfit.business.GymManagerInterface;
 import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class FlipFitApp {
@@ -113,8 +112,8 @@ public class FlipFitApp {
         Gym managerOwnedGyms = new Gym();
         switch (optionSelected){
             case 1 -> manager.updateSlot();
-            case 2 -> manager.viewOwnedGyms();
-            case 3 -> manager.enrollGym(managerOwnedGyms);
+            case 2 -> manager.viewOwnedGyms(managerId);
+            case 3 -> manager.enrollGym(managerOwnedGyms,managerId);
             case 4 -> manager.updatedGymDetails(managerOwnedGyms);
             default -> System.out.println("Invalid choice. Exiting application.");
         }
