@@ -125,8 +125,8 @@ public class FlipFitApp {
         Gym managerOwnedGyms = new Gym();
         switch (optionSelected){
             case 1 -> manager.updateSlot();
-            case 2 -> manager.viewOwnedGyms();
-            case 3 -> manager.enrollGym(managerOwnedGyms);
+            case 2 -> manager.viewOwnedGyms(managerId);
+            case 3 -> manager.enrollGym(managerOwnedGyms,managerId);
             case 4 -> manager.updatedGymDetails(managerOwnedGyms);
             default -> System.out.println("Invalid choice. Exiting application.");
         }

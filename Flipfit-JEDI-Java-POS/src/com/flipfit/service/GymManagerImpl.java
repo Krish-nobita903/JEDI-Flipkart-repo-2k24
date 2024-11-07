@@ -8,15 +8,17 @@ import com.flipfit.dao.FlipFitGymManagerDAOInterface;
 import java.util.List;
 
 public class GymManagerImpl implements GymManagerInterface {
+    FlipFitGymManagerDAOInterface gymManagerDAO = new FlipFitGymManagerDAO();
     @Override
-    public List<Gym> viewOwnedGyms() {
-//        FlipFitGymManagerDAOInterface gymManagerDAO = new FlipFitGymManagerDAO();
-//        List<Gym> managedGyms = FlipFitGymManagerDAOInterface.getOwnedGyms();
-        return null;
+    public List<Gym> viewOwnedGyms(String managerId) {
+        List<Gym> managedGyms = gymManagerDAO.getOwnedGyms(managerId);
+        return managedGyms;
+
     }
 
     @Override
-    public void enrollGym(Gym gym) {
+    public void enrollGym(Gym gym,String managerId) {
+        gymManagerDAO.enrollGym(gym,managerId);
         System.out.println("enrolling gym");
     }
 
@@ -28,6 +30,6 @@ public class GymManagerImpl implements GymManagerInterface {
 
     @Override
     public void updatedGymDetails(Gym updatedGymDetails) {
-
+        gymManagerDAO.updatedGymDetails(updatedGymDetails);
     }
 }
