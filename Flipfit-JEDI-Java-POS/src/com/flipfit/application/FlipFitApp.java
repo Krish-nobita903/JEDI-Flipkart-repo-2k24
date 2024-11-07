@@ -1,19 +1,19 @@
 package com.flipfit.application;
 
 import com.flipfit.bean.Gym;
+import com.flipfit.bean.User;
 import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
+import com.flipfit.dao.UserDAO;
 import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class FlipFitApp {
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         GymManagerInterface manager = new GymManagerImpl();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the FLIP FIT APP");
@@ -51,9 +51,21 @@ public class FlipFitApp {
                 }
                 break;
             case 2:
+                UserDAO userDAO = new UserDAO();
+                User user = new User();
                 System.out.println("You have entered Gym Customer Registration");
+                System.out.println("Please enter your username:");
+                user.setUserName(scanner.nextLine());
+                System.out.println("Please enter your email:");
+                user.setEmail(scanner.nextLine());
+                System.out.println("Please enter your Password:");
+                user.setPassword(scanner.nextLine());
+                System.out.println("Please enter your first name:");
+                user.setLastName(scanner.nextLine());
+                System.out.println("Please enter your last name:");
+                user.setFirstName(scanner.nextLine());
+                userDAO.createUser(user.userName(), user.email(), user.password(), user.firstName(), user.lastName());
                 break;
-
             case 3:
                 System.out.println("You have entered Gym Owner Customer");
                 break;

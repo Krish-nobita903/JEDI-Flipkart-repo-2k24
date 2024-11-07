@@ -1,26 +1,28 @@
-package com.flipfit.jdbc;
+package com.flipfit.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class DemoJDBC {
-    public static void main(String args[]){
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/FlipFitSchema","root","password");
+    private static Connection connection = null;
 
-            PreparedStatement stmt=con.prepareStatement("insert into Employee values(?,?)");
-            stmt.setInt(1,101);//1 specifies the first parameter in the query
-            stmt.setString(2,"Ratan");
-
-            int i=stmt.executeUpdate();
-            System.out.println(i+" records inserted");
-
-            con.close();
-
-        }catch(Exception e){ System.out.println(e);}
-
+    public static Connection connect() throws SQLException {
+        if(connection == null) {
+            try {
+                System.out.println("Finding class...");
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                System.out.println("Connecting to database...");
+                Connection con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306", "root", "password@123");
+                System.out.println(con);
+                System.out.println("Connected to database!");
+                connection = con;
+            }
+            catch (ClassNotFoundException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        return connection;
     }
 }
