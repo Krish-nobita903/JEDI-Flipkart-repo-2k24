@@ -5,12 +5,24 @@ import java.util.List;
 
 public class Slot {
     private int slotId;
-    private Gym gymId;
+    private int gymId;
     private String startTimeInUTC;
     private Date date;
     private int availableSeats;
     private List<String> trainings;
 
+    public Slot() {
+
+    }
+
+    public Slot(int slotId, int gymId, String startTimeInUTC, Date date, int availableSeats, String trainings) {
+        this.slotId = slotId;
+        this.gymId = gymId;
+        this.startTimeInUTC = startTimeInUTC;
+        this.date = date;
+        this.availableSeats = availableSeats;
+        this.trainings = null;
+    }
     public int id() {
         return slotId;
     }
@@ -65,4 +77,27 @@ public class Slot {
         return this.trainings();
     }
 
+    public int getSlotId() {
+        return slotId;
+    }
+
+    public Gym getGymId() {
+        return gymId;
+    }
+
+    public String getStartTimeInUTC() {
+        return startTimeInUTC;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public List<String> getTrainings() {
+        return trainings;
+    }
 }
