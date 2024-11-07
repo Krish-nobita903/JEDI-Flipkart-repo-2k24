@@ -1,13 +1,10 @@
 package com.flipfit.service;
 
 import com.flipfit.bean.Gym;
-import com.flipfit.bean.Slot;
 import com.flipfit.business.GymManagerInterface;
 import com.flipfit.business.SlotInterface;
 import com.flipfit.dao.FlipFitGymManagerDAOInterface;
-import com.flipfit.dao.FlipFitGymManagerDao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GymManagerImpl implements GymManagerInterface {
