@@ -7,7 +7,6 @@ import com.flipfit.business.GymManagerInterface;
 import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

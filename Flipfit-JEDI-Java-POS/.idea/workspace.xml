@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/bean/User.java" afterDir="false" />
+    <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="merge">
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,14 +15,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "napan24"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Krish-nobita903/JEDI-Flipkart-repo-2k24",
+    "accountId": "52f695c5-c6d5-4a3b-9957-9e2fe687542d"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -32,9 +47,13 @@
   "keyToString": {
     "Application.FlipFitApp.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "DAoGymManagerInterface",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/rituraj.seal/IdeaProjects/krish/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
     "vue.rearranger.settings.migration": "true"
@@ -58,10 +77,15 @@
       <updated>1730793163304</updated>
       <workItem from="1730793164334" duration="95000" />
       <workItem from="1730793268547" duration="197000" />
+      <workItem from="1730956550532" duration="853000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
 </project>
