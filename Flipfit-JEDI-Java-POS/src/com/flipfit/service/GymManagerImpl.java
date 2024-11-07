@@ -11,7 +11,7 @@ public class GymManagerImpl implements GymManagerInterface {
     @Override
     public List<Gym> viewOwnedGyms() {
         FlipFitGymManagerDAOInterface gymManagerDAO = new FlipFitGymManagerDAO();
-        List<Gym> managedGyms = FlipFitGymManagerDAOInterface.
+        List<Gym> managedGyms = FlipFitGymManagerDAOInterface.getOwnedGyms();
         return managedGyms;
     }
 

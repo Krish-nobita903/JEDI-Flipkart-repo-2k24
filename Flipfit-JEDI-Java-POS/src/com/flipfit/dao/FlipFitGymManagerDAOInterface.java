@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface FlipFitGymManagerDAOInterface {
 
-        List<Gym> getOwnedGyms(String gymId);
+        List<Gym> getOwnedGyms(String managerId);
         void updateSlotForGym(String gymId, String slot);
         void updateTrainingsForGym(String gymId, List<String> updatedTrainings);
 
