@@ -27,7 +27,7 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
             ps.setString(3, slot.getStartTimeInUTC());
             ps.setDate(4, (Date) slot.getDate());
             ps.setInt(5, slot.getAvailableSeats());
-            ps.setString(6, slot.getTrainings().toString());
+            ps.setString(6, slot.getTraining().toString());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -44,12 +44,12 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int slotId = rs.getInt("slotId");
-                int gymId = rs.getInt("gymId");
+                int gymIdForSlot = rs.getInt("gymId");
                 String startTime = rs.getString("startTime");
                 Date date = rs.getDate("date");
                 int availableSeats = rs.getInt("availableSeats");
                 String trainings = rs.getString("Training");
-                slotList.add(new Slot(slotId, gymId, startTime, date, availableSeats, trainings));
+                slotList.add(new Slot(slotId, gymIdForSlot, startTime, date, availableSeats, trainings));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

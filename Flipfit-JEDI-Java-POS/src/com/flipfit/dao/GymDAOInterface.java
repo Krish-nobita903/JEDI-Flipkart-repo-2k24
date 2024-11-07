@@ -9,5 +9,4 @@ public interface GymDAOInterface {
     public boolean updateGym(Gym gym);
     public Gym viewGym(String gymId);
     public boolean deleteGym(String gymId);
-    public List<Slot> showAvailableSlots(String gymId);
 }

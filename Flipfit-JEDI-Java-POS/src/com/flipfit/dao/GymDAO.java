@@ -1,6 +1,7 @@
 package com.flipfit.dao;
 
 import com.flipfit.bean.Gym;
+import com.flipfit.bean.Region;
 import com.flipfit.bean.Slot;
 import com.flipfit.helper.DatabaseConnection;
 import java.sql.Connection;
@@ -25,16 +26,17 @@ public class GymDAO implements GymDAOInterface{
 
             stmtForGym.close();
 
-            PreparedStatement stmtForSlot = connection.prepareStatement("INSERT INTO FlipfitSchema.slot (slotId,gymId,startTime,date,availableSeats) " +
-                    "values(?,?,?,?,?)");
+            PreparedStatement stmtForSlot = connection.prepareStatement("INSERT INTO FlipfitSchema.slot (slotId,gymId,startTime,date,availableSeats, training) " +
+                    "values(?,?,?,?,?,?)");
 
             // Bulk insert for slots
             for( Slot slot : slotsAvailable) {
-                stmtForSlot.setString(1, slot.id());
+                stmtForSlot.setInt(1, slot.id());
                 stmtForSlot.setString(2, gymId);
                 stmtForSlot.setString(3, slot.startTimeInUTC());
-                stmtForSlot.setDate(4, slot.date());
-                stmtForSlot.setInt(5, slot.availableSlots());
+                stmtForSlot.setString(4, slot.date().toString());
+                stmtForSlot.setInt(5, slot.availableSeats());
+                stmtForSlot.setString(6, slot.training());
                 stmtForSlot.addBatch();
             }
             stmtForSlot.executeBatch();
@@ -58,29 +60,13 @@ public class GymDAO implements GymDAOInterface{
             connection.setAutoCommit(false);
 
             PreparedStatement stmtForGym = connection.prepareStatement("INSERT INTO FlipfitSchema.gym (id,regionId,pincode) values(?,?,?)");
-            stmtForGym.setString(1, gym.gymId());
-            stmtForGym.setString(2, gym.region());
-            stmtForGym.setInt(3, gym.pincode());
+            stmtForGym.setInt(1, gym.gymId());
+            stmtForGym.setString(2, gym.region().getRegionId());
+            stmtForGym.setInt(3, gym.pinCode());
             stmtForGym.executeUpdate();
             stmtForGym.close();
-
-            PreparedStatement stmtForSlot = connection.prepareStatement("INSERT INTO FlipfitSchema.slot (slotId,gymId,startTime,date,availableSeats) " +
-                    "values(?,?,?,?,?)");
-
-            // Bulk insert for slots
-            for( Slot slot : slotsAvailable) {
-                stmtForSlot.setString(1, slot.id());
-                stmtForSlot.setString(2, gym.gymId());
-                stmtForSlot.setString(3, slot.startTimeInUTC());
-                stmtForSlot.setDate(4, slot.date());
-                stmtForSlot.setInt(5, slot.availableSlots());
-                stmtForSlot.addBatch();
-            }
-            stmtForSlot.executeBatch();
-
             connection.commit();
-            System.out.println("Updated gym with gym id: " + gym.getId());
-            stmtForSlot.close();
+            System.out.println("Updated gym with gym id: " + gym.gymId());
             connection.close();
         }
         catch(Exception e){
@@ -97,16 +83,30 @@ public class GymDAO implements GymDAOInterface{
             Connection connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);
 
-            PreparedStatement stmtForGym = connection.prepareStatement("SELECT * FROM FlipfitSchema.gym AS gym WHERE gym.gymId = ?");
+            PreparedStatement stmtForGym = connection.prepareStatement("SELECT * FROM FlipfitSchema.gym WHERE gymId = ?");
             stmtForGym.setString(1, gymId);
-            ResultSet resultset = stmtForGym.executeQuery();
             connection.commit();
+            ResultSet resultset = stmtForGym.executeQuery();
+
+            gym.setGymId(resultset.getInt("gymId"));
+            gym.setPinCode(resultset.getInt("postalCode"));
+
+            int regionId = resultset.getInt("regionId");
+            PreparedStatement stmtForRegion = connection.prepareStatement("SELECT * FROM FlipfitSchema.region WHERE regionId = ?");
+            stmtForRegion.setInt(1, regionId);
+            connection.commit();
+            resultset = stmtForRegion.executeQuery();
             resultset.next();
-            gym.setGymId(resultset.getString("gymId"));
-            gym.setRegionId(resultset.getString("regionId"));
-            gym.setPincode(resultset.getInt("postalCode"));
+            Region region = new Region();
+
+            region.setRegionId(resultset.getString("regionId"));
+            region.setRegionName(resultset.getString("regionName"));
+
+            gym.setRegionId(region);
             System.out.println("Successfully fetched gym with gym id: " + gymId);
+
             stmtForGym.close();
+            stmtForRegion.close();
             resultset.close();
             connection.close();
         }
@@ -121,7 +121,7 @@ public class GymDAO implements GymDAOInterface{
         try{
             Connection connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);
-            PreparedStatement stmtForGym = connection.prepareStatement("DELETE FROM FlipfitSchema.gym AS gym WHERE gym.gymId = ?");
+            PreparedStatement stmtForGym = connection.prepareStatement("DELETE FROM FlipfitSchema.gym WHERE gymId = ?");
             stmtForGym.setString(1, gymId);
             stmtForGym.executeUpdate();
             connection.commit();
@@ -136,34 +136,4 @@ public class GymDAO implements GymDAOInterface{
         return true;
     }
 
-    @Override
-    public List<Slot> showAvailableSlots(String gymId){
-        List<Slot> slots = new ArrayList<Slot>();
-        try{
-            Connection connection = DatabaseConnection.connect();
-            connection.setAutoCommit(false);
-
-            PreparedStatement stmtForSlots = connection.prepareStatement("SELECT * FROM FlipfitSchema.slot AS slot WHERE slot.gymId = ?");
-            stmtForSlots.setString(1, gymId);
-            ResultSet resultset = stmtForSlots.executeQuery();
-            connection.commit();
-            while(resultset.next()){
-                Slot slot = new Slot();
-                slot.setSlotId(resultset.getString("slotId"));
-                slot.setGymId(resultset.getString("gymId"));
-                slot.startTimeInUTC(resultset.String("startTime"));
-                slot.setDate(resultset.getDate("date"));
-                slot.setAvailableSeats(resultset.getInt("availableSeats"));
-                slots.add(slot);
-            }
-            System.out.println("Successfully fetched "+ slots.size() +" slots with gym id: " + gymId);
-            stmtForSlots.close();
-            resultset.close();
-            connection.close();
-        }
-        catch(Exception e){
-            System.err.println(e.getMessage());
-        }
-        return slots;
-    }
 }
