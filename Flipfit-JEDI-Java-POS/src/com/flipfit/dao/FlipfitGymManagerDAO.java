@@ -20,46 +20,38 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface {
         ResultSet rs = null;
 
         try {
-            // Step 1: Establish a connection to the database
             connection = DatabaseConnection.connect();
+            String gymManagerId = UUID.randomUUID().toString();
+            String userId = UUID.randomUUID().toString();
 
-            // Step 2: Generate unique IDs for the gym manager and the user
-            String gymManagerId = UUID.randomUUID().toString();  // Unique gym manager ID
-            String userId = UUID.randomUUID().toString();        // Unique user ID
-
-            // Step 3: Insert the gym manager details into the gymManager table
             stmt = connection.prepareStatement(
                     "INSERT INTO FlipfitSchema.gymManager (gymManagerId, userName, email, password, firstName, lastName, userId) " +
                             "VALUES (?, ?, ?, ?, ?, ?, ?)"
             );
-            stmt.setString(1, gymManagerId);  // gymManagerId (generated UUID)
-            stmt.setString(2, gymManager.userName());  // userName (inherited from Person)
-            stmt.setString(3, gymManager.email());  // email (inherited from Person)
-            stmt.setString(4, gymManager.password());  // password (inherited from Person)
-            stmt.setString(5, gymManager.firstName());  // firstName (inherited from Person)
-            stmt.setString(6, gymManager.lastName());  // lastName (inherited from Person)
-            stmt.setString(7, userId);  // userId (generated UUID)
+            stmt.setString(1, gymManagerId);
+            stmt.setString(2, gymManager.userName());
+            stmt.setString(3, gymManager.email());
+            stmt.setString(4, gymManager.password());
+            stmt.setString(5, gymManager.firstName());
+            stmt.setString(6, gymManager.lastName());
+            stmt.setString(7, userId);
 
-            // Step 4: Execute the query to insert the gym manager
             stmt.executeUpdate();
 
-            // Step 5: Now insert the gyms associated with the gym manager
-            Gym[] gyms = gymManager.getGyms();  // Get all gyms associated with the gym manager
+            Gym[] gyms = gymManager.getGyms();
             for (Gym gym : gyms) {
-                // Insert each gym into the gym table, associated with the gymManagerId
                 stmt = connection.prepareStatement(
                         "INSERT INTO FlipfitSchema.gym (gymId, gymManagerId, regionId, postalCode) " +
                                 "VALUES (?, ?, ?, ?)"
                 );
-                String gymId = UUID.randomUUID().toString();  // Generate a unique gym ID
-                stmt.setString(1, gymId);  // gymId
-                stmt.setString(2, gymManagerId);  // gymManagerId (foreign key)
-                stmt.setString(3, gym.getRegionId());  // regionId from the gym object
-                stmt.setInt(4, gym.getPostalCode());  // postalCode from the gym object
+                String gymId = UUID.randomUUID().toString();
+                stmt.setString(1, gymId);
+                stmt.setString(2, gymManagerId);
+                stmt.setString(3, gym.getRegionId());
+                stmt.setInt(4, gym.getPostalCode());
                 stmt.executeUpdate();
             }
 
-            // Step 6: Commit and close resources
             connection.commit();
             stmt.close();
             connection.close();
@@ -89,26 +81,21 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface {
     public List<Gym> getOwnedGyms(String managerId) {
         List<Gym> gyms = new ArrayList<>();
         try {
-            // Step 1: Establish a connection to the database
             Connection connection = DatabaseConnection.connect();
-
-            // Step 2: Prepare SQL query to get gyms owned by the manager
             PreparedStatement stmt = connection.prepareStatement(
                     "SELECT g.gymId, g.regionId, g.postalCode " +
                             "FROM FlipfitSchema.gym g " +
                             "JOIN FlipfitSchema.gymManager gm ON g.gymManagerId = gm.gymManagerId " +
                             "WHERE gm.gymManagerId = ?"
             );
-            stmt.setString(1, managerId);  // Set managerId in the query
+            stmt.setString(1, managerId);
             ResultSet rs = stmt.executeQuery();
 
-            // Step 3: Process the result set and map the results to Gym objects
             while (rs.next()) {
                 String gymId = rs.getString("gymId");
                 String regionId = rs.getString("regionId");
                 int postalCode = rs.getInt("postalCode");
 
-                // Create a Gym object for each result
                 Gym gym = new Gym();
                 gym.setGymId(gymId);
                 gym.setRegionId(regionId);
@@ -116,7 +103,6 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface {
                 gyms.add(gym);
             }
 
-            // Step 4: Close resources
             rs.close();
             stmt.close();
             connection.close();
