@@ -1,29 +1,98 @@
 package com.flipfit.service;
 
 import com.flipfit.bean.Slot;
+import com.flipfit.bean.User;
 import com.flipfit.business.CustomerInterface;
+import com.flipfit.dao.UserDAO;
+import com.flipfit.dao.UserDAOInterface;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class CustomerImpl implements CustomerInterface {
+
+    private UserDAOInterface userDAO = new UserDAO();
+
     @Override
     public void viewUserPlan(){
-        System.out.println("View User Plan");
+        try {
+
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            System.out.println("View User Plan");
+        }
     }
     @Override
     public List<Slot> viewBookedSlots(){
-        System.out.println("View Booked slots");
+        try {
+
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            System.out.println("View Booked slots");
+        }
         return new ArrayList<>();
     }
 
     @Override
     public void cancelSlot(){
-        System.out.println("Slot deleted successfully");
+        try {
+
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            System.out.println("Slot deleted successfully");
+        }
     }
 
     @Override
     public void updateUserInfo() {
-        System.out.println("Updating user info");
+
+        // take user from DB
+        User user = new User();
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("What do you want to update?");
+        System.out.println("1.Phone number");
+        System.out.println("2.Email address");
+        System.out.println("3.Password");
+        int choice = scanner1.nextInt();
+        scanner1.nextLine();
+        switch(choice){
+            case 1:
+                System.out.println("Enter Phone Number");
+                String phoneNumber =  scanner1.nextLine();
+                scanner1.nextLine();
+                user.setUserPhone(phoneNumber);
+                break;
+            case 2:
+                System.out.println("Enter Email Address");
+                String emailAddress =  scanner1.nextLine();
+                scanner1.nextLine();
+                user.setEmail(emailAddress);
+                break;
+            case 3:
+                System.out.println("Enter Password");
+                String password =  scanner1.nextLine();
+                scanner1.nextLine();
+                user.setPassword(password);
+                break;
+        }
+        try {
+            userDAO.updateUser(user);
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            System.out.println("Updating user info");
+        }
     }
 }
