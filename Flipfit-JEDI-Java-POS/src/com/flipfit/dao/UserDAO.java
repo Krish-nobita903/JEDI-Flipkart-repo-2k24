@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 public class UserDAO implements UserDAOInterface, LoginInterface{
 
     @Override
-    public boolean login(String username, String password){
+    public String login(String username, String password){
         try{
             Connection connection = DatabaseConnection.connect();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.user WHERE userName = ? AND password = ?");
@@ -19,12 +19,12 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if( rs.next() ){
-                return true;
+                return rs.getString("userId");
             }
         }catch (Exception e){
             System.err.println(e.getMessage());
         }
-        return false;
+        return null;
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, LoginInterface {
     @Override
-    public boolean login(String gymManagerId, String password){
+    public String login(String gymManagerId, String password){
         try{
             Connection connection = DatabaseConnection.connect();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.gymManager WHERE gymManagerid = ? AND password = ?");
@@ -21,12 +21,12 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if( rs.next() ){
-                return true;
+                return rs.getString("gymManagerid");
             }
         }catch (Exception e){
             System.err.println(e.getMessage());
         }
-        return false;
+        return null;
     }
     @Override
     public void enrollGym(Gym gym, String managerId) {

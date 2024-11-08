@@ -31,12 +31,6 @@ public class FlipFitApp {
 
         switch(choice){
             case 1:
-                System.out.println("Please enter your username:");
-                String userName =  scanner.nextLine();
-                scanner.nextLine();
-                System.out.println("Please enter your Password:");
-                String password = scanner.nextLine();
-                scanner.nextLine();
                 System.out.println("Please enter your Role:");
                 System.out.println("1.Choose 1 for Admin:");
                 System.out.println("2.Choose 2 for GymOwner:");
@@ -55,8 +49,9 @@ public class FlipFitApp {
                         System.out.println("Please enter your password:");
                         String passwordForManager = scanner.nextLine();
                         LoginInterface managerLogin = new FlipfitGymManagerDAO();
-                        if(managerLogin.login(mangerId, passwordForManager)) {
-                            handleGymOwnerActions(scanner, gymManager);
+                        String id = managerLogin.login(mangerId, passwordForManager);
+                        if(id != null) {
+                            handleGymOwnerActions(scanner, gymManager, id);
                         }
                         else{
                             System.out.println("Invalid managerId or password");
@@ -71,8 +66,9 @@ public class FlipFitApp {
                         String passwordForUser = scanner.nextLine();
                         scanner.nextLine();
                         LoginInterface userLogin = new UserDAO();
-                        if( userLogin.login(customerUserName, passwordForUser)){
-                            handleCustomerActions(scanner, customer);
+                        String id = userLogin.login(customerUserName, passwordForUser);
+                        if( id != null) {
+                            handleCustomerActions(scanner, customer, id);
                         }
                         else {
                             System.out.println("Invalid username or password");
@@ -126,7 +122,7 @@ public class FlipFitApp {
         scanner.close();
     }
 
-    private static void handleCustomerActions(Scanner scanner, CustomerInterface customer)
+    private static void handleCustomerActions(Scanner scanner, CustomerInterface customer,String id)
     {
         System.out.println("Welcome Customer!");
         System.out.println("Choose your option");
@@ -148,7 +144,7 @@ public class FlipFitApp {
 
     }
 
-    private static void handleGymOwnerActions(Scanner scanner,GymManagerInterface manager)
+    private static void handleGymOwnerActions(Scanner scanner,GymManagerInterface manager,String id)
     {
         System.out.println("Welcome Gym Owner");
         System.out.println("Choose your option:");
