@@ -5,10 +5,7 @@ import com.flipfit.bean.User;
 import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
-import com.flipfit.dao.FlipfitGymManagerDAO;
-import com.flipfit.dao.LoginInterface;
-import com.flipfit.dao.UserDAO;
-import com.flipfit.dao.UserDAOInterface;
+import com.flipfit.dao.*;
 import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
@@ -28,7 +25,6 @@ public class FlipFitApp {
         System.out.println("5.Exit");
 
         int choice = scanner.nextInt();
-        scanner.nextLine();
 
         switch(choice){
             case 1:
@@ -37,12 +33,25 @@ public class FlipFitApp {
                 System.out.println("2.Choose 2 for GymOwner:");
                 System.out.println("3.Choose 3 for GymCustomer:");
                 int roleChosen = scanner.nextInt();
-                scanner.nextLine();// store newline
                 CustomerInterface customer = new CustomerImpl();
                 GymManagerInterface gymManager = new GymManagerImpl();
                 AdminInterface admin = new AdminImpl();
                 switch (roleChosen) {
-                    case 1 -> handleAdminActions(scanner,admin);
+                    case 1 -> {
+                        System.out.println("Please enter your admin username:");
+                        String adminUsername = scanner.nextLine();
+                        adminUsername = scanner.nextLine();
+                        System.out.println("Please enter your password:");
+                        String passwordForAdmin = scanner.nextLine();
+                        LoginInterface adminLogin = new AdminDAO();
+                        String id = adminLogin.login(adminUsername, passwordForAdmin);
+                        if( id != null ) {
+                            handleAdminActions(scanner, admin);
+                        }
+                        else{
+                            System.out.println("Invalid admin username or password");
+                        }
+                    }
                     case 2 -> {
                         System.out.println("Please enter your manager id:");
                         String mangerId = scanner.nextLine();
@@ -57,7 +66,6 @@ public class FlipFitApp {
                         else{
                             System.out.println("Invalid managerId or password");
                         }
-                        break;
                     }
                     case 3 -> {
                         System.out.println("Please enter your username:");
