@@ -136,13 +136,28 @@ public class FlipFitApp {
         System.out.println("3.Enroll your gym");
         System.out.println("4.Update GYM details");
         int optionSelected = scanner.nextInt();
-        scanner.nextLine();
         Gym managerOwnedGyms = new Gym();
-        switch (optionSelected){
+        switch (optionSelected) {
             case 1 -> manager.updateSlot();
-            case 2 -> manager.viewOwnedGyms("managerId");
-            case 3 -> manager.enrollGym(managerOwnedGyms,"managerId");
-            case 4 -> manager.updatedGymDetails(managerOwnedGyms);
+            case 2 -> manager.viewOwnedGyms("managerId"); // Pass the actual managerId variable
+            case 3 -> {
+                System.out.println("Enter your gym id: ");
+                String managerOwnedGymId = scanner.nextLine();
+                scanner.nextLine();
+                System.out.println("Enter your manager id: ");
+                String managerId = scanner.nextLine();
+                scanner.nextLine();
+                managerOwnedGyms.setGymId(managerOwnedGymId);
+                manager.enrollGym(managerOwnedGyms, managerId); // Pass the actual managerId variable
+                break;
+            }
+            case 4 -> {
+                System.out.println("Enter your manager id: ");
+                String managerOwnedGymId = scanner.nextLine();
+                managerOwnedGyms.setGymId(managerOwnedGymId);
+                manager.updatedGymDetails(managerOwnedGyms);
+                break;
+            }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
     }
