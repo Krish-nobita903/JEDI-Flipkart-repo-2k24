@@ -7,7 +7,7 @@ import java.util.List;
 public interface FlipFitSlotDAOInterface {
     void updateSlot(Slot prevSlot, Slot newSlot);
     void addSlot(Slot slot);
-    List<Slot> viewSlotsForGym(String gymId);
+    List<Slot> viewSlotsForGym(int gymId);
     void deleteSlot(Slot slot);
     Slot getSlot(String id);
 }

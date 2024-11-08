@@ -35,16 +35,18 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
     }
 
     @Override
-    public List<Slot> viewSlotsForGym(String gymId) {
+    public List<Slot> viewSlotsForGym(int gymId) {
         List<Slot> slotList = new ArrayList<>();
         try{
             Connection conn = DatabaseConnection.connect();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot WHERE gymId = ?");
-            ps.setString(1, gymId);
+            ps.setInt(1, gymId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int slotId = rs.getInt("slotId");
+
                 int gymIdForSlot = rs.getInt("gymId");
+
                 String startTime = rs.getString("startTime");
                 Date date = rs.getDate("date");
                 int availableSeats = rs.getInt("availableSeats");
