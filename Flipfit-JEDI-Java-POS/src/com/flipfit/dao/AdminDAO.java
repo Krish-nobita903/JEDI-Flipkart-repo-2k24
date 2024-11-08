@@ -15,7 +15,7 @@ public class AdminDAO implements AdminDAOInterface{
     @Override
     public List<User> getUserList(){
         List<User> userList = new ArrayList<>();
-        String sql = "SELECT * FROM Flipfit.users";
+        String sql = "SELECT * FROM FlipfitSchema.user";
 
         try(Connection connection = DatabaseConnection.connect();
             PreparedStatement stmt = connection.prepareStatement(sql);
