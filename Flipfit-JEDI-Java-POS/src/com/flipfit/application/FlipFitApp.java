@@ -5,7 +5,9 @@ import com.flipfit.bean.User;
 import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
+import com.flipfit.dao.LoginInterface;
 import com.flipfit.dao.UserDAO;
+import com.flipfit.dao.UserDAOInterface;
 import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
@@ -46,7 +48,22 @@ public class FlipFitApp {
                 switch (roleChosen) {
                     case 1 -> handleAdminActions(scanner,admin);
                     case 2 -> handleGymOwnerActions(scanner, gymManager);
-                    case 3 -> handleCustomerActions(scanner, customer);
+                    case 3 -> {
+                        System.out.println("Please enter your username:");
+                        String customerUserName = scanner.nextLine();
+                        scanner.nextLine();
+                        System.out.println("Please enter your password:");
+                        String password = scanner.nextLine();
+                        scanner.nextLine();
+                        LoginInterface userLogin = new UserDAO();
+                        if( userLogin.login(customerUserName, password)){
+                            handleCustomerActions(scanner, customer);
+                        }
+                        else {
+                            System.out.println("Invalid username or password");
+                        }
+                    }
+                    break;
                     default -> System.out.println("Invalid choice. Exiting application.");
                 }
                 break;
