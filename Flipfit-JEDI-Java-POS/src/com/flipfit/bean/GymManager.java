@@ -8,6 +8,10 @@ public class GymManager extends Person {
         this.gyms = gyms;  // Set the gyms array
     }
 
+    public GymManager(){
+        super("", "", "", "", "", "", "");
+    }
+
     public Gym[] getGyms() {
         return gyms;
     }

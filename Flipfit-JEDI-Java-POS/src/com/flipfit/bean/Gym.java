@@ -13,7 +13,7 @@ public class Gym {
         this.gymId = gymId;
     }
 
-    public Region region() {
+    public String region() {
         return regionId;
     }
 

@@ -61,7 +61,7 @@ public class GymDAO implements GymDAOInterface{
 
             PreparedStatement stmtForGym = connection.prepareStatement("INSERT INTO FlipfitSchema.gym (id,regionId,pincode) values(?,?,?)");
             stmtForGym.setString(1, gym.gymId());
-            stmtForGym.setString(2, gym.region().getRegionId());
+            stmtForGym.setString(2, gym.region());
             stmtForGym.setInt(3, gym.pinCode());
             stmtForGym.executeUpdate();
             stmtForGym.close();

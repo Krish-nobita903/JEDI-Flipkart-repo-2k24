@@ -3,12 +3,12 @@ package com.flipfit.service;
 import com.flipfit.bean.Gym;
 import com.flipfit.business.GymManagerInterface;
 import com.flipfit.business.SlotInterface;
-import com.flipfit.dao.FlipFitGymManagerDAOInterface;
+import com.flipfit.dao.FlipfitGymManagerDAO;
 
 import java.util.List;
 
 public class GymManagerImpl implements GymManagerInterface {
-    FlipFitGymManagerDAO gymManagerDAO = new FlipFitGymManagerDAO();
+    FlipfitGymManagerDAO gymManagerDAO = new FlipfitGymManagerDAO();
     @Override
     public List<Gym> viewOwnedGyms(String managerId) {
         List<Gym> managedGyms = gymManagerDAO.getOwnedGyms(managerId);
@@ -28,8 +28,8 @@ public class GymManagerImpl implements GymManagerInterface {
         slot.updateSlot(null);
     }
 
-//    @Override
-//    //public void updatedGymDetails(Gym updatedGymDetails) {
-//        gymManagerDAO.updatedGymDetails(updatedGymDetails);
-//    }
+    @Override
+    public void updatedGymDetails(Gym updatedGymDetails) {
+        gymManagerDAO.updateGymDetails(updatedGymDetails);
+    }
 }

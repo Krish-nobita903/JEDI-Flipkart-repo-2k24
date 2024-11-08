@@ -1,10 +1,12 @@
 package com.flipfit.application;
 
 import com.flipfit.bean.Gym;
+import com.flipfit.bean.GymManager;
 import com.flipfit.bean.User;
 import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
+import com.flipfit.dao.FlipfitGymManagerDAO;
 import com.flipfit.dao.UserDAO;
 import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
@@ -67,6 +69,19 @@ public class FlipFitApp {
                 userDAO.createUser(user.userName(), user.email(), user.password(), user.firstName(), user.lastName());
                 break;
             case 3:
+                FlipfitGymManagerDAO gymManagerDAO = new FlipfitGymManagerDAO();
+                GymManager gymmanager = new GymManager();
+                System.out.println("Please enter your username:");
+                gymmanager.setUserName(scanner.nextLine());
+                System.out.println("Please enter your email:");
+                gymmanager.setEmail(scanner.nextLine());
+                System.out.println("Please enter your Password:");
+                gymmanager.setPassword(scanner.nextLine());
+                System.out.println("Please enter your first name:");
+                gymmanager.setLastName(scanner.nextLine());
+                System.out.println("Please enter your last name:");
+                gymmanager.setFirstName(scanner.nextLine());
+                gymManagerDAO.createGymManager(gymmanager);
                 System.out.println("You have entered Gym Owner Customer");
                 break;
 
