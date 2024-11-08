@@ -5,6 +5,5 @@ public class Admin extends Person{
         super(id, name, email, password, "ADMIN", firstName, lastName);
     }
 
-    public void addUser(){}
     public void addGymOwner(){}
 }

@@ -1,33 +1,28 @@
 package com.flipfit.service;
 
+import com.flipfit.bean.User;
 import com.flipfit.business.AdminInterface;
+import com.flipfit.dao.AdminDAO;
+import com.flipfit.dao.AdminDAOInterface;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminImpl implements AdminInterface {
-    @Override
-    public void addUser()
-    {
-        try {
 
-        }
-        catch (Exception e) {
+    private AdminDAOInterface adminDAO = new AdminDAO();
 
-        }
-        finally {
-            System.out.println("User added successfully");
+    public List<User> getUserList(){
+        List<User> users = new ArrayList<>();
+
+        try{
+            users = adminDAO.getUserList();
+        }catch(Exception e){
+
+        }finally {
+            System.out.println("Viewing all users.....");
         }
 
-    }
-
-    @Override
-    public void addGymOwner(){
-        try {
-
-        }
-        catch (Exception e) {
-
-        }
-        finally {
-            System.out.println("Gym owner added successfully");
-        }
+        return users;
     }
 }

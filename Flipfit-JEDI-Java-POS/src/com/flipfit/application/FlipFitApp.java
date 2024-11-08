@@ -13,6 +13,7 @@ import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class FlipFitApp {
@@ -179,18 +180,20 @@ public class FlipFitApp {
 
     private static void handleAdminActions(Scanner scanner, AdminInterface admin)
     {
-        System.out.println("Welcome Customer!");
+        System.out.println("Welcome Admin!");
         System.out.println("Choose your option");
-        System.out.println("1.Add User");
-        System.out.println("2.Add GymOwner");
+        System.out.println("1.View all users");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
 
-        switch (optionSelected){
-            case 1 -> admin.addUser();
-            case 2 -> admin.addGymOwner();
-            default -> System.out.println("Invalid choice. Exiting application.");
+        if(optionSelected==1){
+            List<User> users = admin.getUserList();
+            for(User user:users){
+                System.out.println("User ID:" + user.id() + "User Name:" + user.userName());
+            }
+        }else{
+            System.out.println("Invalid choice. Exiting application.");
         }
 
     }

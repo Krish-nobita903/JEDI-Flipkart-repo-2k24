@@ -4,7 +4,9 @@ import com.flipfit.bean.Gym;
 import com.flipfit.bean.GymManager;
 import com.flipfit.bean.User;
 
+import java.util.List;
+
 public interface AdminInterface {
-    public void addUser();
-    public void addGymOwner();
+    //public void addGymOwner();
+    public List<User> getUserList();
 }
