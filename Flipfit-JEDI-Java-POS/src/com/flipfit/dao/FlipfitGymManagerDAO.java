@@ -11,8 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface {
-
+public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, LoginInterface {
+    @Override
+    public boolean login(String gymManagerId, String password){
+        try{
+            Connection connection = DatabaseConnection.connect();
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.gymManager WHERE gymManagerid = ? AND password = ?");
+            stmt.setString(1, gymManagerId);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            if( rs.next() ){
+                return true;
+            }
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
     @Override
     public void enrollGym(Gym gym, String managerId) {
         Connection connection = null;

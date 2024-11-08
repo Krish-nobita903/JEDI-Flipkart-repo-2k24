@@ -28,18 +28,21 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
     }
 
     @Override
-    public boolean createUser(String userName, String email, String password, String firstName, String lastName) {
+    public boolean createUser(String userName, String email, String password, String firstName, String lastName, String phoneNumber,double bodyWeight) {
         try{
             Connection connection = DatabaseConnection.connect();
             String userId = UUID.randomUUID().toString();
-
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO FlipfitSchema.user (id,userName,email,password,firstName,lastName) values(?,?,?,?,?,?)");
+            connection.setAutoCommit(false);
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO FlipfitSchema.user " +
+                    "(userId,userName,email,password,firstName,lastName, phoneNumber, bodyWeight) values(?,?,?,?,?,?,?,?)");
             stmt.setString(1, userId);
             stmt.setString(2, userName);
             stmt.setString(3, email);
             stmt.setString(4, password);
             stmt.setString(5, firstName);
             stmt.setString(6, lastName);
+            stmt.setString(7, phoneNumber);
+            stmt.setDouble(8, bodyWeight);
             stmt.executeUpdate();
             System.out.println("New user created with user id: " + userId);
             connection.commit();
@@ -57,16 +60,19 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
     public boolean updateUser(User user) {
         try{
             Connection connection = DatabaseConnection.connect();
-
+            connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement(
-                    "UPDATE FlipfitSchema.user SET userName = ?, email = ?, password = ?, firstName = ?, lastName = ? WHERE id = ?"
+                    "UPDATE FlipfitSchema.user SET userName = ?, email = ?, password = ?, firstName = ?, lastName = ?" +
+                            ", bodyWeight = ?, phoneNumber = ? WHERE id = ?"
             );
             stmt.setString(1, user.userName());
             stmt.setString(2, user.email());
             stmt.setString(3, user.password());
             stmt.setString(4, user.firstName());
             stmt.setString(5, user.lastName());
-            stmt.setString(6, user.id());
+            stmt.setDouble(6, user.getUserWeight());
+            stmt.setString(7, user.getUserPhone());
+            stmt.setString(8, user.id());
             stmt.executeUpdate();
             System.out.println("Record updated for user id: "+ user.id());
             connection.commit();
