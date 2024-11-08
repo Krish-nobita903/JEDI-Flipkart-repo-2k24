@@ -3,6 +3,7 @@ package com.flipfit.service;
 import com.flipfit.bean.Gym;
 import com.flipfit.business.GymManagerInterface;
 import com.flipfit.business.SlotInterface;
+import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipfitGymManagerDAO;
 
 import java.util.List;
@@ -24,8 +25,8 @@ public class GymManagerImpl implements GymManagerInterface {
 
     @Override
     public void updateSlot() {
-        SlotInterface slot = new SlotImpl();
-        slot.updateSlot(null);
+        FlipFitSlotDAOImpl slot = new FlipFitSlotDAOImpl();
+        slot.updateSlot(null,null);
     }
 
     @Override
