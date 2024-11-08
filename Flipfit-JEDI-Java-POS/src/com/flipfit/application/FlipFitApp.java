@@ -5,6 +5,7 @@ import com.flipfit.bean.User;
 import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
+import com.flipfit.dao.FlipfitGymManagerDAO;
 import com.flipfit.dao.LoginInterface;
 import com.flipfit.dao.UserDAO;
 import com.flipfit.dao.UserDAOInterface;
@@ -47,16 +48,30 @@ public class FlipFitApp {
                 AdminInterface admin = new AdminImpl();
                 switch (roleChosen) {
                     case 1 -> handleAdminActions(scanner,admin);
-                    case 2 -> handleGymOwnerActions(scanner, gymManager);
+                    case 2 -> {
+                        System.out.println("Please enter your manager id:");
+                        String mangerId = scanner.nextLine();
+                        scanner.nextLine();
+                        System.out.println("Please enter your password:");
+                        String passwordForManager = scanner.nextLine();
+                        LoginInterface managerLogin = new FlipfitGymManagerDAO();
+                        if(managerLogin.login(mangerId, passwordForManager)) {
+                            handleGymOwnerActions(scanner, gymManager);
+                        }
+                        else{
+                            System.out.println("Invalid managerId or password");
+                        }
+                        break;
+                    }
                     case 3 -> {
                         System.out.println("Please enter your username:");
                         String customerUserName = scanner.nextLine();
                         scanner.nextLine();
                         System.out.println("Please enter your password:");
-                        String passwordAdd = scanner.nextLine();
+                        String passwordForUser = scanner.nextLine();
                         scanner.nextLine();
                         LoginInterface userLogin = new UserDAO();
-                        if( userLogin.login(customerUserName, passwordAdd)){
+                        if( userLogin.login(customerUserName, passwordForUser)){
                             handleCustomerActions(scanner, customer);
                         }
                         else {
@@ -81,7 +96,11 @@ public class FlipFitApp {
                 user.setLastName(scanner.nextLine());
                 System.out.println("Please enter your last name:");
                 user.setFirstName(scanner.nextLine());
-                userDAO.createUser(user.userName(), user.email(), user.password(), user.firstName(), user.lastName());
+                System.out.println("Please enter your phone number:");
+                user.setUserPhone(scanner.nextLine());
+                System.out.println("Please enter your body weight:");
+                user.setUserWeight(scanner.nextDouble());
+                userDAO.createUser(user.userName(), user.email(), user.password(), user.firstName(), user.lastName(), user.getUserPhone(), user.getUserWeight());
                 break;
             case 3:
                 System.out.println("You have entered Gym Owner Customer");
