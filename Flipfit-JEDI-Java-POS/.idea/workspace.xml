@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="merge">
+      <change afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/GymDAOInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/GymManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/GymManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/bean/Gym.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/bean/Gym.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/bean/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/bean/Slot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/business/GymInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/business/GymInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/bean/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/bean/Slot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/GymDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/GymDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/GymDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/GymDAOInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +55,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.FlipFitApp.executor&quot;: &quot;Run&quot;,
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -57,6 +65,9 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -102,6 +113,9 @@
       <workItem from="1730956550532" duration="2022000" />
       <workItem from="1730967316990" duration="67000" />
       <workItem from="1730967397807" duration="303000" />
+      <workItem from="1730976549292" duration="2422000" />
+      <workItem from="1730980012624" duration="11000" />
+      <workItem from="1730988392255" duration="1769000" />
     </task>
     <servers />
   </component>

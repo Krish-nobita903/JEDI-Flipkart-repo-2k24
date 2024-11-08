@@ -9,19 +9,19 @@ public class Slot {
     private String startTimeInUTC;
     private Date date;
     private int availableSeats;
-    private List<String> trainings;
+    private String training;
 
     public Slot() {
 
     }
 
-    public Slot(int slotId, int gymId, String startTimeInUTC, Date date, int availableSeats, String trainings) {
+    public Slot(int slotId, int gymId, String startTimeInUTC, Date date, int availableSeats, String training) {
         this.slotId = slotId;
         this.gymId = gymId;
         this.startTimeInUTC = startTimeInUTC;
         this.date = date;
         this.availableSeats = availableSeats;
-        this.trainings = null;
+        this.training = training;
     }
     public int id() {
         return slotId;
@@ -68,13 +68,13 @@ public class Slot {
         return this;
     }
 
-    public List<String> trainings() {
-        return trainings;
+    public String training() {
+        return training;
     }
 
-    public List<String> setTrainings(List<String> trainings) {
-        this.trainings = trainings;
-        return this.trainings();
+    public String setTraining(String training) {
+        this.training = training;
+        return this.training();
     }
 
     public int getSlotId() {
@@ -97,7 +97,7 @@ public class Slot {
         return availableSeats;
     }
 
-    public List<String> getTrainings() {
-        return trainings;
+    public String getTraining() {
+        return training;
     }
 }

@@ -1,5 +1,6 @@
 package com.flipfit.service;
 
+import com.flipfit.bean.Slot;
 import com.flipfit.business.GymInterface;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class GymImpl implements GymInterface {
     }
 
     @Override
-    public Boolean isAvailableSlots() {
+    public List<Slot> isAvailableSlots() {
         System.out.println("Shows available slots");
         return null;
     }
