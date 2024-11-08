@@ -5,11 +5,12 @@ import com.flipfit.business.GymManagerInterface;
 import com.flipfit.business.SlotInterface;
 import com.flipfit.dao.FlipFitGymManagerDAOInterface;
 import com.flipfit.dao.FlipFitSlotDAOImpl;
+import com.flipfit.dao.FlipfitGymManagerDAO;
 
 import java.util.List;
 
 public class GymManagerImpl implements GymManagerInterface {
-    FlipFitGymManagerDAOInterface gymManagerDAO = new FlipFitGymManagerDAO();
+    FlipfitGymManagerDAO gymManagerDAO = new FlipfitGymManagerDAO();
     @Override
     public List<Gym> viewOwnedGyms(String managerId) {
         try {
@@ -57,7 +58,7 @@ public class GymManagerImpl implements GymManagerInterface {
     }
 
     @Override
-    public void updatedGymDetails(Gym updatedGymDetails) {
+    public void updateGymDetails(Gym updatedGymDetails) {
         try {
 
         }
@@ -67,6 +68,6 @@ public class GymManagerImpl implements GymManagerInterface {
         finally {
             System.out.println("Gym owner added successfully");
         }
-        gymManagerDAO.updatedGymDetails(updatedGymDetails);
+        gymManagerDAO.updateGymDetails(updatedGymDetails);
     }
 }

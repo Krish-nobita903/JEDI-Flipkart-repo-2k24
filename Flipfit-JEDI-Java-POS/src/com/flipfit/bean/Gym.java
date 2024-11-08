@@ -1,24 +1,24 @@
 package com.flipfit.bean;
 
 public class Gym {
-    private int gymId;
-    private Region regionId;
+    private String gymId;
+    private String regionId;
     private int pinCode;
 
-    public int gymId() {
+    public String gymId() {
         return gymId;
     }
 
-    public Gym setGymId(int gymId) {
+    public Gym setGymId(String gymId) {
         this.gymId = gymId;
         return this;
     }
 
-    public Region region() {
+    public String region() {
         return regionId;
     }
 
-    public Gym setRegionId(Region regionId) {
+    public Gym setRegionId(String regionId) {
         this.regionId = regionId;
         return this;
     }

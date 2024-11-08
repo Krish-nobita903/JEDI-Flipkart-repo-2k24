@@ -53,17 +53,17 @@ public class FlipFitApp {
                         String customerUserName = scanner.nextLine();
                         scanner.nextLine();
                         System.out.println("Please enter your password:");
-                        String password = scanner.nextLine();
+                        String passwordAdd = scanner.nextLine();
                         scanner.nextLine();
                         LoginInterface userLogin = new UserDAO();
-                        if( userLogin.login(customerUserName, password)){
+                        if( userLogin.login(customerUserName, passwordAdd)){
                             handleCustomerActions(scanner, customer);
                         }
                         else {
                             System.out.println("Invalid username or password");
                         }
+                        break;
                     }
-                    break;
                     default -> System.out.println("Invalid choice. Exiting application.");
                 }
                 break;
@@ -133,18 +133,31 @@ public class FlipFitApp {
     {
         System.out.println("Welcome Gym Owner");
         System.out.println("Choose your option:");
-        System.out.println("1.Update Slots");
-        System.out.println("2.View Owned Gyms");
-        System.out.println("3.Enroll your gym");
-        System.out.println("4.Update GYM details");
+        System.out.println("1.View Owned Gyms");
+        System.out.println("2.Enroll your gym");
+        System.out.println("3.Update GYM details");
         int optionSelected = scanner.nextInt();
-        scanner.nextLine();
         Gym managerOwnedGyms = new Gym();
-        switch (optionSelected){
-            case 1 -> manager.updateSlot();
-            case 2 -> manager.viewOwnedGyms("managerId");
-            case 3 -> manager.enrollGym(managerOwnedGyms,"managerId");
-            case 4 -> manager.updatedGymDetails(managerOwnedGyms);
+        switch (optionSelected) {
+            case 1 -> manager.viewOwnedGyms("managerId"); // Pass the actual managerId variable
+            case 2 -> {
+                System.out.println("Enter your gym id: ");
+                String managerOwnedGymId = scanner.nextLine();
+                scanner.nextLine();
+                System.out.println("Enter your manager id: ");
+                String managerId = scanner.nextLine();
+                scanner.nextLine();
+                managerOwnedGyms.setGymId(managerOwnedGymId);
+                manager.enrollGym(managerOwnedGyms, managerId); // Pass the actual managerId variable
+                break;
+            }
+            case 3 -> {
+                System.out.println("Enter your manager id: ");
+                String managerOwnedGymId = scanner.nextLine();
+                managerOwnedGyms.setGymId(managerOwnedGymId);
+                manager.updateGymDetails(managerOwnedGyms);
+                break;
+            }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
     }
