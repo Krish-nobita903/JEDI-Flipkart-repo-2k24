@@ -8,18 +8,42 @@ import java.util.List;
 public class GymImpl implements GymInterface {
     @Override
     public List<String> viewBookings(String gymId) {
-        System.out.println("Retrieving Bookings for Gym " + gymId);
+        try {
+
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            System.out.println("Retrieving Bookings for Gym " + gymId);
+        }
         return List.of();
     }
 
     @Override
     public void updateTrainingsAvailable(String gymId, List<String> updatedTrainings) {
-        System.out.println("Updating trainings available for gym " + gymId);
+        try {
+
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            System.out.println("Updating trainings available for gym " + gymId);
+        }
     }
 
     @Override
     public List<Slot> isAvailableSlots() {
-        System.out.println("Shows available slots");
+        try {
+
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            System.out.println("Shows available slots");
+        }
         return null;
     }
 }
