@@ -51,22 +51,21 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface{
     }
 
     @Override
-    public void addGymManager(String userName,String email,String password,String firstName,String lastName){
+    public void addGymManager(String userName,String email,String password,String firstName,String lastName, String gymId){
         try{
             Connection connection = DatabaseConnection.connect();
-            String gymManagerId = UUID.randomUUID().toString();
             String userId = UUID.randomUUID().toString();
             connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO FlipfitSchema.gymManager " +
                     "(gymManagerId,userName,email,password,firstName,lastName,userId,gymId) values(?,?,?,?,?,?,?,?)");
-            stmt.setString(1, gymManagerId);
+            stmt.setString(1, userName);
             stmt.setString(2, userName);
             stmt.setString(3, email);
             stmt.setString(4, password);
             stmt.setString(5, firstName);
             stmt.setString(6, lastName);
             stmt.setString(7, userId);
-            stmt.setString(8, "");
+            stmt.setString(8, gymId);
             stmt.executeUpdate();
             System.out.println("New admin created with admin id: " + userId);
             connection.commit();

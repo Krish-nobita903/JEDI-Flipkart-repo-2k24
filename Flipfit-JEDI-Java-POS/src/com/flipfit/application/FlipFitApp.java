@@ -120,7 +120,9 @@ public class FlipFitApp {
                 gymManagerp.setFirstName(scanner.nextLine());
                 System.out.println("Please enter your last name:");
                 gymManagerp.setLastName(scanner.nextLine());
-                adminDAO.addGymManager(gymManagerp.userName(),gymManagerp.email(),gymManagerp.password(),gymManagerp.firstName(),gymManagerp.lastName());
+                System.out.println("Please enter gym id:");
+                String gymId = scanner.nextLine();
+                adminDAO.addGymManager(gymManagerp.userName(),gymManagerp.email(),gymManagerp.password(),gymManagerp.firstName(),gymManagerp.lastName(),gymId);
                 break;
 
             case 4:
@@ -203,7 +205,6 @@ public class FlipFitApp {
         System.out.println("Welcome Admin!");
         System.out.println("Choose your option");
         System.out.println("1.View all users");
-        System.out.println("2.Add region");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
