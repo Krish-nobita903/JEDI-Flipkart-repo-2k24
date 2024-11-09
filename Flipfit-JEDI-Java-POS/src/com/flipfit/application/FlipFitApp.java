@@ -123,7 +123,9 @@ public class FlipFitApp {
                 gymManagerp.setFirstName(scanner.nextLine());
                 System.out.println("Please enter your last name:");
                 gymManagerp.setLastName(scanner.nextLine());
-                adminDAO.addGymManager(gymManagerp.userName(),gymManagerp.email(),gymManagerp.password(),gymManagerp.firstName(),gymManagerp.lastName());
+                System.out.println("Please enter gym id:");
+                String gymId = scanner.nextLine();
+                adminDAO.addGymManager(gymManagerp.userName(),gymManagerp.email(),gymManagerp.password(),gymManagerp.firstName(),gymManagerp.lastName(),gymId);
                 break;
 
             case 4:
@@ -206,17 +208,28 @@ public class FlipFitApp {
         System.out.println("Welcome Admin!");
         System.out.println("Choose your option");
         System.out.println("1.View all users");
+        System.out.println("2.Add a gym");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
 
-        if(optionSelected==1){
-            List<User> users = admin.getUserList();
-            for(User user:users){
-                System.out.println("User ID:" + user.id() + "User Name:" + user.userName());
+        switch(optionSelected) {
+            case 1 -> {
+                List<User> users = admin.getUserList();
+                for (User user : users) {
+                    System.out.println("User ID:" + user.id() + "User Name:" + user.userName());
+                }
             }
-        }else{
-            System.out.println("Invalid choice. Exiting application.");
+            case 2 -> {
+                System.out.println("Enter region id:");
+                String regionId = scanner.nextLine();
+                System.out.println("Enter postal code:");
+                int pincode = scanner.nextInt();
+                admin.addGym(regionId, pincode);
+            }
+            default -> {
+                System.out.println("Invalid choice. Exiting application.");
+            }
         }
 
     }

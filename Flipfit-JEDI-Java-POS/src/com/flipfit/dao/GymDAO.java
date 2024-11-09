@@ -18,14 +18,13 @@ public class GymDAO implements GymDAOInterface{
             connection.setAutoCommit(false);
             String gymId = UUID.randomUUID().toString();
 
-            PreparedStatement stmtForGym = connection.prepareStatement("INSERT INTO FlipfitSchema.gym (id,regionId,pincode) values(?,?,?)");
+            PreparedStatement stmtForGym = connection.prepareStatement("INSERT INTO FlipfitSchema.gym (gymId,regionId,postalCode) values(?,?,?)");
             stmtForGym.setString(1, gymId);
             stmtForGym.setString(2, regionId);
             stmtForGym.setInt(3, pincode);
             stmtForGym.executeUpdate();
 
             stmtForGym.close();
-
             PreparedStatement stmtForSlot = connection.prepareStatement("INSERT INTO FlipfitSchema.slot (slotId,gymId,startTime,date,availableSeats, training) " +
                     "values(?,?,?,?,?,?)");
 
@@ -59,7 +58,7 @@ public class GymDAO implements GymDAOInterface{
             Connection connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);
 
-            PreparedStatement stmtForGym = connection.prepareStatement("INSERT INTO FlipfitSchema.gym (id,regionId,pincode) values(?,?,?)");
+            PreparedStatement stmtForGym = connection.prepareStatement("INSERT INTO FlipfitSchema.gym (regionId,regionId,postalCode) values(?,?,?)");
             stmtForGym.setString(1, gym.gymId());
             stmtForGym.setString(2, gym.region());
             stmtForGym.setInt(3, gym.pinCode());

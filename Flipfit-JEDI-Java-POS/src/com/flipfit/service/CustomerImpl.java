@@ -79,7 +79,7 @@ public class CustomerImpl implements CustomerInterface {
             userDAO.updateUser(user);
         }
         catch (Exception e) {
-
+            System.err.println(e.getMessage());
         }
         finally {
             System.out.println("Updating user info");
@@ -101,7 +101,7 @@ public class CustomerImpl implements CustomerInterface {
             flipFitSlotDAO.deleteSlot(slots.get(choice));
         }
         catch (Exception e) {
-
+            System.err.println(e.getMessage());
         }
         finally {
             System.out.println("Slot deleted successfully");
