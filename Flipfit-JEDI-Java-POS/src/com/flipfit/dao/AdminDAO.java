@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class AdminDAO implements AdminDAOInterface, LoginInterface{
 
@@ -50,7 +51,30 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface{
     }
 
     @Override
-    public void addGymManager(){
-
+    public void addGymManager(String userName,String email,String password,String firstName,String lastName,String gymId){
+        try{
+            Connection connection = DatabaseConnection.connect();
+            String gymManagerId = UUID.randomUUID().toString();
+            String userId = UUID.randomUUID().toString();
+            connection.setAutoCommit(false);
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO FlipfitSchema.gymManager " +
+                    "(gymManagerId,userName,email,password,firstName,lastName,userId) values(?,?,?,?,?,?,?,?)");
+            stmt.setString(1, userId);
+            stmt.setString(2, userName);
+            stmt.setString(3, email);
+            stmt.setString(4, password);
+            stmt.setString(5, firstName);
+            stmt.setString(6, lastName);
+            stmt.executeUpdate();
+            System.out.println("New admin created with admin id: " + userId);
+            connection.commit();
+            stmt.close();
+            connection.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }finally{
+            System.out.println("Creating admin....");
+        }
     }
 }
