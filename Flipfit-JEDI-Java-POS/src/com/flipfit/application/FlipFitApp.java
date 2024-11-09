@@ -1,9 +1,6 @@
 package com.flipfit.application;
 
-import com.flipfit.bean.Admin;
-import com.flipfit.bean.Gym;
-import com.flipfit.bean.GymManager;
-import com.flipfit.bean.User;
+import com.flipfit.bean.*;
 import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
@@ -206,6 +203,7 @@ public class FlipFitApp {
         System.out.println("Welcome Admin!");
         System.out.println("Choose your option");
         System.out.println("1.View all users");
+        System.out.println("2.Add region");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
@@ -215,7 +213,14 @@ public class FlipFitApp {
             for(User user:users){
                 System.out.println("User ID:" + user.id() + "User Name:" + user.userName());
             }
-        }else{
+        }else if(optionSelected==2){
+            AdminDAO adminDAO = new AdminDAO();
+            Region region = new Region();
+            System.out.println("Enter your region name:");
+            region.setRegionName(scanner.nextLine());
+            adminDAO.addRegion(region.regionName());
+        }
+        else{
             System.out.println("Invalid choice. Exiting application.");
         }
 

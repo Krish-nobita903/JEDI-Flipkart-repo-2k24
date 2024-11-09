@@ -4,6 +4,7 @@ public class Gym {
     private String gymId;
     private String regionId;
     private int pinCode;
+    //private String gymName;
 
     public String gymId() {
         return gymId;
@@ -31,4 +32,11 @@ public class Gym {
         this.pinCode = pinCode;
         return this;
     }
+
+    //public String gymName() {return gymName;}
+
+//    public Gym setGymName(String gymName) {
+//        this.gymName = gymName;
+//        return this;
+//    }
 }

@@ -79,4 +79,28 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface{
             System.out.println("Creating admin....");
         }
     }
+
+    @Override
+    public void addRegion(String regionName){
+        try{
+            Connection connection = DatabaseConnection.connect();
+            String regionId = UUID.randomUUID().toString();
+            connection.setAutoCommit(false);
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO FlipfitSchema.region " +
+                    "(regionId,regionName) values(?,?)");
+            stmt.setString(1, regionId);
+            stmt.setString(2, regionName);
+            stmt.executeUpdate();
+            System.out.println("New region created with region id: " + regionId);
+            connection.commit();
+            stmt.close();
+            connection.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }finally{
+            System.out.println("Creating region....");
+        }
+    }
+
 }
