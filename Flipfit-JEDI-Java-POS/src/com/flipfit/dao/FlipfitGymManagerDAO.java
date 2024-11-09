@@ -35,7 +35,7 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
 
         try {
             connection = DatabaseConnection.connect();
-
+            connection.setAutoCommit(false);
             stmt = connection.prepareStatement(
                     "UPDATE FlipfitSchema.gym " +
                             "SET gymId = ? " +
@@ -44,6 +44,8 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
 
             stmt.setString(1, managerId);  // Set the managerId to associate with the gym
             stmt.setString(2, gym.gymId());  // The gymId to be updated
+
+
 
             int rowsAffected = stmt.executeUpdate();
 

@@ -123,8 +123,6 @@ public class FlipFitApp {
                 gymManagerp.setFirstName(scanner.nextLine());
                 System.out.println("Please enter your last name:");
                 gymManagerp.setLastName(scanner.nextLine());
-                System.out.println("Please enter your gym ID:");
-                gymManagerp.setGym(scanner.nextLine());
                 adminDAO.addGymManager(gymManagerp.userName(),gymManagerp.email(),gymManagerp.password(),gymManagerp.firstName(),gymManagerp.lastName());
                 break;
 
