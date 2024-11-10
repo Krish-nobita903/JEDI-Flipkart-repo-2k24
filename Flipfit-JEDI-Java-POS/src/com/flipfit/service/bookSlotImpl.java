@@ -1,16 +1,21 @@
 package com.flipfit.service;
 
+import com.flipfit.bean.Slot;
 import com.flipfit.business.bookSlot;
 import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipFitSlotDAOInterface;
-import com.flipfit.dao.UserDAOInterface;
+
+import java.util.List;
 
 public class bookSlotImpl implements bookSlot {
-
+    FlipFitSlotDAOInterface flipFitSlotDAO = new FlipFitSlotDAOImpl();
     @Override
-    public void cancelBookedSlot() {
+    public void cancelBookedSlot(String userId, String bookingId) {
         try {
-
+            int UserId = Integer.parseInt(userId);
+            List<String> bookedSlots = flipFitSlotDAO.viewSlotForUser(UserId);
+            Slot slot = flipFitSlotDAO.getSlot(bookingId);
+            flipFitSlotDAO.deleteSlot(slot);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

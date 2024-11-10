@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/business/bookSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/business/bookSlot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/GymImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/GymImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/bookSlotImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/bookSlotImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
