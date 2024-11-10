@@ -6,6 +6,7 @@ import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipFitSlotDAOInterface;
 
 import java.util.List;
+import java.util.Random;
 
 public class bookSlotImpl implements bookSlot {
     FlipFitSlotDAOInterface flipFitSlotDAO = new FlipFitSlotDAOImpl();
@@ -25,9 +26,12 @@ public class bookSlotImpl implements bookSlot {
         }
     }
     @Override
-    public void bookSlot(){
+    public void bookSlot(String userId){
         try {
-
+            int UserId = Integer.parseInt(userId);
+            Random random = new Random();
+            int bookingId = random.nextInt();
+            flipFitSlotDAO.bookSlot(UserId,bookingId);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

@@ -39,12 +39,25 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
 
         return slotIdList;
     }
+    @Override
+    public void bookSlot(int userId,int slotId){
+        // check if it works
+        try{
+            Connection conn = DatabaseConnection.connect();
+            PreparedStatement ps = conn.prepareStatement("SELECT INTO FlipFitSchema.bookedSlot (userId,slotId) WHERE (?,?) ");
+            ps.setInt(1, userId);
+            ps.setInt(2, slotId);
+            ResultSet rs = ps.executeQuery();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public void addSlot(Slot slot) {
         try {
             Connection conn = DatabaseConnection.connect();
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO slot (slotId, gymId, startTime, date, availableSeats, Training) VALUES (?, ?, ?, ?, ?, ?);");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO FlipFitSchema.slot (slotId, gymId, startTime, date, availableSeats, Training) VALUES (?, ?, ?, ?, ?, ?);");
             ps.setInt(1, slot.getSlotId());
             ps.setInt(2, slot.getGymId());
             ps.setString(3, slot.getStartTimeInUTC());
@@ -61,7 +74,7 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
         List<Slot> slotList = new ArrayList<>();
         try{
             Connection conn = DatabaseConnection.connect();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot ");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM FlipFitSchema.slot ");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int slotId = rs.getInt("slotId");
@@ -85,7 +98,7 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
         List<Slot> slotList = new ArrayList<>();
         try{
             Connection conn = DatabaseConnection.connect();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot WHERE gymId = ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM FlipFitSchema.slot WHERE gymId = ?");
             ps.setInt(1, gymId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -116,7 +129,7 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
         Slot slot = null;
         try{
             Connection conn = DatabaseConnection.connect();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot WHERE slotId = ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM FlipFitSchema.slot WHERE slotId = ?");
             ps.setInt(1, slot.getSlotId());
             ResultSet rs = ps.executeQuery();
             int slotId = rs.getInt("slotId");
