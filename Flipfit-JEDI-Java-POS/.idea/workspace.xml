@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="merge">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/application/FlipFitApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/application/FlipFitApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/business/CustomerInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/business/CustomerInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/business/GymInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/business/GymInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/FlipFitSlotDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/FlipFitSlotDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/FlipFitSlotDAOInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/FlipFitSlotDAOInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/UserDAOInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/UserDAOInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/AdminImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/AdminImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/CustomerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/CustomerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/GymImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/GymImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/GymManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/GymManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/PaymentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/PaymentImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/PlansImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/PlansImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/SlotImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/SlotImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/bookSlotImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/bookSlotImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/business/CustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/business/CustomerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/business/GymManagerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/business/GymManagerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/GymManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/GymManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/bookSlotImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/bookSlotImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="merge" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +50,7 @@
   "keyToString": {
     "Application.FlipFitApp.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "GymImpl",
+    "git-widget-placeholder": "GymManagerImpl",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/napan.vijayvargiya/IdeaProjects/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS",
     "node.js.detected.package.eslint": "true",
@@ -138,7 +111,7 @@
       <workItem from="1730988392255" duration="1769000" />
       <workItem from="1731047250249" duration="439000" />
       <workItem from="1731047750875" duration="353000" />
-      <workItem from="1731256251821" duration="3616000" />
+      <workItem from="1731256251821" duration="3869000" />
     </task>
     <servers />
   </component>
