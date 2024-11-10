@@ -2,6 +2,9 @@ package com.flipfit.service;
 
 import com.flipfit.bean.Slot;
 import com.flipfit.business.GymInterface;
+import com.flipfit.dao.FlipFitSlotDAOImpl;
+import com.flipfit.dao.FlipFitSlotDAOInterface;
+import com.flipfit.dao.GymDAO;
 import com.flipfit.exception.BookingFailedException;
 import com.flipfit.exception.UpdateFailedException;
 
@@ -9,13 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GymImpl implements GymInterface {
+    FlipFitSlotDAOInterface flipFitSlotDAO;
     @Override
-    public List<String> viewBookings(String gymId) {
+    public List<Slot> viewBookings(String gymId) {
         try {
-            List<String> bookings = new ArrayList<>();
+            int GymId = Integer.parseInt(gymId);
+            List<Slot> bookings = flipFitSlotDAO.viewSlotsForGym(GymId);
             if(bookings.size()==0){
                 throw new BookingFailedException();
             }
+            return bookings;
         }
         catch (BookingFailedException e) {
             System.out.println(e.getMessage());
@@ -44,13 +50,14 @@ public class GymImpl implements GymInterface {
     }
 
     @Override
-    public List<Slot> isAvailableSlots() {
+    public List<Slot> isAvailableSlots(Integer gymId) {
         try {
-            // write a condition to check in impl.
-            Boolean isSlotFree = false;
-            if(isSlotFree == false){
+            // get gymId from top.
+            List<Slot> isSlotFree = flipFitSlotDAO.viewSlotsForGym(gymId);
+            if(isSlotFree.isEmpty()){
                 throw new BookingFailedException();
             }
+            return isSlotFree;
         }
         catch (BookingFailedException e) {
             System.out.println(e.getMessage());

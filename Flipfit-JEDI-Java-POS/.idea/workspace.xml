@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/SlotImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/SlotImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/business/GymInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/business/GymInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/GymImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/GymImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/bookSlotImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/bookSlotImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +51,7 @@
   "keyToString": {
     "Application.FlipFitApp.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "DAoGymManagerInterface",
+    "git-widget-placeholder": "SlotImpl",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/rituraj.seal/IdeaProjects/krish/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS",
     "node.js.detected.package.eslint": "true",
