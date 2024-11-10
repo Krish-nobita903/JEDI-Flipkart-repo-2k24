@@ -11,5 +11,5 @@ public interface FlipFitGymManagerDAOInterface {
         void enrollGym(Gym gym,String managerId);
         public List<Gym> getOwnedGyms(String managerId);
         public void updateGymDetails(Gym updatedGymDetails);
-
+        public void updatePassword(String userName,String oldPassword,String newPassword);
 }
