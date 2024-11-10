@@ -69,10 +69,9 @@ public class FlipFitApp {
                     case 3 -> {
                         System.out.println("Please enter your username:");
                         String customerUserName = scanner.nextLine();
-                        scanner.nextLine();
+                        customerUserName = scanner.nextLine();
                         System.out.println("Please enter your password:");
                         String passwordForUser = scanner.nextLine();
-                        scanner.nextLine();
                         LoginInterface userLogin = new UserDAO();
                         String id = userLogin.login(customerUserName, passwordForUser);
                         if( id != null) {
@@ -113,6 +112,7 @@ public class FlipFitApp {
                 System.out.println("You have entered Gym Manager Registration");
                 System.out.println("Please enter your username:");
                 gymManagerp.setUserName(scanner.nextLine());
+                gymManagerp.setUserName(scanner.nextLine());
                 System.out.println("Please enter your email:");
                 gymManagerp.setEmail(scanner.nextLine());
                 System.out.println("Please enter your password:");
@@ -152,7 +152,6 @@ public class FlipFitApp {
         System.out.println("2.View Available Slot");
         System.out.println("3.Cancel Booked Slots");
         System.out.println("4.Update User Info");
-        System.out.println("5.Update Password");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
@@ -162,17 +161,6 @@ public class FlipFitApp {
             case 2 -> customer.viewUserPlan();
             case 3 -> customer.cancelSlot();
             case 4 -> customer.updateUserInfo();
-            case 5 -> {
-                System.out.println("You have entered Update Password");
-                System.out.println("Please enter your username:");
-                String userNameForUpdatePassword = scanner.nextLine();
-                userNameForUpdatePassword = scanner.nextLine();
-                System.out.println("Please enter your Old Password:");
-                String oldPassword = scanner.nextLine();
-                System.out.println("Please enter your New Password:");
-                String newPassword = scanner.nextLine();
-                //update password for customer
-            }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
 
@@ -194,7 +182,7 @@ public class FlipFitApp {
             case 2 -> {
                 System.out.println("Enter your gym id: ");
                 String managerOwnedGymId = scanner.nextLine();
-                scanner.nextLine();
+                managerOwnedGymId = scanner.nextLine();
                 System.out.println("Enter your manager id: ");
                 String managerId = scanner.nextLine();
                 scanner.nextLine();
@@ -205,6 +193,7 @@ public class FlipFitApp {
             case 3 -> {
                 System.out.println("Enter your manager id: ");
                 String managerOwnedGymId = scanner.nextLine();
+                managerOwnedGymId = scanner.nextLine();
                 managerOwnedGyms.setGymId(managerOwnedGymId);
                 manager.updateGymDetails(managerOwnedGyms);
                 break;

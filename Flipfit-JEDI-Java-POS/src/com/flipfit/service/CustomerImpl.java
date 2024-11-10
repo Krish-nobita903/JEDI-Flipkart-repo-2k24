@@ -25,7 +25,7 @@ public class CustomerImpl implements CustomerInterface {
         try {
             // take user from DB.
             User user = new User();
-            if(user== null){
+            if(user == null){
                 throw new UserNotFoundException();
             }
         }
