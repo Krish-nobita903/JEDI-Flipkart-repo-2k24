@@ -27,7 +27,7 @@ public class AdminImpl implements AdminInterface {
         List<User> users = new ArrayList<>();
         try{
             users = adminDAO.getUserList();
-            if(users == null){
+            if(users.isEmpty()){
                 throw new UserNotFoundException();
             }
         }catch(UserNotFoundException e){
