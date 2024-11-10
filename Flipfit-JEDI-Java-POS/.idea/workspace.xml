@@ -6,14 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/application/FlipFitApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/application/FlipFitApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/AdminDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/AdminDAOInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/dao/AdminDAOInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/business/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/business/AdminInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/AdminDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/AdminDAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/GymDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/GymDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/AdminImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/AdminImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,25 +48,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.FlipFitApp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/rituraj.seal/IdeaProjects/krish/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FlipFitApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/rituraj.seal/IdeaProjects/krish/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="FlipFitApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flipfit.application.FlipFitApp" />

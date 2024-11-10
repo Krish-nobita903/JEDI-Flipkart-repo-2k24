@@ -54,7 +54,7 @@ public class FlipFitApp {
                     case 2 -> {
                         System.out.println("Please enter your manager id:");
                         String mangerId = scanner.nextLine();
-                        scanner.nextLine();
+                        mangerId = scanner.nextLine();
                         System.out.println("Please enter your password:");
                         String passwordForManager = scanner.nextLine();
                         LoginInterface managerLogin = new FlipfitGymManagerDAO();
@@ -92,6 +92,7 @@ public class FlipFitApp {
                 System.out.println("You have entered Gym Customer Registration");
                 System.out.println("Please enter your username:");
                 user.setUserName(scanner.nextLine());
+                user.setUserName(scanner.nextLine());
                 System.out.println("Please enter your email:");
                 user.setEmail(scanner.nextLine());
                 System.out.println("Please enter your Password:");
@@ -112,6 +113,7 @@ public class FlipFitApp {
                 System.out.println("You have entered Gym Manager Registration");
                 System.out.println("Please enter your username:");
                 gymManagerp.setUserName(scanner.nextLine());
+                gymManagerp.setUserName(scanner.nextLine());
                 System.out.println("Please enter your email:");
                 gymManagerp.setEmail(scanner.nextLine());
                 System.out.println("Please enter your password:");
@@ -129,14 +131,12 @@ public class FlipFitApp {
                 System.out.println("You have entered Update Password");
                 System.out.println("Please enter your username:");
                 String userNameForUpdatePassword =  scanner.nextLine();
-                scanner.nextLine();
+                userNameForUpdatePassword =  scanner.nextLine();
                 System.out.println("Please enter your Old Password:");
                 String oldPassword = scanner.nextLine();
-                scanner.nextLine();
                 System.out.println("Please enter your New Password:");
                 String newPassword = scanner.nextLine();
-                scanner.nextLine();
-                //updatePassword(scanner,userNameForUpdatePassword,oldPassword,newPassword);
+//                updatePassword(scanner,userNameForUpdatePassword,oldPassword,newPassword);
                 break;
 
             default:
@@ -205,6 +205,8 @@ public class FlipFitApp {
         System.out.println("Welcome Admin!");
         System.out.println("Choose your option");
         System.out.println("1.View all users");
+        System.out.println("2.Add region");
+        System.out.println("3.Add gym");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
@@ -220,6 +222,13 @@ public class FlipFitApp {
             System.out.println("Enter your region name:");
             region.setRegionName(scanner.nextLine());
             adminDAO.addRegion(region.regionName());
+        }
+        else if(optionSelected==3){
+            System.out.println("Enter region id:");
+            String regionId = scanner.nextLine();
+            System.out.println("Enter postal code:");
+            int pincode = scanner.nextInt();
+            admin.addGym(regionId, pincode);
         }
         else{
             System.out.println("Invalid choice. Exiting application.");
