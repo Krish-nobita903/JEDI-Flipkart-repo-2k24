@@ -1,5 +1,2 @@
-# Ignore out folder (used for build output)
 out/
-
-# Ignore IntelliJ IDEA project files
 .idea/
