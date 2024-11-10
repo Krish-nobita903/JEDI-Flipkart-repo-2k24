@@ -25,7 +25,7 @@ public class GymManagerImpl implements GymManagerInterface {
             System.out.println("GymManagerImpl.viewOwnedGyms: " + e.getMessage());
         }
         finally {
-            System.out.println("Gym owner added successfully");
+            System.out.println("Viewed All Gyms successfully");
         }
         List<Gym> managedGyms = gymManagerDAO.getOwnedGyms(managerId);
         return managedGyms;
@@ -37,7 +37,7 @@ public class GymManagerImpl implements GymManagerInterface {
         try {
             gymManagerDAO.enrollGym(gym, managerId);
             List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms(managerId);
-            boolean Check=false;
+            Boolean Check=false;
             for(Gym g : ownedGyms){
                 if(g.equals(gym)){
                     Check=true;
@@ -51,7 +51,7 @@ public class GymManagerImpl implements GymManagerInterface {
             System.out.println("GymManagerImpl.enrollGym: " + e.getMessage());
         }
         finally {
-            System.out.println("Gym owner added successfully");
+            System.out.println("Gym added successfully");
         }
         gymManagerDAO.enrollGym(gym,managerId);
         System.out.println("enrolling gym");
@@ -66,21 +66,28 @@ public class GymManagerImpl implements GymManagerInterface {
 
         }
         finally {
-            System.out.println("Gym owner added successfully");
+            System.out.println("Slot Updated successfully");
         }
         SlotInterface slot = new SlotImpl();
         slot.updateSlot(null);
     }
 
     @Override
-    public void updateGymDetails(Gym updatedGymDetails) {
+    public void updateGymDetails(String managerId,String gymId,String PinCode,String RegionId) {
         try {
-            // bring manager Id to here
-            gymManagerDAO.updateGymDetails(updatedGymDetails);
-            List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms("123");
+            Gym gym = gymManagerDAO.getOwnedGyms(managerId).get(0);
+            if (PinCode.equalsIgnoreCase("0")) {
+                gym.setRegionId(RegionId);
+            }
+            else{
+                int pinCode = Integer.parseInt(PinCode);
+                gym.setPinCode(pinCode);
+            }
+            gymManagerDAO.updateGymDetails(gym);
+            List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms(managerId);
             Boolean Check=false;
             for(Gym g : ownedGyms){
-                if(g.equals(updatedGymDetails)){
+                if(g.equals(gym)){
                     Check=true;
                 }
             }
@@ -92,21 +99,7 @@ public class GymManagerImpl implements GymManagerInterface {
             System.out.println("GymManagerImpl.updateGymDetails: " + e.getMessage());
         }
         finally {
-            System.out.println("Gym owner added successfully");
-        }
-        gymManagerDAO.updateGymDetails(updatedGymDetails);
-    }
-
-    public void updatePassword(String userNameForUpdatePassword,String oldPassword,String newPassword)
-    {
-        try{
-            gymManagerDAO.updatePassword(userNameForUpdatePassword,oldPassword,newPassword);
-        }
-        catch(Exception e){
-
-        }
-        finally {
-            System.out.println("Updated Password successfully");
+            System.out.println("Gym updated successfully");
         }
     }
 }

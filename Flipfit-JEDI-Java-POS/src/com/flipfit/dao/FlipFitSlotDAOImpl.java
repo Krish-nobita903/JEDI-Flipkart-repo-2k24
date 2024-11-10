@@ -33,13 +33,36 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
             throw new RuntimeException(e);
         }
     }
+    @Override
+    public List<Slot> viewSlots() {
+        List<Slot> slotList = new ArrayList<>();
+        try{
+            Connection conn = DatabaseConnection.connect();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot ");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int slotId = rs.getInt("slotId");
 
+                int gymIdForSlot = rs.getInt("gymId");
+
+                String startTime = rs.getString("startTime");
+                Date date = rs.getDate("date");
+                int availableSeats = rs.getInt("availableSeats");
+                String trainings = rs.getString("Training");
+                slotList.add(new Slot(slotId, gymIdForSlot, startTime, date, availableSeats, trainings));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return slotList;
+    }
     @Override
     public List<Slot> viewSlotsForGym(int gymId) {
         List<Slot> slotList = new ArrayList<>();
         try{
             Connection conn = DatabaseConnection.connect();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM FlipfitSchema.slot WHERE gymId = ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot WHERE gymId = ?");
             ps.setInt(1, gymId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -67,7 +90,7 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
 
     @Override
     public Slot getSlot(String id) {
-       Slot slot = null;
+        Slot slot = null;
         try{
             Connection conn = DatabaseConnection.connect();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot WHERE slotId = ?");

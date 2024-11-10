@@ -10,4 +10,5 @@ public interface FlipFitSlotDAOInterface {
     List<Slot> viewSlotsForGym(int gymId);
     void deleteSlot(Slot slot);
     Slot getSlot(String id);
+    List<Slot> viewSlots();
 }

@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/application/FlipFitApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/application/FlipFitApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/GymManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flipfit-JEDI-Java-POS/com/flipfit/service/GymManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/business/GymManagerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/business/GymManagerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/FlipfitGymManagerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/FlipfitGymManagerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/FlipFitSlotDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/GymManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/GymManagerImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +55,7 @@
   &quot;keyToString&quot;: {
     &quot;Application.FlipFitApp.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gymManagerFix&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/rituraj.seal/IdeaProjects/krish/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
