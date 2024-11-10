@@ -12,4 +12,6 @@ public interface FlipFitSlotDAOInterface {
     Slot getSlot(String id);
     List<Slot> viewSlots();
     List<String> viewSlotForUser(int userId);
+    void cancelBookedSlotForUser(int userId, int slotId);
+    void addBookedSlotForUser(int userId, int slotId);
 }

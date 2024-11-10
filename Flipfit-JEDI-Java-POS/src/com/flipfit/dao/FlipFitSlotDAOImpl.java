@@ -41,6 +41,36 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
     }
 
     @Override
+    public void cancelBookedSlotForUser(int userId, int slotId) {
+        try{
+            Connection conn = DatabaseConnection.connect();
+            PreparedStatement ps=conn.prepareStatement("DELETE FROM FlipFitSchema.bookedSlot WHERE userId=? AND slotId=?");
+            ps.setInt(1, userId);
+            ps.setInt(2, slotId);
+            ps.executeUpdate();
+            conn.commit();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void addBookedSlotForUser(int userId, int slotId) {
+        try {
+            Connection conn = DatabaseConnection.connect();
+            PreparedStatement ps=conn.prepareStatement("INSERT INTO FlipFitSchema.bookedSlot VALUES (?,?,)");
+            ps.setInt(1, userId);
+            ps.setInt(2, slotId);
+            ps.executeUpdate();
+            conn.commit();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void addSlot(Slot slot) {
         try {
             Connection conn = DatabaseConnection.connect();
