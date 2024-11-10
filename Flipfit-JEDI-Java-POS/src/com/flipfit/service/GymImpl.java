@@ -52,9 +52,10 @@ public class GymImpl implements GymInterface {
     @Override
     public List<Slot> isAvailableSlots(Integer gymId) {
         try {
-            // get gymId from top.
+            // get maximumCapacity.
+            int maximumCapacity = 10;
             List<Slot> isSlotFree = flipFitSlotDAO.viewSlotsForGym(gymId);
-            if(isSlotFree.isEmpty()){
+            if(isSlotFree.size()>maximumCapacity){
                 throw new BookingFailedException();
             }
             return isSlotFree;

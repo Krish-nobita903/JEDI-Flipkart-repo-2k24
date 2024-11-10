@@ -165,7 +165,32 @@ public class FlipFitApp {
                 customer.cancelSlot(id,slotId);
             }
             case 3 -> {
-                customer.updateUserInfo(id);
+                System.out.println("What do you want to update?");
+                System.out.println("1.Phone number");
+                System.out.println("2.Email address");
+                System.out.println("3.Password");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                switch(choice){
+                    case 1:
+                        System.out.println("Enter Phone Number");
+                        String phoneNumber =  scanner.nextLine();
+                        scanner.nextLine();
+                        customer.updateUserInfo(id,phoneNumber,"0","0");
+                        break;
+                    case 2:
+                        System.out.println("Enter Email Address");
+                        String emailAddress =  scanner.nextLine();
+                        scanner.nextLine();
+                        customer.updateUserInfo(id,"0",emailAddress,"0");
+                        break;
+                    case 3:
+                        System.out.println("Enter Password");
+                        String password =  scanner.nextLine();
+                        scanner.nextLine();
+                        customer.updateUserInfo(id,"0","0",password);
+                        break;
+                }
             }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
