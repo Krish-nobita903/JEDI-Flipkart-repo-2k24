@@ -10,7 +10,8 @@ public class bookSlotImpl implements bookSlot {
     @Override
     public void cancelBookedSlot() {
         try {
-                    }
+
+        }
         catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -84,6 +84,24 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
         }
         return true;
     }
+    @Override
+    public User getUserById(String id){
+        try{
+            Connection connection = DatabaseConnection.connect();
+            PreparedStatement stmt = connection.prepareStatement(
+                    "SELECT * FROM FlipfitSchema.user WHERE id = ?"
+            );
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+            System.out.println("Record deleted for user id: "+ id);
+            connection.commit();
+            connection.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
 
     @Override
     public boolean deleteUser(String id) {
