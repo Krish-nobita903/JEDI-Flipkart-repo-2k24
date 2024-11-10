@@ -60,7 +60,7 @@ public class FlipFitApp {
                         LoginInterface managerLogin = new FlipfitGymManagerDAO();
                         String id = managerLogin.login(mangerId, passwordForManager);
                         if(id != null) {
-                            handleGymOwnerActions(scanner, gymManager, id);
+                            handleGymOwnerActions(scanner, gymManager, mangerId);
                         }
                         else{
                             System.out.println("Invalid managerId or password");
@@ -69,9 +69,10 @@ public class FlipFitApp {
                     case 3 -> {
                         System.out.println("Please enter your username:");
                         String customerUserName = scanner.nextLine();
-                        customerUserName = scanner.nextLine();
+                        scanner.nextLine();
                         System.out.println("Please enter your password:");
                         String passwordForUser = scanner.nextLine();
+                        scanner.nextLine();
                         LoginInterface userLogin = new UserDAO();
                         String id = userLogin.login(customerUserName, passwordForUser);
                         if( id != null) {
@@ -149,18 +150,23 @@ public class FlipFitApp {
         System.out.println("Welcome Customer!");
         System.out.println("Choose your option");
         System.out.println("1.View Booked Slot");
-        System.out.println("2.View Available Slot");
-        System.out.println("3.Cancel Booked Slots");
-        System.out.println("4.Update User Info");
+        System.out.println("2.Cancel Booked Slots");
+        System.out.println("3.Update User Info");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
 
         switch (optionSelected){
-            case 1 -> customer.viewBookedSlots();
-            case 2 -> customer.viewUserPlan();
-            case 3 -> customer.cancelSlot();
-            case 4 -> customer.updateUserInfo();
+            case 1 -> customer.viewBookedSlots(id);
+            case 2 ->{
+                System.out.println("Enter your slot id: ");
+                String slotId = scanner.nextLine();
+                scanner.nextLine();
+                customer.cancelSlot(id,slotId);
+            }
+            case 3 -> {
+                customer.updateUserInfo(id);
+            }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
 
@@ -173,42 +179,39 @@ public class FlipFitApp {
         System.out.println("1.View Owned Gyms");
         System.out.println("2.Enroll your gym");
         System.out.println("3.Update GYM details");
-        System.out.println("4.Update password");
-
         int optionSelected = scanner.nextInt();
-        Gym managerOwnedGyms = new Gym();
         switch (optionSelected) {
-            case 1 -> manager.viewOwnedGyms("managerId"); // Pass the actual managerId variable
+            case 1 -> manager.viewOwnedGyms(id);
             case 2 -> {
+                Gym managerOwnedGyms = new Gym();
                 System.out.println("Enter your gym id: ");
                 String managerOwnedGymId = scanner.nextLine();
-                managerOwnedGymId = scanner.nextLine();
-                System.out.println("Enter your manager id: ");
-                String managerId = scanner.nextLine();
                 scanner.nextLine();
                 managerOwnedGyms.setGymId(managerOwnedGymId);
-                manager.enrollGym(managerOwnedGyms, managerId); // Pass the actual managerId variable
+                manager.enrollGym(managerOwnedGyms, id);
                 break;
             }
             case 3 -> {
-                System.out.println("Enter your manager id: ");
+                Gym managerOwnedGyms = new Gym();
+                System.out.println("Enter your Gym id: ");
                 String managerOwnedGymId = scanner.nextLine();
-                managerOwnedGymId = scanner.nextLine();
-                managerOwnedGyms.setGymId(managerOwnedGymId);
-                manager.updateGymDetails(managerOwnedGyms);
+                System.out.println("What do you want to update: ");
+                System.out.println("1.RegionId: ");
+                System.out.println("2.PinCode ");
+                int optionSelectedForUpdate = scanner.nextInt();
+                switch (optionSelectedForUpdate){
+                    case 1:
+                        System.out.println("Enter RegionId ");
+                        String regionId = scanner.nextLine();
+                        manager.updateGymDetails(id,managerOwnedGymId,"0",regionId);
+                        break;
+                    case 2:
+                        System.out.println("Enter PinCode ");
+                        String Pincode = scanner.nextLine();
+                        manager.updateGymDetails(id,managerOwnedGymId,Pincode,"0");
+                        break;
+                }
                 break;
-            }
-            case 4 -> {
-                System.out.println("You have entered Update Password");
-                System.out.println("Please enter your username:");
-                String userNameForUpdatePassword = scanner.nextLine();
-                userNameForUpdatePassword = scanner.nextLine();
-                System.out.println("Please enter your Old Password:");
-                String oldPassword = scanner.nextLine();
-                System.out.println("Please enter your New Password:");
-                String newPassword = scanner.nextLine();
-                manager.updatePassword(userNameForUpdatePassword,oldPassword,newPassword);
-                //update password for gym owner
             }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
@@ -221,45 +224,31 @@ public class FlipFitApp {
         System.out.println("1.View all users");
         System.out.println("2.Add region");
         System.out.println("3.Add gym");
-        System.out.println("4.Update password");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
 
-        switch(optionSelected){
-            case 1 -> {
-                List<User> users = admin.getUserList();
-                for(User user:users){
-                    System.out.println("User ID:" + user.id() + "User Name:" + user.userName());
-                }
+        if(optionSelected==1){
+            List<User> users = admin.getUserList();
+            for(User user:users){
+                System.out.println("User ID:" + user.id() + "User Name:" + user.userName());
             }
-            case 2 -> {
-                AdminDAO adminDAO = new AdminDAO();
-                Region region = new Region();
-                System.out.println("Enter your region name:");
-                region.setRegionName(scanner.nextLine());
-                adminDAO.addRegion(region.regionName());
-            }
-            case 3 -> {
-                System.out.println("Enter region id:");
-                String regionId = scanner.nextLine();
-                System.out.println("Enter postal code:");
-                int pincode = scanner.nextInt();
-                admin.addGym(regionId, pincode);
-            }
-            case 4 -> {
-                System.out.println("You have entered Update Password");
-                System.out.println("Please enter your username:");
-                String userNameForUpdatePassword = scanner.nextLine();
-                userNameForUpdatePassword = scanner.nextLine();
-                System.out.println("Please enter your Old Password:");
-                String oldPassword = scanner.nextLine();
-                System.out.println("Please enter your New Password:");
-                String newPassword = scanner.nextLine();
-                //update password for admin
-                admin.updatePassword(userNameForUpdatePassword,oldPassword,newPassword);
-            }
-            default -> System.out.println("Invalid choice. Exiting application.");
+        }else if(optionSelected==2){
+            AdminDAO adminDAO = new AdminDAO();
+            Region region = new Region();
+            System.out.println("Enter your region name:");
+            region.setRegionName(scanner.nextLine());
+            adminDAO.addRegion(region.regionName());
+        }
+        else if(optionSelected==3){
+            System.out.println("Enter region id:");
+            String regionId = scanner.nextLine();
+            System.out.println("Enter postal code:");
+            int pincode = scanner.nextInt();
+            admin.addGym(regionId, pincode);
+        }
+        else{
+            System.out.println("Invalid choice. Exiting application.");
         }
 
     }

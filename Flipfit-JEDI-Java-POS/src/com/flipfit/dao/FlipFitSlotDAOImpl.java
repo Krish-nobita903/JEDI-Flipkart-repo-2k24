@@ -62,7 +62,7 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
         List<Slot> slotList = new ArrayList<>();
         try{
             Connection conn = DatabaseConnection.connect();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM FlipfitSchema.slot WHERE gymId = ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot WHERE gymId = ?");
             ps.setInt(1, gymId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -90,7 +90,7 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
 
     @Override
     public Slot getSlot(String id) {
-       Slot slot = null;
+        Slot slot = null;
         try{
             Connection conn = DatabaseConnection.connect();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM slot WHERE slotId = ?");
