@@ -140,6 +140,7 @@ public class FlipFitApp {
         System.out.println("2.View Available Slot");
         System.out.println("3.Cancel Booked Slots");
         System.out.println("4.Update User Info");
+        System.out.println("5.Update password");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
@@ -149,6 +150,17 @@ public class FlipFitApp {
             case 2 -> customer.viewUserPlan();
             case 3 -> customer.cancelSlot();
             case 4 -> customer.updateUserInfo();
+            case 5 -> {
+                System.out.println("You have entered Update Password");
+                System.out.println("Please enter your username:");
+                String userNameForUpdatePassword = scanner.nextLine();
+                userNameForUpdatePassword = scanner.nextLine();
+                System.out.println("Please enter your Old Password:");
+                String oldPassword = scanner.nextLine();
+                System.out.println("Please enter your New Password:");
+                String newPassword = scanner.nextLine();
+                //update password for customer
+            }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
 
@@ -161,6 +173,8 @@ public class FlipFitApp {
         System.out.println("1.View Owned Gyms");
         System.out.println("2.Enroll your gym");
         System.out.println("3.Update GYM details");
+        System.out.println("4.Update password");
+
         int optionSelected = scanner.nextInt();
         Gym managerOwnedGyms = new Gym();
         switch (optionSelected) {
@@ -183,6 +197,17 @@ public class FlipFitApp {
                 manager.updateGymDetails(managerOwnedGyms);
                 break;
             }
+            case 4 -> {
+                System.out.println("You have entered Update Password");
+                System.out.println("Please enter your username:");
+                String userNameForUpdatePassword = scanner.nextLine();
+                userNameForUpdatePassword = scanner.nextLine();
+                System.out.println("Please enter your Old Password:");
+                String oldPassword = scanner.nextLine();
+                System.out.println("Please enter your New Password:");
+                String newPassword = scanner.nextLine();
+                //update password for gym owner
+            }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
     }
@@ -194,6 +219,7 @@ public class FlipFitApp {
         System.out.println("1.View all users");
         System.out.println("2.Add region");
         System.out.println("3.Add gym");
+        System.out.println("4.Update password");
 
         int optionSelected = scanner.nextInt();
         scanner.nextLine();
@@ -218,6 +244,17 @@ public class FlipFitApp {
                 System.out.println("Enter postal code:");
                 int pincode = scanner.nextInt();
                 admin.addGym(regionId, pincode);
+            }
+            case 4 -> {
+                System.out.println("You have entered Update Password");
+                System.out.println("Please enter your username:");
+                String userNameForUpdatePassword = scanner.nextLine();
+                userNameForUpdatePassword = scanner.nextLine();
+                System.out.println("Please enter your Old Password:");
+                String oldPassword = scanner.nextLine();
+                System.out.println("Please enter your New Password:");
+                String newPassword = scanner.nextLine();
+                //update password for admin
             }
             default -> System.out.println("Invalid choice. Exiting application.");
         }
