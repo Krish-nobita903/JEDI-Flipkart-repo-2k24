@@ -75,11 +75,21 @@ public class GymManagerImpl implements GymManagerInterface {
     @Override
     public void updateGymDetails(Gym updatedGymDetails) {
         try {
+            // bring manager Id to here
             gymManagerDAO.updateGymDetails(updatedGymDetails);
-            if()
+            List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms("123");
+            Boolean Check=false;
+            for(Gym g : ownedGyms){
+                if(g.equals(updatedGymDetails)){
+                    Check=true;
+                }
+            }
+            if(!Check){
+                throw new UpdateFailedException();
+            }
         }
-        catch (Exception e) {
-
+        catch (UpdateFailedException e) {
+            System.out.println("GymManagerImpl.updateGymDetails: " + e.getMessage());
         }
         finally {
             System.out.println("Gym owner added successfully");

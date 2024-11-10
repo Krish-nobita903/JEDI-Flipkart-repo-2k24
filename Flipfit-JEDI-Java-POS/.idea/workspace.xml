@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/flipfit/exception/UpdateFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/flipfit/exception/DeletionFailedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/AdminImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/AdminImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/GymImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/GymImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/GymManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/GymManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/bookSlotImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/bookSlotImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/PaymentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/PaymentImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/PlansImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/PlansImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/SlotImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/SlotImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
