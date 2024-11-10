@@ -36,14 +36,15 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
         try {
             connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);
+            // DO NOT RUN, WIP
             stmt = connection.prepareStatement(
-                    "UPDATE FlipfitSchema.gym " +
+                    "INSERT  FlipfitSchema.gymManager " +
                             "SET gymId = ? " +
-                            "WHERE gymManagerId = ?"
+                            "WHERE gymManagerid = ?"
             );
 
-            stmt.setString(1, managerId);  // Set the managerId to associate with the gym
-            stmt.setString(2, gym.gymId());  // The gymId to be updated
+            stmt.setString(1, gym.gymId());  // Set the managerId to associate with the gym
+            stmt.setString(2, managerId);  // The gymId to be updated
 
 
 
@@ -156,6 +157,29 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
             } catch (Exception closeException) {
                 System.out.println("Error closing resources: " + closeException.getMessage());
             }
+        }
+    }
+
+    @Override
+    public void updatePassword(String userName,String oldPassword,String newPassword)
+    {
+        try{
+            Connection connection = DatabaseConnection.connect();
+            connection.setAutoCommit(false);
+            PreparedStatement stmt = connection.prepareStatement("UPDATE FlipfitSchema.gymManager SET password = ? WHERE userName = ? AND password = ?");
+            stmt.setString(1, newPassword);
+            stmt.setString(2, userName);
+            stmt.setString(3,oldPassword);
+            stmt.executeUpdate();
+            System.out.println("Password updated for userName: " + userName);
+            connection.commit();
+            stmt.close();
+            connection.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }finally{
+            System.out.println("Updating password....");
         }
     }
 }

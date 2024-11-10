@@ -20,31 +20,27 @@ public class CustomerImpl implements CustomerInterface {
     private UserDAOInterface userDAO = new UserDAO();
     private FlipFitSlotDAOInterface flipFitSlotDAO = new FlipFitSlotDAOImpl();
 
-//    @Override
-//    public void viewUserPlan(){
-//        try {
-//            // take user from DB.
-//            User user = new User();
-//            if(user== null){
-//                throw new UserNotFoundException();
-//            }
-//        }
-//        catch (UserNotFoundException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        finally {
-//            System.out.println("View User Plan");
-//        }
-//    }
     @Override
-    public List<Slot> viewBookedSlots(String userId){
-        // fetch data from DB for a user.
+    public void viewUserPlan(){
         try {
-            List<Slot> viewedSlots = flipFitSlotDAO.viewSlots();
-            List<Slot>viewBookedSlotsByUser = new ArrayList<>();
-            for(Slot slot : viewedSlots){
-                viewBookedSlotsByUser.add(slot);
+            // take user from DB.
+            User user = new User();
+            if(user == null){
+                throw new UserNotFoundException();
             }
+        }
+        catch (UserNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        finally {
+            System.out.println("View User Plan");
+        }
+    }
+    @Override
+    public List<Slot> viewBookedSlots(){
+        // fetch data from DB.
+        try {
+            List<Slot> viewedSlots = new ArrayList<>();
             if(viewedSlots.size()==0){
                 throw new SlotsUnavailableException();
             }
@@ -59,9 +55,12 @@ public class CustomerImpl implements CustomerInterface {
     }
 
     @Override
-    public void updateUserInfo(String userId) {
+    public void updateUserInfo() {
+
+        // take user from DB
+        // take updated user after updation from DB.
         try {
-            User user = userDAO.getUserById(userId);
+            User user = new User();
             Scanner scanner1 = new Scanner(System.in);
             System.out.println("What do you want to update?");
             System.out.println("1.Phone number");
@@ -103,12 +102,22 @@ public class CustomerImpl implements CustomerInterface {
         }
     }
     @Override
-    public void cancelSlot(String userId, String SlotId) {
+    public void cancelSlot() {
+        // take user from DB and slots from DB
         try {
-            Slot slot = flipFitSlotDAO.getSlot(SlotId);
-            flipFitSlotDAO.deleteSlot(slot);
-            Slot checkDeletedSlot = flipFitSlotDAO.getSlot(SlotId);
-            if(checkDeletedSlot != null){
+            User user = new User();
+            List<Slot>slots = new ArrayList<>();
+            Scanner scanner1 = new Scanner(System.in);
+            System.out.println("Which slot do you want to cancel?");
+            System.out.println("1.");
+            System.out.println("2.");
+            System.out.println("3.");
+            int choice = scanner1.nextInt();
+            scanner1.nextLine();
+            flipFitSlotDAO.deleteSlot(slots.get(choice));
+            int slotId = slots.get(choice).getSlotId();
+            String slotIdString = Integer.toString(slotId);
+            if(flipFitSlotDAO.getSlot(slotIdString) != null){
                 throw new SlotsUnavailableException();
             }
         }

@@ -5,6 +5,7 @@ import com.flipfit.helper.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.UUID;
 import java.sql.ResultSet;
 
@@ -121,5 +122,22 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean updatePassword(String id, String password) {
+        try {
+            Connection conn=DatabaseConnection.connect();
+            PreparedStatement ps=conn.prepareStatement("UPDATE FlipfitSchema.user SET password = ? WHERE id = ?");
+            ps.setString(1, password);
+            ps.setString(2, id);
+            ps.executeUpdate();
+            System.out.println("Record updated for user id: "+ id);
+            conn.commit();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

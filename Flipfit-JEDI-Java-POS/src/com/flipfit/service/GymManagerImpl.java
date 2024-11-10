@@ -37,7 +37,7 @@ public class GymManagerImpl implements GymManagerInterface {
         try {
             gymManagerDAO.enrollGym(gym, managerId);
             List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms(managerId);
-            Boolean Check=false;
+            boolean Check=false;
             for(Gym g : ownedGyms){
                 if(g.equals(gym)){
                     Check=true;
@@ -100,6 +100,19 @@ public class GymManagerImpl implements GymManagerInterface {
         }
         finally {
             System.out.println("Gym updated successfully");
+        }
+    }
+
+    public void updatePassword(String userNameForUpdatePassword,String oldPassword,String newPassword)
+    {
+        try{
+            gymManagerDAO.updatePassword(userNameForUpdatePassword,oldPassword,newPassword);
+        }
+        catch(Exception e){
+
+        }
+        finally {
+            System.out.println("Updated Password successfully");
         }
     }
 }
