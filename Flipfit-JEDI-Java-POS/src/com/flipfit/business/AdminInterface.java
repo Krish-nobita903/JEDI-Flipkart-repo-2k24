@@ -8,4 +8,5 @@ import java.util.List;
 public interface AdminInterface {
     public List<User> getUserList();
     public void addGym(String regionId, int pinCode);
+    public void updatePassword(String userName,String oldPassword, String newPassword);
 }

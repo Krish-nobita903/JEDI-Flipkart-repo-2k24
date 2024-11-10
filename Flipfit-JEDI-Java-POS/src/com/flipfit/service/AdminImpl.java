@@ -49,4 +49,14 @@ public class AdminImpl implements AdminInterface {
             System.err.println(e.getMessage());
         }
     }
+
+    @Override
+    public void updatePassword(String userName,String oldPassword,String newPassword){
+        try{
+            adminDAO.updatePassword(userName,oldPassword,newPassword);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
