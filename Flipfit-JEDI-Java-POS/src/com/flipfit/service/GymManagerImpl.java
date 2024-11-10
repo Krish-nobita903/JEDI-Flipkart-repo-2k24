@@ -96,4 +96,17 @@ public class GymManagerImpl implements GymManagerInterface {
         }
         gymManagerDAO.updateGymDetails(updatedGymDetails);
     }
+
+    public void updatePassword(String userNameForUpdatePassword,String oldPassword,String newPassword)
+    {
+        try{
+            gymManagerDAO.updatePassword(userNameForUpdatePassword,oldPassword,newPassword);
+        }
+        catch(Exception e){
+
+        }
+        finally {
+            System.out.println("Updated Password successfully");
+        }
+    }
 }

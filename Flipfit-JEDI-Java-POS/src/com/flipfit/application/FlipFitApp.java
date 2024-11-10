@@ -218,6 +218,7 @@ public class FlipFitApp {
                 String oldPassword = scanner.nextLine();
                 System.out.println("Please enter your New Password:");
                 String newPassword = scanner.nextLine();
+                manager.updatePassword(userNameForUpdatePassword,oldPassword,newPassword);
                 //update password for gym owner
             }
             default -> System.out.println("Invalid choice. Exiting application.");
