@@ -6,6 +6,8 @@ import com.flipfit.business.SlotInterface;
 import com.flipfit.dao.FlipFitGymManagerDAOInterface;
 import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipfitGymManagerDAO;
+import com.flipfit.exception.GymListNotFoundException;
+import com.flipfit.exception.UpdateFailedException;
 
 import java.util.List;
 
@@ -14,10 +16,13 @@ public class GymManagerImpl implements GymManagerInterface {
     @Override
     public List<Gym> viewOwnedGyms(String managerId) {
         try {
-
+            List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms(managerId);
+            if(ownedGyms == null){
+                throw new GymListNotFoundException();
+            }
         }
-        catch (Exception e) {
-
+        catch (GymListNotFoundException e) {
+            System.out.println("GymManagerImpl.viewOwnedGyms: " + e.getMessage());
         }
         finally {
             System.out.println("Gym owner added successfully");
@@ -30,10 +35,20 @@ public class GymManagerImpl implements GymManagerInterface {
     @Override
     public void enrollGym(Gym gym,String managerId) {
         try {
-
+            gymManagerDAO.enrollGym(gym, managerId);
+            List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms(managerId);
+            Boolean Check=false;
+            for(Gym g : ownedGyms){
+                if(g.equals(gym)){
+                    Check=true;
+                }
+            }
+            if(!Check){
+                throw new UpdateFailedException();
+            }
         }
-        catch (Exception e) {
-
+        catch (UpdateFailedException e) {
+            System.out.println("GymManagerImpl.enrollGym: " + e.getMessage());
         }
         finally {
             System.out.println("Gym owner added successfully");
@@ -60,7 +75,8 @@ public class GymManagerImpl implements GymManagerInterface {
     @Override
     public void updateGymDetails(Gym updatedGymDetails) {
         try {
-
+            gymManagerDAO.updateGymDetails(updatedGymDetails);
+            if()
         }
         catch (Exception e) {
 

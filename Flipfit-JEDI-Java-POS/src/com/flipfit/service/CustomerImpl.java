@@ -7,6 +7,9 @@ import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipFitSlotDAOInterface;
 import com.flipfit.dao.UserDAO;
 import com.flipfit.dao.UserDAOInterface;
+import com.flipfit.exception.SlotsUnavailableException;
+import com.flipfit.exception.UpdateFailedException;
+import com.flipfit.exception.UserNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +23,14 @@ public class CustomerImpl implements CustomerInterface {
     @Override
     public void viewUserPlan(){
         try {
-
+            // take user from DB.
+            User user = new User();
+            if(user== null){
+                throw new UserNotFoundException();
+            }
         }
-        catch (Exception e) {
-
+        catch (UserNotFoundException e) {
+            System.out.println(e.getMessage());
         }
         finally {
             System.out.println("View User Plan");
@@ -31,11 +38,15 @@ public class CustomerImpl implements CustomerInterface {
     }
     @Override
     public List<Slot> viewBookedSlots(){
+        // fetch data from DB.
         try {
-
+            List<Slot> viewedSlots = new ArrayList<>();
+            if(viewedSlots.size()==0){
+                throw new SlotsUnavailableException();
+            }
         }
-        catch (Exception e) {
-
+        catch (SlotsUnavailableException e) {
+            System.out.println(e.getMessage());
         }
         finally {
             System.out.println("View Booked slots");
@@ -47,6 +58,7 @@ public class CustomerImpl implements CustomerInterface {
     public void updateUserInfo() {
 
         // take user from DB
+        // take updated user after updation from DB.
         try {
             User user = new User();
             Scanner scanner1 = new Scanner(System.in);
@@ -77,8 +89,12 @@ public class CustomerImpl implements CustomerInterface {
                     break;
             }
             userDAO.updateUser(user);
+            User updatedUser = new User();
+            if(user != updatedUser){
+                throw new UpdateFailedException();
+            }
         }
-        catch (Exception e) {
+        catch (UpdateFailedException e) {
             System.err.println(e.getMessage());
         }
         finally {
@@ -87,7 +103,7 @@ public class CustomerImpl implements CustomerInterface {
     }
     @Override
     public void cancelSlot() {
-        // take user from DB
+        // take user from DB and slots from DB
         try {
             User user = new User();
             List<Slot>slots = new ArrayList<>();
@@ -99,8 +115,13 @@ public class CustomerImpl implements CustomerInterface {
             int choice = scanner1.nextInt();
             scanner1.nextLine();
             flipFitSlotDAO.deleteSlot(slots.get(choice));
+            int slotId = slots.get(choice).getSlotId();
+            String slotIdString = Integer.toString(slotId);
+            if(flipFitSlotDAO.getSlot(slotIdString) != null){
+                throw new SlotsUnavailableException();
+            }
         }
-        catch (Exception e) {
+        catch (SlotsUnavailableException e) {
             System.err.println(e.getMessage());
         }
         finally {

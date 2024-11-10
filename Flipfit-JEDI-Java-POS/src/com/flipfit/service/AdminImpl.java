@@ -8,6 +8,7 @@ import com.flipfit.dao.AdminDAO;
 import com.flipfit.dao.AdminDAOInterface;
 import com.flipfit.dao.GymDAO;
 import com.flipfit.dao.GymDAOInterface;
+import com.flipfit.exception.UserNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,13 @@ public class AdminImpl implements AdminInterface {
     @Override
     public List<User> getUserList(){
         List<User> users = new ArrayList<>();
-
         try{
             users = adminDAO.getUserList();
-        }catch(Exception e){
-
+            if(users == null){
+                throw new UserNotFoundException();
+            }
+        }catch(UserNotFoundException e){
+            System.out.println("Error: " + e.getMessage());
         }finally {
             System.out.println("Viewing all users.....");
         }

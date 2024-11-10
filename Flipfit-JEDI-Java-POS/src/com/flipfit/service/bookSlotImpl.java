@@ -9,7 +9,7 @@ public class bookSlotImpl implements bookSlot {
 
         }
         catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
         finally {
             System.out.println("Cancelling booked slot");
@@ -21,7 +21,7 @@ public class bookSlotImpl implements bookSlot {
 
         }
         catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
         finally {
             System.out.println("Booking slot");
