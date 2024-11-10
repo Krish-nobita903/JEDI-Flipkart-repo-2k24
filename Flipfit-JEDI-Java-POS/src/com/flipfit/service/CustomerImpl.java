@@ -61,35 +61,17 @@ public class CustomerImpl implements CustomerInterface {
     }
 
     @Override
-    public void updateUserInfo(String userId) {
+    public void updateUserInfo(String userId,String phoneNumber,String emailAddress,String password) {
         try {
             User user = userDAO.getUserById(userId);
-            Scanner scanner1 = new Scanner(System.in);
-            System.out.println("What do you want to update?");
-            System.out.println("1.Phone number");
-            System.out.println("2.Email address");
-            System.out.println("3.Password");
-            int choice = scanner1.nextInt();
-            scanner1.nextLine();
-            switch(choice){
-                case 1:
-                    System.out.println("Enter Phone Number");
-                    String phoneNumber =  scanner1.nextLine();
-                    scanner1.nextLine();
-                    user.setUserPhone(phoneNumber);
-                    break;
-                case 2:
-                    System.out.println("Enter Email Address");
-                    String emailAddress =  scanner1.nextLine();
-                    scanner1.nextLine();
-                    user.setEmail(emailAddress);
-                    break;
-                case 3:
-                    System.out.println("Enter Password");
-                    String password =  scanner1.nextLine();
-                    scanner1.nextLine();
-                    user.setPassword(password);
-                    break;
+            if(!phoneNumber.equalsIgnoreCase("0")){
+                user.setUserPhone(phoneNumber);
+            }
+            if(!emailAddress.equalsIgnoreCase("0")){
+                user.setEmail(emailAddress);
+            }
+            if(!password.equalsIgnoreCase("0")){
+                user.setPassword(password);
             }
             userDAO.updateUser(user);
             User updatedUser = new User();

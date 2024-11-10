@@ -1,17 +1,22 @@
 package com.flipfit.service;
 
+import com.flipfit.bean.Slot;
 import com.flipfit.business.bookSlot;
 import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipFitSlotDAOInterface;
-import com.flipfit.dao.UserDAOInterface;
+
+import java.util.List;
+import java.util.Random;
 
 public class bookSlotImpl implements bookSlot {
     FlipFitSlotDAOInterface flipFitSlotDAO = new FlipFitSlotDAOImpl();
     @Override
-    public void cancelBookedSlot(int userId, int slotId) {
+    public void cancelBookedSlot(String userId, String bookingId) {
         try {
-            flipFitSlotDAO.cancelBookedSlotForUser(userId, slotId);
-            System.out.println("Canceled booked slot " + slotId);
+            int UserId = Integer.parseInt(userId);
+            List<String> bookedSlots = flipFitSlotDAO.viewSlotForUser(UserId);
+            Slot slot = flipFitSlotDAO.getSlot(bookingId);
+            flipFitSlotDAO.deleteSlot(slot);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -21,10 +26,12 @@ public class bookSlotImpl implements bookSlot {
         }
     }
     @Override
-    public void bookSlot(int userId, int slotId) {
+    public void bookSlot(String userId){
         try {
-            flipFitSlotDAO.addBookedSlotForUser(userId, slotId);
-            System.out.println("Booked slot " + slotId);
+            int UserId = Integer.parseInt(userId);
+            Random random = new Random();
+            int bookingId = random.nextInt();
+            flipFitSlotDAO.bookSlot(UserId,bookingId);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

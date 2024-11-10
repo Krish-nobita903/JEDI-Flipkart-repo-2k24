@@ -60,7 +60,7 @@ public class GymManagerImpl implements GymManagerInterface {
     @Override
     public void updateSlot() {
         try {
-
+            
         }
         catch (Exception e) {
 
