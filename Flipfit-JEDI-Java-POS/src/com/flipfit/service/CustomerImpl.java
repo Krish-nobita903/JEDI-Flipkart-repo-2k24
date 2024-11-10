@@ -38,16 +38,18 @@ public class CustomerImpl implements CustomerInterface {
 //    }
     @Override
     public List<Slot> viewBookedSlots(String userId){
-        // fetch data from DB for a user.
+        // check if viewSlotForUser works properly.
         try {
+            int UserId = Integer.parseInt(userId);
+            List<String>viewBookedSlotsByUser = flipFitSlotDAO.viewSlotForUser(UserId);
             List<Slot> viewedSlots = flipFitSlotDAO.viewSlots();
-            List<Slot>viewBookedSlotsByUser = new ArrayList<>();
-            for(Slot slot : viewedSlots){
-                viewBookedSlotsByUser.add(slot);
+            for(String slotId : viewBookedSlotsByUser){
+                viewedSlots.add(flipFitSlotDAO.getSlot(slotId));
             }
             if(viewedSlots.size()==0){
                 throw new SlotsUnavailableException();
             }
+            return viewedSlots;
         }
         catch (SlotsUnavailableException e) {
             System.out.println(e.getMessage());

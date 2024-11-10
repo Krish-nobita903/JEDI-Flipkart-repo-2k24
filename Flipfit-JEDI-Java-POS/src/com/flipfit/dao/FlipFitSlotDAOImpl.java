@@ -18,6 +18,29 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
     }
 
     @Override
+    public List<String> viewSlotForUser(int userId){
+
+        // check if Query is correct as unsure of DB name and parameter name;
+        List<String> slotIdList = new ArrayList<>();
+        try{
+            Connection conn = DatabaseConnection.connect();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM FlipFitSchema.bookedSlot WHERE userId=? ");
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int slotId = rs.getInt("slotId");
+                String SlotId = Integer.toString(slotId);
+                slotIdList.add(SlotId);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return slotIdList;
+    }
+
+    @Override
     public void addSlot(Slot slot) {
         try {
             Connection conn = DatabaseConnection.connect();
