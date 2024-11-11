@@ -9,4 +9,5 @@ public interface GymManagerInterface {
     public void enrollGym(Gym gym,String managerId);
     public void updateGymDetails(String managerId,String managerOwnedGymId,String PinCode,String RegionId);
     void updateSlot();
+    void updatePassword(String userName,String oldPassword,String newPassword);
 }
