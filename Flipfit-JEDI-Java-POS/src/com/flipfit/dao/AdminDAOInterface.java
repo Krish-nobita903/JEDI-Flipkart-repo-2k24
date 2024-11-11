@@ -8,5 +8,5 @@ public interface AdminDAOInterface {
     public List<User> getUserList();
     public void addGymManager(String userName,String email,String password,String firstName,String lastName,String gymId);
     public void addRegion(String regionName);
-    public void updatePassword(String userName,String oldPassword,String newPassword);
+    public void updateAdminPassword(String userName,String oldPassword,String newPassword);
 }

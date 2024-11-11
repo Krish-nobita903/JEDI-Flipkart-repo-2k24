@@ -103,7 +103,7 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface{
     }
 
     @Override
-    public void updatePassword(String userName,String oldPassword,String newPassword){
+    public void updateAdminPassword(String userName,String oldPassword,String newPassword){
         try{
             Connection connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);

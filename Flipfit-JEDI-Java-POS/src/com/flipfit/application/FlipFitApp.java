@@ -136,7 +136,7 @@ public class FlipFitApp {
                 String oldPassword = scanner.nextLine();
                 System.out.println("Please enter your New Password:");
                 String newPassword = scanner.nextLine();
-//                updatePassword(scanner,userNameForUpdatePassword,oldPassword,newPassword);
+                //admin.updateAdminPassword(userNameForUpdatePassword,oldPassword,newPassword);
                 break;
 
             default:
