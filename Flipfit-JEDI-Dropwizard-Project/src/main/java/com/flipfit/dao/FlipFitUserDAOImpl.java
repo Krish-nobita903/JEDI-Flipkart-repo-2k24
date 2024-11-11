@@ -1,7 +1,7 @@
 package com.flipfit.dao;
 
 import com.flipfit.bean.User;
-import com.flipfit.helper.DatabaseConnection;
+import com.flipfit.utils.DatabaseConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
     @Override
     public String login(String username, String password){
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.user WHERE userName = ? AND password = ?");
             stmt.setString(1, username);
             stmt.setString(2, password);
@@ -31,7 +31,7 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
     @Override
     public boolean createUser(String userName, String email, String password, String firstName, String lastName, String phoneNumber,double bodyWeight) {
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             String userId = UUID.randomUUID().toString();
             connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO FlipfitSchema.user " +
@@ -60,7 +60,7 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
     @Override
     public boolean updateUser(User user) {
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement(
                     "UPDATE FlipfitSchema.user SET userName = ?, email = ?, password = ?, firstName = ?, lastName = ?" +
@@ -89,7 +89,7 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
     public User getUserById(String id){
         try{
             User user = new User();
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement(
                     "SELECT * FROM FlipfitSchema.user WHERE userId = ?"
@@ -119,7 +119,7 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
     @Override
     public boolean deleteUser(String id) {
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             PreparedStatement stmt = connection.prepareStatement(
                     "DELETE FROM FlipfitSchema.user WHERE userId = ?"
             );
@@ -139,7 +139,7 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
     @Override
     public boolean updatePassword(String id, String password) {
         try {
-            Connection conn=DatabaseConnection.connect();
+            Connection conn = DatabaseConnector.connect();
             PreparedStatement ps=conn.prepareStatement("UPDATE FlipfitSchema.user SET password = ? WHERE userId = ?");
             ps.setString(1, password);
             ps.setString(2, id);
