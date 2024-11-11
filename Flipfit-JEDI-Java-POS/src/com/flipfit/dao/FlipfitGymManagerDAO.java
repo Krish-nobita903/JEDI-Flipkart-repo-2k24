@@ -32,38 +32,50 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
     public void enrollGym(Gym gym, String managerId) {
         Connection connection = null;
         PreparedStatement stmt = null;
+        ResultSet rs = null;
 
         try {
             connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);
-//            stmtForGymManager = connection.prepareStatement("SELECT * FROM FlipfitSchema.gymManager WHERE gymManagerid = ?");
-//            stmtForGymManager.setString(1, managerId);
-//
-//            String userId = UUID.randomUUID().toString();
-//
-//            ResultSet rs = stmtForGymManager.executeQuery();
-//            GymManager gymManager = null;
-//            if(rs.next()){
-//
-//            }
 
-            stmt = connection.prepareStatement(
-                    "INSERT  FlipfitSchema.gymManager " +
-                            "SET gymId = ? " +
-                            "WHERE gymManagerid = ?"
-            );
+            // Retrieve existing GymManager information
+            stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.gymManager WHERE gymManagerId = ?");
+            stmt.setString(1, managerId);
+            rs = stmt.executeQuery();
 
-            stmt.setString(1, gym.gymId());  // Set the managerId to associate with the gym
-            stmt.setString(2, managerId);  // The gymId to be updated
+            GymManager gymManager = null;
+            if (rs.next()) {
+                        String gymManagerId = rs.getString("gymManagerId");
+                        String userName  = rs.getString("userName");
+                        String email = rs.getString("email");
+                        String password = rs.getString("password");
+                        String firstName = rs.getString("firstName");
+                        String lastName = rs.getString("lastName");
+                        String userId = rs.getString("userId");
 
+                        stmt = connection.prepareStatement(
+                                "INSERT INTO FlipfitSchema.gymManager (gymManagerId, userName, email, password, firstName, lastName, userId, gymId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+                        );
 
+                        stmt.setString(1, gymManagerId);
+                        stmt.setString(2, userName);
+                        stmt.setString(3, email);
+                        stmt.setString(4, password);
+                        stmt.setString(5, firstName);
+                        stmt.setString(6, lastName);
+                        stmt.setString(7, userId);
+                        stmt.setString(8, gym.gymId());
 
-            int rowsAffected = stmt.executeUpdate();
+                        int rowsAffected = stmt.executeUpdate();
 
-            if (rowsAffected > 0) {
-                System.out.println("Gym successfully enrolled and associated with the manager.");
+                        if (rowsAffected > 0) {
+                            System.out.println("Gym successfully enrolled and associated with the manager.");
+                        } else {
+                            System.out.println("Error inserting new gym manager record.");
+                        }
             } else {
-                System.out.println("No gym found with the provided gymId.");
+                System.out.println("Gym manager not found with the provided ID.");
+                return;
             }
 
             connection.commit();
@@ -79,10 +91,11 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
             }
         } finally {
             try {
+                if (rs != null) rs.close();
                 if (stmt != null) stmt.close();
                 if (connection != null) connection.close();
-            } catch (Exception closeException) {
-                System.out.println("Error closing resources: " + closeException.getMessage());
+            } catch (Exception e) {
+                System.out.println("Error closing resources: " + e.getMessage());
             }
         }
     }
