@@ -1,31 +1,25 @@
 package com.flipfit.service;
 
-import com.flipfit.bean.*;
-import com.flipfit.dao.FlipFitUserDAOImpl;
-import com.flipfit.dao.FlipFitUserDAOInterface;
+import com.flipfit.bean.Slot;
+import com.flipfit.bean.User;
+import com.flipfit.business.CustomerInterface;
+import com.flipfit.dao.FlipFitSlotDAOImpl;
+import com.flipfit.dao.FlipFitSlotDAOInterface;
+import com.flipfit.dao.UserDAO;
+import com.flipfit.dao.UserDAOInterface;
+import com.flipfit.exception.SlotsUnavailableException;
+import com.flipfit.exception.UpdateFailedException;
+import com.flipfit.exception.UserNotFoundException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-public class FlipFitUserService implements FlipFitUserInterface{
-    private FlipFitUserDAOInterface userDAO = new FlipFitUserDAOImpl();
+public class FlipFitUserService implements FlipFitUserInterface {
+
+    private UserDAOInterface userDAO = new UserDAO();
     private FlipFitSlotDAOInterface flipFitSlotDAO = new FlipFitSlotDAOImpl();
 
-    //    @Override
-//    public void viewUserPlan(){
-//        try {
-//            // take user from DB.
-//            User user = new User();
-//            if(user== null){
-//                throw new UserNotFoundException();
-//            }
-//        }
-//        catch (UserNotFoundException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        finally {
-//            System.out.println("View User Plan");
-//        }
-//    }
     @Override
     public List<Slot> viewBookedSlots(String userId){
         // check if viewSlotForUser works properly.
@@ -54,18 +48,16 @@ public class FlipFitUserService implements FlipFitUserInterface{
     public void updateUserInfo(String userId,String phoneNumber,String emailAddress,String password) {
         try {
             User user = userDAO.getUserById(userId);
-            if(!phoneNumber.equalsIgnoreCase("0")){
+            if(phoneNumber != null){
                 user.setUserPhone(phoneNumber);
             }
-            if(!emailAddress.equalsIgnoreCase("0")){
+            else if(emailAddress != null){
                 user.setEmail(emailAddress);
             }
-            if(!password.equalsIgnoreCase("0")){
+            else{
                 user.setPassword(password);
             }
-            userDAO.updateUser(user);
-            User updatedUser = userDAO.getUserById(userId);
-            if(user != updatedUser){
+            if(!userDAO.updateUser(user)){
                 throw new UpdateFailedException();
             }
         }

@@ -1,10 +1,5 @@
 package com.flipfit.app;
 
-/**
- * Hello world!
- *
- */
-
 import com.flipfit.service.AdminServiceOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
