@@ -46,7 +46,7 @@ public class CustomerImpl implements CustomerInterface {
             for(String slotId : viewBookedSlotsByUser){
                 viewedSlots.add(flipFitSlotDAO.getSlot(slotId));
             }
-            if(viewedSlots.size()==0){
+            if(viewedSlots.isEmpty()){
                 throw new SlotsUnavailableException();
             }
             return viewedSlots;
