@@ -54,9 +54,9 @@ public class AdminImpl implements AdminInterface {
     }
 
     @Override
-    public void updateAdminPassword(String userName,String oldPassword,String newPassword){
+    public void updateAdminPassword(String userName,String newPassword){
         try{
-            adminDAO.updateAdminPassword(userName,oldPassword,newPassword);
+            adminDAO.updateAdminPassword(userName,newPassword);
         }
         catch(Exception e){
             System.out.println(e.getMessage());

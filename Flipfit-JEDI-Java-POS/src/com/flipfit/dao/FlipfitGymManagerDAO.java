@@ -36,7 +36,17 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
         try {
             connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);
-            // DO NOT RUN, WIP
+            stmtForGymManager = connection.prepareStatement("SELECT * FROM FlipfitSchema.gymManager WHERE gymManagerid = ?");
+            stmtForGymManager.setString(1, managerId);
+
+            String userId = UUID.randomUUID().toString();
+
+            ResultSet rs = stmtForGymManager.executeQuery();
+            GymManager gymManager = null;
+            if(rs.next()){
+                rs.
+            }
+
             stmt = connection.prepareStatement(
                     "INSERT  FlipfitSchema.gymManager " +
                             "SET gymId = ? " +

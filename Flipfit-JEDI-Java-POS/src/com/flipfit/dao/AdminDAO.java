@@ -103,14 +103,13 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface{
     }
 
     @Override
-    public void updateAdminPassword(String userName,String oldPassword,String newPassword){
+    public void updateAdminPassword(String userName,String newPassword){
         try{
             Connection connection = DatabaseConnection.connect();
             connection.setAutoCommit(false);
-            PreparedStatement stmt = connection.prepareStatement("UPDATE FlipfitSchema.admin SET password = ? WHERE userName = ? AND password = ?");
+            PreparedStatement stmt = connection.prepareStatement("UPDATE FlipfitSchema.admin SET password = ? WHERE userName = ?");
             stmt.setString(1, newPassword);
             stmt.setString(2, userName);
-            stmt.setString(3,oldPassword);
             stmt.executeUpdate();
             System.out.println("Password updated for userName: " + userName);
             connection.commit();
