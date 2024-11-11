@@ -38,18 +38,8 @@ public class GymManagerImpl implements GymManagerInterface {
     public void enrollGym(Gym gym,String managerId) {
         try {
             gymManagerDAO.enrollGym(gym, managerId);
-            List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms(managerId);
-            Boolean Check=false;
-            for(Gym g : ownedGyms){
-                if(g.equals(gym)){
-                    Check=true;
-                }
-            }
-            if(!Check){
-                throw new UpdateFailedException();
-            }
         }
-        catch (UpdateFailedException e) {
+        catch (Exception e) {
             System.out.println("GymManagerImpl.enrollGym: " + e.getMessage());
         }
         finally {

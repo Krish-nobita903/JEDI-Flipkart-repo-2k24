@@ -2,6 +2,7 @@ package com.flipfit.dao;
 
 import com.flipfit.bean.Gym;
 import com.flipfit.bean.GymManager;
+import com.flipfit.exception.UpdateFailedException;
 import com.flipfit.helper.DatabaseConnection;
 
 import java.sql.Connection;
@@ -45,14 +46,13 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
 
             GymManager gymManager = null;
             if (rs.next()) {
-                        String gymManagerId = rs.getString("gymManagerId");
+                        String gymManagerId = rs.getString("gymManagerid");
                         String userName  = rs.getString("userName");
                         String email = rs.getString("email");
                         String password = rs.getString("password");
                         String firstName = rs.getString("firstName");
                         String lastName = rs.getString("lastName");
-                        String userId = rs.getString("userId");
-
+                        String userId = UUID.randomUUID().toString();
                         stmt = connection.prepareStatement(
                                 "INSERT INTO FlipfitSchema.gymManager (gymManagerId, userName, email, password, firstName, lastName, userId, gymId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
                         );
@@ -72,12 +72,12 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
                             System.out.println("Gym successfully enrolled and associated with the manager.");
                         } else {
                             System.out.println("Error inserting new gym manager record.");
+                            throw new UpdateFailedException();
                         }
             } else {
                 System.out.println("Gym manager not found with the provided ID.");
-                return;
+                throw new UpdateFailedException();
             }
-
             connection.commit();
 
         } catch (Exception e) {
