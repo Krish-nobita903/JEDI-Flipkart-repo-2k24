@@ -64,7 +64,7 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
             connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement(
                     "UPDATE FlipfitSchema.user SET userName = ?, email = ?, password = ?, firstName = ?, lastName = ?" +
-                            ", bodyWeight = ?, phoneNumber = ? WHERE id = ?"
+                            ", bodyWeight = ?, phoneNumber = ? WHERE userId = ?"
             );
             stmt.setString(1, user.userName());
             stmt.setString(2, user.email());
@@ -88,15 +88,27 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
     @Override
     public User getUserById(String id){
         try{
+            User user = new User();
             Connection connection = DatabaseConnection.connect();
+            connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement(
-                    "SELECT * FROM FlipfitSchema.user WHERE id = ?"
+                    "SELECT * FROM FlipfitSchema.user WHERE userId = ?"
             );
             stmt.setString(1, id);
-            stmt.executeUpdate();
-            System.out.println("Record deleted for user id: "+ id);
+            ResultSet rs = stmt.executeQuery();
+            if( rs.next() ){
+                user.setId(rs.getString("userId"));
+                user.setUserName(rs.getString("userName"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                user.setUserPhone(rs.getString("phoneNumber"));
+                user.setUserWeight(rs.getInt("bodyWeight"));
+                user.setRole("USER");
+            }
             connection.commit();
-            connection.close();
+            return user;
         }
         catch(Exception e){
             System.out.println(e);
@@ -109,7 +121,7 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
         try{
             Connection connection = DatabaseConnection.connect();
             PreparedStatement stmt = connection.prepareStatement(
-                    "DELETE FROM FlipfitSchema.user WHERE id = ?"
+                    "DELETE FROM FlipfitSchema.user WHERE userId = ?"
             );
             stmt.setString(1, id);
             stmt.executeUpdate();
@@ -128,7 +140,7 @@ public class UserDAO implements UserDAOInterface, LoginInterface{
     public boolean updatePassword(String id, String password) {
         try {
             Connection conn=DatabaseConnection.connect();
-            PreparedStatement ps=conn.prepareStatement("UPDATE FlipfitSchema.user SET password = ? WHERE id = ?");
+            PreparedStatement ps=conn.prepareStatement("UPDATE FlipfitSchema.user SET password = ? WHERE userId = ?");
             ps.setString(1, password);
             ps.setString(2, id);
             ps.executeUpdate();

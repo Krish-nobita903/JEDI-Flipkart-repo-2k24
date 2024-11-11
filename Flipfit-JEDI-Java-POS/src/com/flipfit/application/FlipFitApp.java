@@ -72,10 +72,9 @@ public class FlipFitApp {
                     case 3 -> {
                         System.out.println("Please enter your username:");
                         String customerUserName = scanner.nextLine();
-                        scanner.nextLine();
+                        customerUserName = scanner.nextLine();
                         System.out.println("Please enter your password:");
                         String passwordForUser = scanner.nextLine();
-                        scanner.nextLine();
                         LoginInterface userLogin = new UserDAO();
                         String id = userLogin.login(customerUserName, passwordForUser);
                         if( id != null) {
@@ -164,21 +163,18 @@ public class FlipFitApp {
                 switch(choice){
                     case 1:
                         System.out.println("Enter Phone Number");
-                        String phoneNumber =  scanner.nextLine();
-                        scanner.nextLine();
-                        customer.updateUserInfo(id,phoneNumber,"0","0");
+                        String phoneNumber = scanner.nextLine();
+                        customer.updateUserInfo(id,phoneNumber,null,null);
                         break;
                     case 2:
                         System.out.println("Enter Email Address");
                         String emailAddress =  scanner.nextLine();
-                        scanner.nextLine();
-                        customer.updateUserInfo(id,"0",emailAddress,"0");
+                        customer.updateUserInfo(id,null,emailAddress,null);
                         break;
                     case 3:
                         System.out.println("Enter Password");
                         String password =  scanner.nextLine();
-                        scanner.nextLine();
-                        customer.updateUserInfo(id,"0","0",password);
+                        customer.updateUserInfo(id,null,null,password);
                         break;
                 }
             }

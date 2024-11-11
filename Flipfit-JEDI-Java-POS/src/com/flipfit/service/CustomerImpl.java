@@ -20,22 +20,6 @@ public class CustomerImpl implements CustomerInterface {
     private UserDAOInterface userDAO = new UserDAO();
     private FlipFitSlotDAOInterface flipFitSlotDAO = new FlipFitSlotDAOImpl();
 
-    //    @Override
-//    public void viewUserPlan(){
-//        try {
-//            // take user from DB.
-//            User user = new User();
-//            if(user== null){
-//                throw new UserNotFoundException();
-//            }
-//        }
-//        catch (UserNotFoundException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        finally {
-//            System.out.println("View User Plan");
-//        }
-//    }
     @Override
     public List<Slot> viewBookedSlots(String userId){
         // check if viewSlotForUser works properly.
@@ -64,18 +48,16 @@ public class CustomerImpl implements CustomerInterface {
     public void updateUserInfo(String userId,String phoneNumber,String emailAddress,String password) {
         try {
             User user = userDAO.getUserById(userId);
-            if(!phoneNumber.equalsIgnoreCase("0")){
+            if(phoneNumber != null){
                 user.setUserPhone(phoneNumber);
             }
-            if(!emailAddress.equalsIgnoreCase("0")){
+            else if(emailAddress != null){
                 user.setEmail(emailAddress);
             }
-            if(!password.equalsIgnoreCase("0")){
+            else{
                 user.setPassword(password);
             }
-            userDAO.updateUser(user);
-            User updatedUser = userDAO.getUserById(userId);
-            if(user != updatedUser){
+            if(!userDAO.updateUser(user)){
                 throw new UpdateFailedException();
             }
         }
