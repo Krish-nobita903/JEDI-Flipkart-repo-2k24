@@ -74,7 +74,7 @@ public class CustomerImpl implements CustomerInterface {
                 user.setPassword(password);
             }
             userDAO.updateUser(user);
-            User updatedUser = new User();
+            User updatedUser = userDAO.getUserById(userId);
             if(user != updatedUser){
                 throw new UpdateFailedException();
             }
