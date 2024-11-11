@@ -2,6 +2,7 @@ package com.flipfit.service;
 
 import com.flipfit.bean.Slot;
 import com.flipfit.business.SlotInterface;
+import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipFitSlotDAOInterface;
 import com.flipfit.exception.DeletionFailedException;
 import com.flipfit.exception.SlotInesrtionFailedException;
@@ -9,20 +10,20 @@ import com.flipfit.exception.SlotsUnavailableException;
 import com.flipfit.exception.UpdateFailedException;
 
 public class SlotImpl implements SlotInterface {
-    FlipFitSlotDAOInterface slotDAO;
+    private final FlipFitSlotDAOInterface slotDAO;
+
+    public SlotImpl(){
+        slotDAO = new FlipFitSlotDAOImpl();
+    }
+
     @Override
     public boolean addSlot(Slot slot) {
         try {
             // add impl and change if condition
             slotDAO.addSlot(slot);
-            String slotId = slot.getSlotId();
-            Slot newSlot = slotDAO.getSlot(slotId);
-            if(newSlot == null){
-                throw new SlotInesrtionFailedException();
-            }
             return true;
         }
-        catch (SlotInesrtionFailedException e) {
+        catch (Exception e) {
             System.out.println(e.getMessage());
         }
         finally {

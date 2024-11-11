@@ -57,11 +57,12 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
     public void addSlot(Slot slot) {
         try {
             Connection conn = DatabaseConnection.connect();
+            String slotId = UUID.randomUUID().toString();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO FlipFitSchema.slot (slotId, gymId, startTime, date, availableSeats, Training) VALUES (?, ?, ?, ?, ?, ?);");
-            ps.setString(1, slot.getSlotId());
+            ps.setString(1, slotId);
             ps.setString(2, slot.getGymId());
             ps.setString(3, slot.getStartTimeInUTC());
-            ps.setDate(4, (Date) slot.getDate());
+            ps.setDate(4, slot.getDate());
             ps.setInt(5, slot.getAvailableSeats());
             ps.setString(6, slot.getTraining().toString());
             ps.executeUpdate();

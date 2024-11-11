@@ -12,7 +12,7 @@ import com.flipfit.service.GymManagerImpl;
 import com.flipfit.service.SlotImpl;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -209,7 +209,6 @@ public class FlipFitApp {
                 break;
             }
             case 3 -> {
-                Slot slot = new Slot();
                 SlotInterface slotImpl = new SlotImpl();
                 System.out.println("Enter your Gym id for which you want to enter a slot: ");
                 String managerOwnedGymId = scanner.nextLine();
@@ -217,9 +216,10 @@ public class FlipFitApp {
                 System.out.println("Enter date for the slot in (format: yyyy-MM-dd):");
                 String dateInput = scanner.nextLine();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date date = null;
+                Date sqlDate = null;
                 try {
-                    date = dateFormat.parse(dateInput);
+                    java.util.Date utilDate = dateFormat.parse(dateInput);
+                    sqlDate = new Date(utilDate.getTime());
                 } catch (Exception e) {
                     System.out.println("Invalid date format. Please try again.");
                 }
@@ -227,6 +227,10 @@ public class FlipFitApp {
                 String startTime = scanner.nextLine();
                 System.out.println("Enter available seats for the slot: ");
                 int availableSeats = scanner.nextInt();
+                System.out.println("Enter training for the slot: ");
+                String training = scanner.nextLine();
+                training = scanner.nextLine();
+                Slot slot = new Slot("",managerOwnedGymId,startTime,sqlDate,availableSeats,training);
                 slotImpl.addSlot(slot);
             }
             case 4 -> {

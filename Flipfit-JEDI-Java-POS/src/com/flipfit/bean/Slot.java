@@ -1,7 +1,6 @@
 package com.flipfit.bean;
 
-import java.util.Date;
-import java.util.List;
+import java.sql.Date;
 
 public class Slot {
     private String slotId;
