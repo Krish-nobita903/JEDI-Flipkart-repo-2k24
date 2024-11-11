@@ -4,11 +4,15 @@ import com.flipfit.bean.*;
 import com.flipfit.business.AdminInterface;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.business.GymManagerInterface;
+import com.flipfit.business.SlotInterface;
 import com.flipfit.dao.*;
 import com.flipfit.service.AdminImpl;
 import com.flipfit.service.CustomerImpl;
 import com.flipfit.service.GymManagerImpl;
+import com.flipfit.service.SlotImpl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -189,7 +193,7 @@ public class FlipFitApp {
         System.out.println("Choose your option:");
         System.out.println("1.View Owned Gyms");
         System.out.println("2.Enroll your gym");
-        System.out.println("3.Update GYM details");
+        System.out.println("3.Add a slot for the gym");
         System.out.println("4.Update Password");
 
         int optionSelected = scanner.nextInt();
@@ -205,26 +209,25 @@ public class FlipFitApp {
                 break;
             }
             case 3 -> {
-                Gym managerOwnedGyms = new Gym();
-                System.out.println("Enter your Gym id: ");
+                Slot slot = new Slot();
+                SlotInterface slotImpl = new SlotImpl();
+                System.out.println("Enter your Gym id for which you want to enter a slot: ");
                 String managerOwnedGymId = scanner.nextLine();
-                System.out.println("What do you want to update: ");
-                System.out.println("1.RegionId: ");
-                System.out.println("2.PinCode ");
-                int optionSelectedForUpdate = scanner.nextInt();
-                switch (optionSelectedForUpdate){
-                    case 1:
-                        System.out.println("Enter RegionId ");
-                        String regionId = scanner.nextLine();
-                        manager.updateGymDetails(id,managerOwnedGymId,"0",regionId);
-                        break;
-                    case 2:
-                        System.out.println("Enter PinCode ");
-                        String Pincode = scanner.nextLine();
-                        manager.updateGymDetails(id,managerOwnedGymId,Pincode,"0");
-                        break;
+                managerOwnedGymId = scanner.nextLine();
+                System.out.println("Enter date for the slot in (format: yyyy-MM-dd):");
+                String dateInput = scanner.nextLine();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = null;
+                try {
+                    date = dateFormat.parse(dateInput);
+                } catch (Exception e) {
+                    System.out.println("Invalid date format. Please try again.");
                 }
-                break;
+                System.out.println("Enter start time for the slot: ");
+                String startTime = scanner.nextLine();
+                System.out.println("Enter available seats for the slot: ");
+                int availableSeats = scanner.nextInt();
+                slotImpl.addSlot(slot);
             }
             case 4 -> {
                 System.out.println("You have entered Update Password");

@@ -15,9 +15,8 @@ public class SlotImpl implements SlotInterface {
         try {
             // add impl and change if condition
             slotDAO.addSlot(slot);
-            int id = slot.getSlotId();
-            String SlotId = String.valueOf(id);
-            Slot newSlot = slotDAO.getSlot(SlotId);
+            String slotId = slot.getSlotId();
+            Slot newSlot = slotDAO.getSlot(slotId);
             if(newSlot == null){
                 throw new SlotInesrtionFailedException();
             }
@@ -36,11 +35,10 @@ public class SlotImpl implements SlotInterface {
     public boolean updateSlot(Slot slot) {
         try {
             // add impl and change if condition
-            int id = slot.getSlotId();
-            String SlotId = String.valueOf(id);
-            Slot oldSlot = slotDAO.getSlot(SlotId);
+            String slotId = slot.getSlotId();
+            Slot oldSlot = slotDAO.getSlot(slotId);
             slotDAO.updateSlot(oldSlot, slot);
-            Slot newSlot = slotDAO.getSlot(SlotId);
+            Slot newSlot = slotDAO.getSlot(slotId);
             if(!oldSlot.equals(newSlot)){
                 throw new UpdateFailedException();
             }
@@ -59,9 +57,8 @@ public class SlotImpl implements SlotInterface {
     public boolean deleteSlot(Slot slot) {
         try {
             slotDAO.deleteSlot(slot);
-            int slotId = slot.getSlotId();
-            String SlotId = String.valueOf(slotId);
-            Slot deletedSlot = slotDAO.getSlot(SlotId);
+            String slotId = slot.getSlotId();
+            Slot deletedSlot = slotDAO.getSlot(slotId);
             if(deletedSlot != null){
                 throw new DeletionFailedException();
             }

@@ -30,7 +30,7 @@ public class GymDAO implements GymDAOInterface{
 
             // Bulk insert for slots
             for( Slot slot : slotsAvailable) {
-                stmtForSlot.setInt(1, slot.id());
+                stmtForSlot.setString(1, slot.id());
                 stmtForSlot.setString(2, gymId);
                 stmtForSlot.setString(3, slot.startTimeInUTC());
                 stmtForSlot.setString(4, slot.date().toString());

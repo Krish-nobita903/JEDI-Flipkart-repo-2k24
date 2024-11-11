@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Slot {
-    private int slotId;
-    private int gymId;
+    private String slotId;
+    private String gymId;
     private String startTimeInUTC;
     private Date date;
     private int availableSeats;
@@ -15,7 +15,7 @@ public class Slot {
 
     }
 
-    public Slot(int slotId, int gymId, String startTimeInUTC, Date date, int availableSeats, String training) {
+    public Slot(String slotId, String gymId, String startTimeInUTC, Date date, int availableSeats, String training) {
         this.slotId = slotId;
         this.gymId = gymId;
         this.startTimeInUTC = startTimeInUTC;
@@ -23,20 +23,20 @@ public class Slot {
         this.availableSeats = availableSeats;
         this.training = training;
     }
-    public int id() {
+    public String id() {
         return slotId;
     }
 
-    public Slot setSlotId(int slotId) {
+    public Slot setSlotId(String slotId) {
         this.slotId = slotId;
         return this;
     }
 
-    public int gym() {
+    public String gym() {
         return gymId;
     }
 
-    public Slot setGymId(int gymId) {
+    public Slot setGymId(String gymId) {
         this.gymId = gymId;
         return this;
     }
@@ -77,11 +77,11 @@ public class Slot {
         return this.training();
     }
 
-    public int getSlotId() {
+    public String getSlotId() {
         return slotId;
     }
 
-    public int getGymId() {
+    public String getGymId() {
         return gymId;
     }
 

@@ -58,8 +58,8 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
         try {
             Connection conn = DatabaseConnection.connect();
             PreparedStatement ps = conn.prepareStatement("INSERT INTO FlipFitSchema.slot (slotId, gymId, startTime, date, availableSeats, Training) VALUES (?, ?, ?, ?, ?, ?);");
-            ps.setInt(1, slot.getSlotId());
-            ps.setInt(2, slot.getGymId());
+            ps.setString(1, slot.getSlotId());
+            ps.setString(2, slot.getGymId());
             ps.setString(3, slot.getStartTimeInUTC());
             ps.setDate(4, (Date) slot.getDate());
             ps.setInt(5, slot.getAvailableSeats());
@@ -77,9 +77,9 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM FlipFitSchema.slot ");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                int slotId = rs.getInt("slotId");
+                String slotId = rs.getString("slotId");
 
-                int gymIdForSlot = rs.getInt("gymId");
+                String gymIdForSlot = rs.getString("gymId");
 
                 String startTime = rs.getString("startTime");
                 Date date = rs.getDate("date");
@@ -102,9 +102,9 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
             ps.setInt(1, gymId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                int slotId = rs.getInt("slotId");
+                String slotId = rs.getString("slotId");
 
-                int gymIdForSlot = rs.getInt("gymId");
+                String gymIdForSlot = rs.getString("gymId");
 
                 String startTime = rs.getString("startTime");
                 Date date = rs.getDate("date");
@@ -130,10 +130,10 @@ public class FlipFitSlotDAOImpl implements FlipFitSlotDAOInterface{
         try{
             Connection conn = DatabaseConnection.connect();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM FlipFitSchema.slot WHERE slotId = ?");
-            ps.setInt(1, slot.getSlotId());
+            ps.setString(1, slot.getSlotId());
             ResultSet rs = ps.executeQuery();
-            int slotId = rs.getInt("slotId");
-            int gymId = rs.getInt("gymId");
+            String slotId = rs.getString("slotId");
+            String gymId = rs.getString("gymId");
             String startTime = rs.getString("startTime");
             Date date = rs.getDate("date");
             int availableSeats = rs.getInt("availableSeats");
