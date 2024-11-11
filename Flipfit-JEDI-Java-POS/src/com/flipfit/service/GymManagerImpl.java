@@ -15,10 +15,14 @@ public class GymManagerImpl implements GymManagerInterface {
     FlipfitGymManagerDAO gymManagerDAO = new FlipfitGymManagerDAO();
     @Override
     public List<Gym> viewOwnedGyms(String managerId) {
+        List<Gym> managedGyms = null;
         try {
-            List<Gym> ownedGyms = gymManagerDAO.getOwnedGyms(managerId);
-            if(ownedGyms == null){
+            managedGyms = gymManagerDAO.getOwnedGyms(managerId);
+            if(managedGyms == null){
                 throw new GymListNotFoundException();
+            }
+            for(Gym gym : managedGyms){
+                System.out.println("Gym id: " + gym.gymId() + " Region id: " + gym.region() + " Pincode: " + gym.pinCode());
             }
         }
         catch (GymListNotFoundException e) {
@@ -27,9 +31,7 @@ public class GymManagerImpl implements GymManagerInterface {
         finally {
             System.out.println("Viewed All Gyms successfully");
         }
-        List<Gym> managedGyms = gymManagerDAO.getOwnedGyms(managerId);
         return managedGyms;
-
     }
 
     @Override
