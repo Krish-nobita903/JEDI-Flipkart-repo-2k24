@@ -42,7 +42,7 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
             String userId = UUID.randomUUID().toString();
 
             ResultSet rs = stmtForGymManager.executeQuery();
-            GymManager gymManager = new GymManager();
+            GymManager gymManager = null;
             if(rs.next()){
                 rs.
             }
