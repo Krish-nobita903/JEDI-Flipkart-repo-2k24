@@ -60,7 +60,7 @@ public class GymManagerImpl implements GymManagerInterface {
     @Override
     public void updateSlot() {
         try {
-
+            
         }
         catch (Exception e) {
 
@@ -100,6 +100,17 @@ public class GymManagerImpl implements GymManagerInterface {
         }
         finally {
             System.out.println("Gym updated successfully");
+        }
+    }
+
+    @Override
+    public void updatePassword(String userName,String oldPassword,String newPassword)
+    {
+        try{
+            gymManagerDAO.updatePassword(userName,oldPassword,newPassword);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }
