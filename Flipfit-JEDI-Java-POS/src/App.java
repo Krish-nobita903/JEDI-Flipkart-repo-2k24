@@ -5,11 +5,10 @@ package com.flipfit.app;
  *
  */
 
-import com.flipfit.service.AdminServiceOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.flipfit.restcontroller.*;
+import com.flipfit.rest.*;
 
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
@@ -28,8 +27,7 @@ public class App extends Application<Configuration>
     public void run(Configuration c, Environment e) throws Exception {
         LOGGER.info("Registering REST resources");
         //  e.jersey().register(new EmployeeRESTController(e.getValidator()));
-        System.out.println("/nAdmin Working/n");
-        e.jersey().register(new AdminController(new AdminServiceOperation()));
+        e.jersey().register(new AdminGMSRESTService());
 //        e.jersey().register(new GymOwnerGMSRESTService());
 //        e.jersey().register(new UserGMSRESTService());
         e.jersey().register(new HelloController());

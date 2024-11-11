@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.flipfit.app"},{"l":"com.flipfit.constants"},{"l":"com.flipfit.dao"},{"l":"com.flipfit.exception"},{"l":"com.flipfit.restcontroller"},{"l":"com.flipfit.service"},{"l":"com.flipfit.utils"},{"l":"org.example"}];updateSearchResults();
