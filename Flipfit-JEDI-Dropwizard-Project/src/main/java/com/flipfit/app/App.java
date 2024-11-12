@@ -22,7 +22,7 @@ public class App extends Application<Configuration>
     @Override
     public void run(Configuration c, Environment e) throws Exception {
         LOGGER.info("Registering REST resources");
-//          e.jersey().register(new EmployeeRESTController(e.getValidator()));
+         // e.jersey().register(new EmployeeRESTController(e.getValidator()));
         System.out.println("/nAdmin Working/n");
         e.jersey().register(new AdminController(new AdminServiceOperation()));
 //        e.jersey().register(new GymOwnerGMSRESTService());
