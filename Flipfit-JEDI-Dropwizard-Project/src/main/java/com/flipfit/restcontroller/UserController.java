@@ -66,4 +66,19 @@ public class UserController {
                     .entity("Failed to update user info: " + e.getMessage()).build();
         }
     }
+
+    @GET
+    @Path("/login")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(@QueryParam("userName") String userName,@QueryParam("password") String password){
+        try {
+            String userId=userService.login(userName, password);
+            if(userId == null){
+                throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+            }
+            return Response.ok(userId).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Failed to login: " + e.getMessage()).build();
+        }
+    }
 }

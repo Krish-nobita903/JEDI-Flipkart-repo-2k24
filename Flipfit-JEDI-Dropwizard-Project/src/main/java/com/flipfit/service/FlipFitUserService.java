@@ -6,12 +6,15 @@ import com.flipfit.business.CustomerInterface;
 import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipFitSlotDAOInterface;
 import com.flipfit.dao.FlipFitUserDAOImpl;
+import com.flipfit.dao.FlipFitUserDAOInterface;
+import com.flipfit.dao.FlipFitUserDAOImpl;
 import com.flipfit.dao.UserDAO;
 import com.flipfit.dao.UserDAOInterface;
 import com.flipfit.exception.SlotsUnavailableException;
 import com.flipfit.exception.UpdateFailedException;
 import com.flipfit.exception.UserNotFoundException;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -57,6 +60,18 @@ public class FlipFitUserService implements FlipFitUserInterface {
             System.out.println("View Booked slots");
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public String login(String userId, String password) {
+            String id=userDAO.login(userId, password);
+            if(id==null){
+                System.out.println("Login failed");
+            }
+            else {
+                System.out.println("Login successful");
+            }
+            return id;
     }
 
     @Override

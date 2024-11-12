@@ -19,7 +19,7 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
     }
 
     @Override
-    public boolean login(String username, String password){
+    public String login(String username, String password){
         try{
             Connection connection = DatabaseConnector.connect();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.user WHERE userName = ? AND password = ?");
@@ -27,12 +27,12 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if( rs.next() ){
-                return true;
+                return rs.getString("userId");
             }
         }catch (Exception e){
             System.err.println(e.getMessage());
         }
-        return false;
+        return null;
     }
 
     @Override

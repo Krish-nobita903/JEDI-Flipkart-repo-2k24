@@ -26,6 +26,18 @@ public class AdminServiceOperation implements AdminService {
     }
 
     @Override
+    public String login(String userId, String password) {
+        String id=adminDAO.login(userId, password);
+        if(id==null){
+            System.out.println("Login failed");
+        }
+        else {
+            System.out.println("Login successful");
+        }
+        return id;
+    }
+
+    @Override
     public void addGym(String regionId,int pinCode){
         Slot[] slotsArray = new Slot[0];
         //GymDAO.createGym(regionId,pinCode,slotsArray);

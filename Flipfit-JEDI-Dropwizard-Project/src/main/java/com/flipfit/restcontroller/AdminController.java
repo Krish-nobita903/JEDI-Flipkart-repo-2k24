@@ -68,6 +68,22 @@ public class AdminController {
         }
     }
 
+    @GET
+    @Path("/login")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(@QueryParam("userName") String userName,@QueryParam("password") String password){
+        try {
+            String adminUserId=adminService.login(userName, password);
+            if(adminUserId == null){
+                throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+            }
+            return Response.ok(adminUserId).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Failed to login: " + e.getMessage()).build();
+        }
+    }
+
+
     @PUT
     @Path("/addAdmin")
     @Produces(MediaType.APPLICATION_JSON)

@@ -10,13 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class AdminDAO implements AdminDAOInterface,RegisterAdminInterface{
-
+public class AdminDAO implements AdminDAOInterface, LoginInterface{
     @Override
-    public boolean register(String username, String password, String firstName, String lastName, String email){
-        String gymId = UUID.randomUUID().toString();
-        addGymManager(username,email,password,firstName,lastName,gymId);
-        return true;
+    public String login(String username, String password) {
+        try{
+            Connection connection = DatabaseConnector.connect();
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.admin WHERE userName = ? AND password = ?");
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            if( rs.next() ){
+                return rs.getString("userId");
+            }
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+        return null;
     }
 
     @Override
