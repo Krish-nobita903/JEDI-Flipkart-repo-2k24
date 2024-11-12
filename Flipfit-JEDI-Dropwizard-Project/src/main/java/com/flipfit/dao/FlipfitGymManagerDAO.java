@@ -32,7 +32,6 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
             System.out.println("New gymManager created with managerid: " + managerId);
             connection.commit();
             stmt.close();
-            connection.close();
         }
         catch(Exception e){
             System.out.println(e);
@@ -121,7 +120,6 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
             try {
                 if (rs != null) rs.close();
                 if (stmt != null) stmt.close();
-                if (connection != null) connection.close();
             } catch (Exception e) {
                 System.out.println("Error closing resources: " + e.getMessage());
             }
@@ -157,7 +155,6 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
 
             rs.close();
             stmt.close();
-            connection.close();
         } catch (Exception e) {
             System.out.println("Error while retrieving gyms: " + e.getMessage());
         }
@@ -204,7 +201,6 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
         } finally {
             try {
                 if (stmt != null) stmt.close();
-                if (connection != null) connection.close();
             } catch (Exception closeException) {
                 System.out.println("Error closing resources: " + closeException.getMessage());
             }
@@ -225,7 +221,6 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
             System.out.println("Password updated for userName: " + userName);
             connection.commit();
             stmt.close();
-            connection.close();
         }
         catch(Exception e){
             System.out.println(e);

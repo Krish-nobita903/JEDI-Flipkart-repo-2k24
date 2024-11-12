@@ -41,15 +41,19 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface, RegisterAdmi
         List<User> userList = new ArrayList<User>();
         String sql = "SELECT * FROM FlipfitSchema.user";
 
-        try(Connection connnection = DatabaseConnector.connect();
-            PreparedStatement preparedStatement = connnection.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();){
+        try{
+            Connection connection = DatabaseConnector.connect();
+            connection.setAutoCommit(false);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
                 User user = new User();
                 user.setId(rs.getString("userId"));
                 user.setUserName(rs.getString("userName"));
                 userList.add(user);
             }
+            connection.commit();
+            preparedStatement.close();
         }catch(Exception e){
             System.out.println(e);
         }
@@ -73,11 +77,10 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface, RegisterAdmi
             stmt.setString(6, lastName);
             stmt.setString(7, userId);
             stmt.setString(8, gymId);
-            stmt.executeUpdate();
+            stmt.executeQuery();
             System.out.println("New admin created with admin id: " + userId);
             connection.commit();
             stmt.close();
-            connection.close();
         }
         catch(Exception e){
             System.out.println(e);
@@ -100,7 +103,6 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface, RegisterAdmi
             System.out.println("New region created with region id: " + regionId);
             connection.commit();
             stmt.close();
-            connection.close();
         }
         catch(Exception e){
             System.out.println(e);
@@ -117,12 +119,10 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface, RegisterAdmi
             PreparedStatement stmt = connection.prepareStatement("UPDATE FlipfitSchema.admin SET password = ? WHERE userName = ?");
             stmt.setString(1, newPassword);
             stmt.setString(2, userName);
-            stmt.executeUpdate();
+            stmt.executeQuery();
             System.out.println("Password updated for userName: " + userName);
             connection.commit();
-            stmt.close();
-            connection.close();
-        }
+            stmt.close();        }
         catch(Exception e){
             System.out.println(e);
         }finally{

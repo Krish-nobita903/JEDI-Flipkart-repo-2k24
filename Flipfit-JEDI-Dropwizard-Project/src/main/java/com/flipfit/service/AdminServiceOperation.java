@@ -2,7 +2,7 @@ package com.flipfit.service;
 
 import com.flipfit.bean.Slot;
 import com.flipfit.bean.User;
-import com.flipfit.dao.AdminDAO;
+import com.flipfit.dao.*;
 import com.flipfit.dao.AdminDAOInterface;
 import com.flipfit.service.AdminService;
 import java.util.ArrayList;
@@ -40,7 +40,8 @@ public class AdminServiceOperation implements AdminService {
     @Override
     public void addGym(String regionId,int pinCode){
         Slot[] slotsArray = new Slot[0];
-        //GymDAO.createGym(regionId,pinCode,slotsArray);
+        GymDAOInterface gymDAO = new GymDAO();
+        gymDAO.createGym(regionId,pinCode,slotsArray);
     }
 
     @Override
