@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterface{
 
     @Override
-    public String login(String username, String password){
+    public boolean login(String username, String password){
         try{
             Connection connection = DatabaseConnector.connect();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.user WHERE userName = ? AND password = ?");
@@ -20,12 +20,12 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if( rs.next() ){
-                return rs.getString("userId");
+                return true;
             }
         }catch (Exception e){
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     @Override
