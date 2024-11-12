@@ -32,7 +32,7 @@ public class FlipFitUserService implements FlipFitUserInterface {
             }
             return false;
         }
-        catch (exception e){
+        catch (Exception e){
             System.out.println(e.getMessage());
         }
         return false;
