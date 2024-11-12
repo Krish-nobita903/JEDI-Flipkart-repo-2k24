@@ -1,7 +1,6 @@
 package com.flipfit.dao;
 
 import com.flipfit.bean.Slot;
-import com.flipfit.utils.DatabaseConnector;
 
 
 import java.sql.*;
