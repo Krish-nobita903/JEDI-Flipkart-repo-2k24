@@ -28,7 +28,7 @@ public class GymManagerController {
         try {
             List<Gym> ownedGyms = gymManagerService.viewOwnedGyms(managerId);
             return Response.ok(ownedGyms).build();
-        } catch (GymListNotFoundException e) {
+        } catch (Exception e) {
             return Response.status(Response.Status.NOT_FOUND)
                     .entity("No gyms found for the provided managerId: " + managerId).build();
         }
@@ -56,7 +56,7 @@ public class GymManagerController {
         try {
             gymManagerService.updateGymDetails(managerId, gymId, pinCode, regionId);
             return Response.ok("Gym details updated successfully.").build();
-        } catch (UpdateFailedException e) {
+        } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("Failed to update gym details: " + e.getMessage()).build();
         }

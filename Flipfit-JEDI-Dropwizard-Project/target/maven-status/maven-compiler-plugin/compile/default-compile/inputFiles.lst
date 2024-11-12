@@ -1,4 +1,3 @@
-/Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/FlipFitSlotDaoImpl.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/exception/SlotInesrtionFailedException.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/bean/Region.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/FlipFitUserDAOInterface.java
@@ -13,13 +12,13 @@
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/exception/SlotsUnavailableException.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/exception/GymListNotFoundException.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/exception/UserNotFoundException.java
-/Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/FlipFitSlotDaoInterface.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/service/AdminServiceOperation.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/org/example/Main.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/exception/PaymentFailedException.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/GymDAOInterface.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/exception/RegisterationFailedException.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/GymDAO.java
+/Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/FlipFitSlotDAOImpl.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/RegisterAdminInterface.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/restcontroller/AdminController.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/RegisterGymManagerInterface.java
@@ -45,6 +44,7 @@
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/service/SlotImpl.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/app/App.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/RegionDAOInterface.java
+/Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/FlipFitSlotDAOInterface.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/RegisterUserInterface.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/restcontroller/GymManagerController.java
 /Users/krish.srivastava/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/AdminDAO.java

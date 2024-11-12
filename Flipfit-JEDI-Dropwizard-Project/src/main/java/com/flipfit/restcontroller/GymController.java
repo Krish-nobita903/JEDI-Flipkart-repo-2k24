@@ -34,7 +34,7 @@ public class GymController {
                         .build();
             }
             return Response.ok(bookings).build();
-        } catch (BookingFailedException e) {
+        } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Failed to retrieve bookings: " + e.getMessage())
                     .build();
@@ -48,7 +48,7 @@ public class GymController {
         try {
             gymService.updateTrainingsAvailable(gymId, updatedTrainings);
             return Response.ok("Trainings updated successfully").build();
-        } catch (UpdateFailedException e) {
+        } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Failed to update trainings: " + e.getMessage())
                     .build();
@@ -67,7 +67,7 @@ public class GymController {
                         .build();
             }
             return Response.ok(availableSlots).build();
-        } catch (BookingFailedException e) {
+        } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Failed to fetch available slots: " + e.getMessage())
                     .build();

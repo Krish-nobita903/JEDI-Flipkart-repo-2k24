@@ -1,0 +1,9 @@
+com.flipfit.app
+com.flipfit.bean
+com.flipfit.constants
+com.flipfit.dao
+com.flipfit.exception
+com.flipfit.restcontroller
+com.flipfit.service
+com.flipfit.utils
+org.example
