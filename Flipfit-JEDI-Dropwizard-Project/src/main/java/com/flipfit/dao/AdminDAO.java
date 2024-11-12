@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class AdminDAO implements AdminDAOInterface, LoginInterface{
+public class AdminDAO implements AdminDAOInterface, LoginInterface, RegisterAdminInterface{
     @Override
     public String login(String username, String password) {
         try{
@@ -27,6 +27,14 @@ public class AdminDAO implements AdminDAOInterface, LoginInterface{
         }
         return null;
     }
+
+    @Override
+    public boolean register(String username, String password, String firstName, String lastName, String email){
+        String gymId = UUID.randomUUID().toString();
+        addGymManager(username,email,password,firstName,lastName,gymId);
+        return true;
+    }
+
 
     @Override
     public List<User> getUserList(){
