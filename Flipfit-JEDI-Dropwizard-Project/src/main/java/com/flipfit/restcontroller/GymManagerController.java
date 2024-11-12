@@ -21,9 +21,10 @@ public class GymManagerController {
     public GymManagerController() {
         this.gymManagerService = new GymManagerImpl();
     }
+
     @PUT
     @Path("/addGymManager")
-    public Response getOwnedGyms(@PathParam("name") String name,@PathParam("email") String email,@PathParam("password")String password,@PathParam("firstName")String firstName,@PathParam("lastName")String lastName) {
+    public Response addGymManager(@PathParam("name") String name,@PathParam("email") String email,@PathParam("password")String password,@PathParam("firstName")String firstName,@PathParam("lastName")String lastName) {
         try {
             gymManagerService.createGymManager(name, email, password, firstName, lastName);
             return Response.ok().build();
