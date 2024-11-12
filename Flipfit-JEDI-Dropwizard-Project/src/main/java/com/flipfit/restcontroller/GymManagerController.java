@@ -28,9 +28,9 @@ public class GymManagerController {
         try {
             gymManagerService.createGymManager(name, email, password, firstName, lastName);
             return Response.ok().build();
-        } catch (GymListNotFoundException e) {
+        } catch (Exception e) {
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity("No gyms found for the provided managerId: " + managerId).build();
+                    .entity("Gym manager Created " ).build();
         }
     }
 

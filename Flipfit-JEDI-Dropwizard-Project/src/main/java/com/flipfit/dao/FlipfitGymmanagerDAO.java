@@ -45,7 +45,7 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
     @Override
     public String login(String gymManagerId, String password){
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM FlipfitSchema.gymManager WHERE gymManagerid = ? AND password = ?");
             stmt.setString(1, gymManagerId);
             stmt.setString(2, password);
@@ -65,7 +65,7 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
         ResultSet rs = null;
 
         try {
-            connection = DatabaseConnection.connect();
+            connection = DatabaseConnector.connect();
             connection.setAutoCommit(false);
 
             // Retrieve existing GymManager information
@@ -134,7 +134,7 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
     public List<Gym> getOwnedGyms(String managerId) {
         List<Gym> gyms = new ArrayList<>();
         try {
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             PreparedStatement stmt = connection.prepareStatement(
                     "SELECT g.gymId, g.regionId, g.postalCode " +
                             "FROM FlipfitSchema.gym g " +
@@ -171,7 +171,7 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
         PreparedStatement stmt = null;
 
         try {
-            connection = DatabaseConnection.connect();
+            connection = DatabaseConnector.connect();
             String gymIdToChange = updatedGymDetails.gymId();
             stmt = connection.prepareStatement(
                     "UPDATE FlipfitSchema.gym " +
@@ -216,7 +216,7 @@ public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, Logi
     public void updatePassword(String userName,String oldPassword,String newPassword)
     {
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             connection.setAutoCommit(false);
             PreparedStatement stmt = connection.prepareStatement("UPDATE FlipfitSchema.gymManager SET password = ? WHERE userName = ? AND password = ?");
             stmt.setString(1, newPassword);
