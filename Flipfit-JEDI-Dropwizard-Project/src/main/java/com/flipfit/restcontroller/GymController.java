@@ -24,7 +24,8 @@ public class GymController {
     @POST
     @Path("/create")
     public Response createGym(Gym gym) {
-        boolean isCreated = gymService.createGym(gym.getRegionId(), gym.getPincode(), gym.getSlotsAvailable());
+
+        boolean isCreated = gymService.createGym(gym.getRegionId(), gym.getPincode(), null);
         if (isCreated) {
             return Response.status(Response.Status.CREATED)
                     .entity("Gym successfully created")
@@ -66,19 +67,4 @@ public class GymController {
         }
     }
 
-    // Endpoint to delete a gym
-    @DELETE
-    @Path("/{gymId}")
-    public Response deleteGym(@PathParam("gymId") String gymId) {
-        boolean isDeleted = gymService.deleteGym(gymId);
-        if (isDeleted) {
-            return Response.status(Response.Status.OK)
-                    .entity("Gym successfully deleted")
-                    .build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Gym not found")
-                    .build();
-        }
-    }
 }

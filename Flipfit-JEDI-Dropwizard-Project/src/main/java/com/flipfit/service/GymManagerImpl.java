@@ -3,7 +3,6 @@ package com.flipfit.service;
 import com.flipfit.bean.Gym;
 import com.flipfit.business.GymManagerInterface;
 import com.flipfit.business.SlotInterface;
-import com.flipfit.dao.FlipFitGymManagerDAOInterface;
 import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipfitGymManagerDAO;
 import com.flipfit.exception.GymListNotFoundException;
