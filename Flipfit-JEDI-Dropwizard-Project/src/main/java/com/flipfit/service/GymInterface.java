@@ -1,11 +1,11 @@
-package com.flipfit.dao;
+package com.flipfit.service;
 
-import com.flipfit.bean.Gym;
 import com.flipfit.bean.Slot;
 
+import java.util.List;
+
 public interface GymInterface {
-    public boolean createGym(String regionId, int pincode, Slot[] slotsAvailable);
-    public boolean updateGym(Gym gym);
-    public Gym viewGym(String gymId);
-    public boolean deleteGym(String gymId);
+    public List<Slot> viewBookings(String gymId);
+    public void updateTrainingsAvailable(String gymId,List<String>updatedTrainings);
+    public List<Slot> isAvailableSlots(Integer gymId);
 }

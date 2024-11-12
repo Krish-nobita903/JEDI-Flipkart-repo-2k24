@@ -1,4 +1,4 @@
-package com.flipfit.controller;
+package com.flipfit.restcontroller;
 
 import com.flipfit.bean.Gym;
 import com.flipfit.service.GymManagerImpl;

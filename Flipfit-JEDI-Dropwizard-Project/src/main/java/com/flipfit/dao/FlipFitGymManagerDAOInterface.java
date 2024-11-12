@@ -1,7 +1,7 @@
 package com.flipfit.dao;
 
 import java.util.List;
-import flipfit.bean.Gym;
+import com.flipfit.bean.Gym;
 
 public interface FlipFitGymManagerDAOInterface {
 

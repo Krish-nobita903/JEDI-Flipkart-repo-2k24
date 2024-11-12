@@ -3,7 +3,7 @@ package com.flipfit.dao;
 import com.flipfit.bean.Gym;
 import com.flipfit.bean.Region;
 import com.flipfit.bean.Slot;
-import com.flipfit.helper.DatabaseConnection;
+import com.flipfit.utils.DatabaseConnector;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.UUID;
@@ -14,7 +14,7 @@ public class GymDAO implements GymDAOInterface{
     @Override
     public boolean createGym(String regionId, int pincode, Slot[] slotsAvailable){
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             connection.setAutoCommit(false);
             String gymId = UUID.randomUUID().toString();
 
@@ -55,7 +55,7 @@ public class GymDAO implements GymDAOInterface{
     @Override
     public boolean updateGym(Gym gym) {
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             connection.setAutoCommit(false);
 
             PreparedStatement stmtForGym = connection.prepareStatement("INSERT INTO FlipfitSchema.gym (regionId,regionId,postalCode) values(?,?,?)");
@@ -79,7 +79,7 @@ public class GymDAO implements GymDAOInterface{
     public Gym viewGym(String gymId) {
         Gym gym = null;
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             connection.setAutoCommit(false);
 
             PreparedStatement stmtForGym = connection.prepareStatement("SELECT * FROM FlipfitSchema.gym WHERE gymId = ?");
@@ -118,7 +118,7 @@ public class GymDAO implements GymDAOInterface{
     @Override
     public boolean deleteGym(String gymId) {
         try{
-            Connection connection = DatabaseConnection.connect();
+            Connection connection = DatabaseConnector.connect();
             connection.setAutoCommit(false);
             PreparedStatement stmtForGym = connection.prepareStatement("DELETE FROM FlipfitSchema.gym WHERE gymId = ?");
             stmtForGym.setString(1, gymId);

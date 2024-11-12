@@ -3,7 +3,6 @@ package com.flipfit.dao;
 import com.flipfit.bean.Gym;
 import com.flipfit.bean.GymManager;
 import com.flipfit.exception.UpdateFailedException;
-import com.flipfit.helper.DatabaseConnection;
 import com.flipfit.utils.DatabaseConnector;
 
 import java.sql.Connection;
