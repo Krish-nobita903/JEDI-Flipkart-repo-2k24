@@ -2,14 +2,12 @@ package com.flipfit.service;
 
 import com.flipfit.bean.Slot;
 import com.flipfit.bean.User;
-import com.flipfit.business.CustomerInterface;
+import com.flipfit.service.FlipFitUserInterface;
 import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipFitSlotDAOInterface;
 import com.flipfit.dao.FlipFitUserDAOImpl;
 import com.flipfit.dao.FlipFitUserDAOInterface;
 import com.flipfit.dao.FlipFitUserDAOImpl;
-import com.flipfit.dao.UserDAO;
-import com.flipfit.dao.UserDAOInterface;
 import com.flipfit.exception.SlotsUnavailableException;
 import com.flipfit.exception.UpdateFailedException;
 import com.flipfit.exception.UserNotFoundException;
