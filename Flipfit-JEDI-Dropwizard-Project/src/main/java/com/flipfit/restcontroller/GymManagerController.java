@@ -22,18 +22,6 @@ public class GymManagerController {
         this.gymManagerService = new GymManagerImpl();
     }
 
-    @PUT
-    @Path("/addGymManager")
-    public Response addGymManager(@QueryParam("name") String name,@QueryParam("email") String email,@QueryParam("password")String password,@QueryParam("firstName")String firstName,@QueryParam("lastName")String lastName) {
-        try {
-            gymManagerService.createGymManager(name, email, password, firstName, lastName);
-            return Response.ok().build();
-        } catch (Exception e) {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Gym manager Created " ).build();
-        }
-    }
-
     @GET
     @Path("/ownedgyms/{managerId}")
     public Response getOwnedGyms(@PathParam("managerId") String managerId) {
