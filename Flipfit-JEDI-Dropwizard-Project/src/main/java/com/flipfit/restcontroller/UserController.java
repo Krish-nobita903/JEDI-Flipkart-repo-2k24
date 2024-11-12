@@ -41,6 +41,19 @@ public class UserController {
         }
     }
 
+    @PUT
+    @Path("/addUser")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addUser(@QueryParam("userName") String userName, @QueryParam("password") String password,@QueryParam("firstName") String firstName,@QueryParam("lastName") String lastName,@QueryParam("phoneNumber") String phoneNumber,@QueryParam("bodyWeight") double bodyWeight){
+        try{
+            userService.addUser(userName, email, password, firstName, lastName, phoneNumber, bodyWeight);
+            return Response.ok("User Info updated successfully").build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Failed to update user info: " + e.getMessage()).build();
+        }
+    }
+
     @DELETE
     @Path("/cancelSlot")
     @Produces(MediaType.APPLICATION_JSON)

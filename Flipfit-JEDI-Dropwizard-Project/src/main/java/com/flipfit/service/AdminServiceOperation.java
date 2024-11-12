@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AdminServiceOperation implements AdminService {
-    AdminDAOInterface adminDAO = new AdminDAO();
+    AdminDAO adminDAO = new AdminDAO();
 
     Scanner obj = new Scanner(System.in);
 
@@ -34,6 +34,21 @@ public class AdminServiceOperation implements AdminService {
     @Override
     public void addRegion(String regionName){
         adminDAO.addRegion(regionName);
+    }
+
+    @Override
+    public boolean addAdminUser(String username, String password, String firstName, String lastName, String email){
+        try
+        {
+            if(adminDAO.register(username, password, firstName, lastName, email)){
+                return true;
+            }
+            return false;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
     }
 
     @Override

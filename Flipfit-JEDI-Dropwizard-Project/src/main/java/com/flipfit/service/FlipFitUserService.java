@@ -5,6 +5,7 @@ import com.flipfit.bean.User;
 import com.flipfit.business.CustomerInterface;
 import com.flipfit.dao.FlipFitSlotDAOImpl;
 import com.flipfit.dao.FlipFitSlotDAOInterface;
+import com.flipfit.dao.FlipFitUserDAOImpl;
 import com.flipfit.dao.UserDAO;
 import com.flipfit.dao.UserDAOInterface;
 import com.flipfit.exception.SlotsUnavailableException;
@@ -17,8 +18,22 @@ import java.util.Scanner;
 
 public class FlipFitUserService implements FlipFitUserInterface {
 
-    private UserDAOInterface userDAO = new UserDAO();
+    private FlipFitUserDAOImpl userDAO = new FlipFitUserDAOImpl();
     private FlipFitSlotDAOInterface flipFitSlotDAO = new FlipFitSlotDAOImpl();
+
+    @Override
+    public boolean addUser(String userName,String  email,String  password,String  firstName,String  lastName,String  phoneNumber,double bodyWeight){
+        try{
+            if(userDAO.createUser(userName,email,password,firstName,lastName,phoneNumber,bodyWeight)){
+                return true;
+            }
+            return false;
+        }
+        catch (exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 
     @Override
     public List<Slot> viewBookedSlots(String userId){
