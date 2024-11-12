@@ -1,10 +1,9 @@
-package com.flipfit.service;
-
-import com.flipkart.bean.*;
+package com.flipfit.dao;
 
 import java.util.List;
+import flipfit.bean.Gym;
 
-public interface FlipFitGymOwnerService{
+public interface FlipFitGymManagerDAOInterface {
 
     //public void createGymManager(GymManager gymManager);
     void enrollGym(Gym gym,String managerId);
