@@ -16,10 +16,21 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class GymManagerController {
 
-    private final GymManagerInterface gymManagerService;
+    private GymManagerImpl gymManagerService;
 
     public GymManagerController() {
         this.gymManagerService = new GymManagerImpl();
+    }
+    @PUT
+    @Path("/addGymManager")
+    public Response getOwnedGyms(@PathParam("name") String name,@PathParam("email") String email,@PathParam("password")String password,@PathParam("firstName")String firstName,@PathParam("lastName")String lastName) {
+        try {
+            gymManagerService.createGymManager(name, email, password, firstName, lastName);
+            return Response.ok().build();
+        } catch (GymListNotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("No gyms found for the provided managerId: " + managerId).build();
+        }
     }
 
     @GET

@@ -89,8 +89,8 @@ public class AdminController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addAdmin(@QueryParam("userName") String userName,@QueryParam("password") String password, @QueryParam("firstName") String firstName ,@QueryParam("lastName") String lastName ,@QueryParam("email") String email) {
         try {
-            adminService.updateAdminPassword(userName, newPassword);
-            return Response.ok("Admin Password updated successfully").build();
+            adminService.addAdminUser(userName, password, firstName, lastName, email);
+            return Response.ok("Admin added successfully").build();
         }catch(Exception e){
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("Failed to update password: " + e.getMessage()).build();

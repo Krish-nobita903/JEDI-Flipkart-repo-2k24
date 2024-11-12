@@ -14,8 +14,7 @@ public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterfa
 
     @Override
     public boolean register(String userName, String password, String firstName, String lastName, String email, String phoneNumber, double bodyWeight){
-        createUser(userName, email, password, firstName, lastName, phoneNumber, bodyWeight);
-        return true;
+        return createUser(userName, email, password, firstName, lastName, phoneNumber, bodyWeight);
     }
 
     @Override

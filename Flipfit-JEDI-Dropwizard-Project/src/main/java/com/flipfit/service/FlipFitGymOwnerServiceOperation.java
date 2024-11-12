@@ -13,6 +13,17 @@ import java.util.List;
 
 public class GymManagerImpl implements GymManagerInterface {
     FlipfitGymManagerDAO gymManagerDAO = new FlipfitGymManagerDAO();
+
+    @Override
+    public boolean createGymManager(String name,String email,String password, String firstName, String lastName){
+        try{
+            return gymManagerDAO.register(name,email,password,firstName,lastName);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     @Override
     public List<Gym> viewOwnedGyms(String managerId) {
         List<Gym> managedGyms = null;

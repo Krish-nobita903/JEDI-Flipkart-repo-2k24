@@ -4,6 +4,7 @@ import com.flipfit.bean.Gym;
 import com.flipfit.bean.GymManager;
 import com.flipfit.exception.UpdateFailedException;
 import com.flipfit.helper.DatabaseConnection;
+import com.flipfit.utils.DatabaseConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +13,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, LoginInterface {
+public class FlipfitGymManagerDAO implements FlipFitGymManagerDAOInterface, LoginInterface, RegisterGymManagerInterface {
+
+    @Override
+    public boolean register(String name,String email,String password, String firstName, String lastName){
+        try{
+            Connection connection = DatabaseConnector.connect();
+            String managerId = UUID.randomUUID().toString();
+            connection.setAutoCommit(false);
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO FlipfitSchema.gymManager " +
+                    "(managerId,name,email,password,firstName,lastName) values(?,?,?,?,?,?)");
+            stmt.setString(1, managerId);
+            stmt.setString(2, name);
+            stmt.setString(3, email);
+            stmt.setString(4, password);
+            stmt.setString(5, firstName);
+            stmt.setString(6, lastName);
+            stmt.executeUpdate();
+            System.out.println("New gymManager created with managerid: " + managerId);
+            connection.commit();
+            stmt.close();
+            connection.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public String login(String gymManagerId, String password){
         try{
