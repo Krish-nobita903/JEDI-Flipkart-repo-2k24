@@ -9,7 +9,14 @@ import java.sql.SQLException;
 import java.util.UUID;
 import java.sql.ResultSet;
 
-public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterface{
+public class FlipFitUserDAOImpl implements FlipFitUserDAOInterface, LoginInterface,RegisterUserInterface{
+
+
+    @Override
+    public boolean register(String userName, String password, String firstName, String lastName, String email, String phoneNumber, double bodyWeight){
+        createUser(userName, email, password, firstName, lastName, phoneNumber, bodyWeight);
+        return true;
+    }
 
     @Override
     public boolean login(String username, String password){

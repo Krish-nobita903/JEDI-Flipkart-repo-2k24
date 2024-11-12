@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5bce5e9-7bed-4ea7-b8a5-f0438d240422" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipFitAdminDAOInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipFitAdminService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/application/FlipFitApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/bean/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/bean/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipfit/service/CustomerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/RegisterInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Flipfit-JEDI-Dropwizard-Project/src/main/java/com/flipfit/dao/AdminDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +49,9 @@
   "keyToString": {
     "Application.FlipFitApp.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "gymManagerFix",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/rituraj.seal/IdeaProjects/krish/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS",
+    "last_opened_file_path": "/Users/napan.vijayvargiya/IdeaProjects/JEDI-Flipkart-repo-2k24/Flipfit-JEDI-Java-POS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,17 +85,6 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.flipfit.application.FlipFitApp" />
       <module name="Flipfit-JEDI-Java-POS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -156,6 +138,7 @@
       <workItem from="1731320985941" duration="82000" />
       <workItem from="1731321277385" duration="480000" />
       <workItem from="1731321894968" duration="3662000" />
+      <workItem from="1731390016528" duration="15000" />
     </task>
     <servers />
   </component>
@@ -171,7 +154,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/flipfit/dao/UserDAO.java</url>
-          <line>91</line>
+          <line>93</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
