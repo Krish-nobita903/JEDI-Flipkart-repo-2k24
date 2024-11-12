@@ -67,4 +67,17 @@ public class AdminController {
                     .entity("Failed to update password: " + e.getMessage()).build();
         }
     }
+
+    @PUT
+    @Path("/addAdmin")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addAdmin(@QueryParam("userName") String userName,@QueryParam("password") String password, @QueryParam("firstName") String firstName ,@QueryParam("lastName") String lastName ,@QueryParam("email") String email) {
+        try {
+            adminService.updateAdminPassword(userName, newPassword);
+            return Response.ok("Admin Password updated successfully").build();
+        }catch(Exception e){
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Failed to update password: " + e.getMessage()).build();
+        }
+    }
 }
