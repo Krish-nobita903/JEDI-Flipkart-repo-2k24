@@ -6,10 +6,12 @@ import com.flipfit.service.AdminServiceOperation;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/admin")
 @Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class AdminController {
 
     private AdminService adminService;
@@ -28,21 +30,41 @@ public class AdminController {
     @POST
     @Path("/addGym")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addGym(String regionId,int pinCode){
-        adminService.addGym(regionId,pinCode);
+    public Response addGym(@QueryParam("regionId") String regionId,@QueryParam("pinCode") int pinCode){
+        try {
+            adminService.addGym(regionId, pinCode);
+            return Response.status(Response.Status.CREATED)
+                    .entity("Gym successfully added under region: " + regionId).build();
+        }catch(Exception e){
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Failed to add gym: " + e.getMessage()).build();
+        }
     }
 
     @POST
     @Path("/addRegion")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addRegion(String regionName){
-        adminService.addRegion(regionName);
+    public Response addRegion(@QueryParam("regionName") String regionName){
+        try {
+            adminService.addRegion(regionName);
+            return Response.status(Response.Status.CREATED)
+                    .entity("Region added successfully: " + regionName).build();
+        }catch(Exception e){
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Failed to add region: " + e.getMessage()).build();
+        }
     }
 
     @PUT
     @Path("/updateAdminPassword")
     @Produces(MediaType.APPLICATION_JSON)
-    public void updateAdminPassword(String userName,String newPassword){
-        adminService.updateAdminPassword(userName,newPassword);
+    public Response updateAdminPassword(@QueryParam("userName") String userName,@QueryParam("newPassword") String newPassword){
+        try {
+            adminService.updateAdminPassword(userName, newPassword);
+            return Response.ok("Admin Password updated successfully").build();
+        }catch(Exception e){
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Failed to update password: " + e.getMessage()).build();
+        }
     }
 }
