@@ -1,7 +1,6 @@
 package com.flipfit.business;
 
 public interface bookSlot {
-    public void cancelBookedSlot(String userId, String slotId);
-    public void bookSlot(String userId);
-
+    public void cancelBookedSlot(int userId, int slotId);
+    public void bookSlot(int userId, int slotId);
 }
